@@ -1,0 +1,22 @@
+Package: crowdflower
+Type: Package
+Title: R Client for the CrowdFlower API
+Authors@R: c( person("Kenneth", "Benoit", email = "kbenoit@lse.ac.uk", role =
+    c("aut", "cre")), person("Pablo", "Barberá", email = "pablo.barbera@nyu.edu",
+    role = "aut"), person("Thomas J.", "Leeper", email =
+    "thosjleeper@gmail.com", role = "aut"))
+Author: Kenneth Benoit [aut, cre],
+    Pablo Barberá [aut],
+    Thomas J. Leeper [aut]
+Maintainer: Kenneth Benoit <kbenoit@lse.ac.uk>
+Version: 0.1
+Date: 2015-09-10
+Description: Provides programmatic access to the CrowdFlower API.
+License: GPL-3
+Depends:
+    R (>= 3.2.0)
+Imports:
+    httr
+URL: http://github.com/leeper/crowdflower
+Encoding: UTF-8
+BugReports: https://github.com/leeper/crowdflower/issues
