@@ -9,13 +9,15 @@
 #' id parameter of the request.
 #'
 #' @param id ID for job.
+#'
+#' @param ... Additional arguments passed to \code{\link{APIcall}}.
 
 
-getStatus <- function(id){
+getStatus <- function(id, ...){
 
 	# API request
 	endpoint <- paste0('jobs/', id, '/ping.json')
-	jobinfo <- APIcall(endpoint)
+	jobinfo <- APIcall(endpoint, ...)
 
 	return(jobinfo)
 }

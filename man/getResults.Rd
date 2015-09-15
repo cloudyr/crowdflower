@@ -4,12 +4,14 @@
 \alias{getResults}
 \title{Generate and retrieve job results}
 \usage{
-getResults(id, report_type)
+getResults(id, report_type, ...)
 }
 \arguments{
 \item{id}{ID for job.}
 
 \item{report_type}{Type of report}
+
+\item{...}{Additional arguments passed to \code{\link{APIcall}}.}
 }
 \description{
 \code{getResults} regenerates one of six types of reports within

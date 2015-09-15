@@ -4,7 +4,7 @@
 \alias{updateJob}
 \title{Updates settings for a given job.}
 \usage{
-updateJob(id, title = NULL, instructions = NULL, cml = NULL)
+updateJob(id, title = NULL, instructions = NULL, cml = NULL, ...)
 }
 \arguments{
 \item{id}{ID for job to be updated.}
@@ -14,6 +14,8 @@ updateJob(id, title = NULL, instructions = NULL, cml = NULL)
 \item{instructions}{New set of instructions.}
 
 \item{cml}{New layout for job.}
+
+\item{...}{Additional arguments passed to \code{\link{APIcall}}.}
 }
 \description{
 Updates settings for a given job.

@@ -12,9 +12,11 @@
 #' @param instructions Instructions for new job
 #'
 #' @param cml Layout for new job.
+#'
+#' @param ... Additional arguments passed to \code{\link{APIcall}}.
 
 
-createJob <- function(title=NULL, instructions=NULL, cml=NULL){
+createJob <- function(title=NULL, instructions=NULL, cml=NULL, ...){
 
 	# preparing body of request
 	body <- list()
@@ -23,7 +25,7 @@ createJob <- function(title=NULL, instructions=NULL, cml=NULL){
 	if (!is.null(title)) body['job[cml]'] <- cml
 
 	# API request to create job
-	newjob <- APIcall("jobs.json", type="POST", body=body)
+	newjob <- APIcall("jobs.json", type="POST", body=body, ...)
 	message("Job successfully created with ID = ", newjob$id)
 
 	return(invisible(newjob$id))

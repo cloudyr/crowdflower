@@ -4,12 +4,14 @@
 \alias{addData}
 \title{Uploads data from a data frame to a CrowdFlower Job}
 \usage{
-addData(id, df)
+addData(id, df, ...)
 }
 \arguments{
 \item{id}{ID for job to be updated.}
 
 \item{df}{Data frame with data to be uploaded}
+
+\item{...}{Additional arguments passed to \code{\link{APIcall}}.}
 }
 \description{
 Uploads data from a data frame to a CrowdFlower Job

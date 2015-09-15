@@ -4,7 +4,10 @@
 \alias{getAccount}
 \title{Retrieve account information}
 \usage{
-getAccount()
+getAccount(...)
+}
+\arguments{
+\item{...}{Additional arguments passed to \code{\link{APIcall}}.}
 }
 \description{
 \code{getAccount} retrieves the CrowdFlower account information

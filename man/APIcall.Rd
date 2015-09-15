@@ -5,6 +5,7 @@
 \title{Execute API call to CrowdFlower API.}
 \usage{
 APIcall(endpoint, params = NULL, body = NULL, type = "GET",
+  key = Sys.getenv("CROWDFLOWER_API_KEY"),
   base_url = "https://api.crowdflower.com/v1/")
 }
 \arguments{
@@ -15,6 +16,8 @@ APIcall(endpoint, params = NULL, body = NULL, type = "GET",
 \item{body}{additional parameters to add to request body.}
 
 \item{type}{type of requests (GET, POST, PUT).}
+
+\item{key}{A character string containing a Crowdflower API key.}
 
 \item{base_url}{Base URL of API request.}
 }

@@ -19,16 +19,18 @@
 #' @param id ID for job.
 #' 
 #' @param report_type Type of report
+#'
+#' @param ... Additional arguments passed to \code{\link{APIcall}}.
 
 
-getResults <- function(id, report_type){
+getResults <- function(id, report_type, ...){
 
 	cat("Generating results report...")
 
 	# Step 1: regenerate report
 	endpoint <- paste0('jobs/', id, '/regenerate')
 	params <- paste0("&type=", report_type)
-	results <- APIcall(endpoint, params, type="POST")
+	results <- APIcall(endpoint, params, type="POST", ...)
 
 	cat(results, '\n')
 

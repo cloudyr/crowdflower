@@ -4,10 +4,12 @@
 \alias{getStatus}
 \title{Retrieve the status of a job}
 \usage{
-getStatus(id)
+getStatus(id, ...)
 }
 \arguments{
 \item{id}{ID for job.}
+
+\item{...}{Additional arguments passed to \code{\link{APIcall}}.}
 }
 \description{
 \code{getStatus} gets the status of the job identified by the

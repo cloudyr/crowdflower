@@ -7,10 +7,11 @@
 #' @param id ID for job to be updated.
 #'
 #' @param df Data frame with data to be uploaded
-#' 
+#'
+#' @param ... Additional arguments passed to \code{\link{APIcall}}.
 
 
-addData <- function(id, df){
+addData <- function(id, df, ...){
 
 	# loop over rows
 	for (i in 1:nrow(df)){
@@ -19,7 +20,7 @@ addData <- function(id, df){
 		endpoint <- paste0('jobs/', id, '/units.json')
 		body <- list(unit = list('data' = dd))
 
-		unit <- APIcall(endpoint, type="POST-DATA", body=body)
+		unit <- APIcall(endpoint, type="POST-DATA", body=body, ...)
 	}
 
 	message(nrow(df), " new rows successfully created.")

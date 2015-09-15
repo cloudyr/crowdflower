@@ -11,9 +11,11 @@
 #' @param instructions New set of instructions.
 #'
 #' @param cml New layout for job.
+#'
+#' @param ... Additional arguments passed to \code{\link{APIcall}}.
 
 
-updateJob <- function(id, title=NULL, instructions=NULL, cml=NULL){
+updateJob <- function(id, title=NULL, instructions=NULL, cml=NULL, ...){
 
 	# preparing body of request
 	body <- list()
@@ -23,7 +25,7 @@ updateJob <- function(id, title=NULL, instructions=NULL, cml=NULL){
 
 	# API request to create job
 	endpoint <- paste0('jobs/', id, '.json')
-	newjob <- APIcall(endpoint, type="PUT", body=body)
+	newjob <- APIcall(endpoint, type="PUT", body=body, ...)
 	message("Job successfully updated with ID = ", newjob$id)
 
 	return(invisible(newjob$id))

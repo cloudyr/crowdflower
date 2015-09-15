@@ -4,10 +4,12 @@
 \alias{getJobs}
 \title{Retrieve list of all jobs.}
 \usage{
-getJobs(n = 10)
+getJobs(n = 10, ...)
 }
 \arguments{
 \item{n}{Number of recent jobs to return.}
+
+\item{...}{Additional arguments passed to \code{\link{APIcall}}.}
 }
 \description{
 \code{getJobs} queries for all jobs under the account related

@@ -15,9 +15,10 @@
 #' @param type How responses should be aggregated ("aggregate", to take
 #' aggregated responses; or "full" for all responses)
 #'
+#' @param ... Additional arguments passed to \code{\link{APIcall}}.
 
 
-getRows <- function(id, n=Inf, type="aggregated"){
+getRows <- function(id, n=Inf, type="aggregated", ...){
 
 	# initial API request
 	endpoint <- paste0('jobs/', id, '/judgments.json')
@@ -34,7 +35,7 @@ getRows <- function(id, n=Inf, type="aggregated"){
 		while (length(rows)<=n && length(newrows)>0){
 			
 			params <- paste0('&page=', page)
-			newrows <- APIcall(endpoint, params)
+			newrows <- APIcall(endpoint, params, ...)
 
 			if (length(newrows)>0){
 				rows <- c(rows, newrows)

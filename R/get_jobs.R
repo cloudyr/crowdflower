@@ -9,9 +9,11 @@
 #' to the API key for the authenticated user.
 #'
 #' @param n Number of recent jobs to return.
+#'
+#' @param ... Additional arguments passed to \code{\link{APIcall}}.
 
 
-getJobs <- function(n=10){
+getJobs <- function(n=10, ...){
 
 	# initial API request
 	jobs <- APIcall("jobs.json")
@@ -25,7 +27,7 @@ getJobs <- function(n=10){
 		while (nrow(df)<=n && length(jobs)>0){
 			
 			params <- paste0('&page=', page)
-			jobs <- APIcall("jobs.json", params)
+			jobs <- APIcall("jobs.json", params, ...)
 			newdf <- jobDataToDF(jobs)
 			df <- rbind(df, newdf)
 			page <- page + 1

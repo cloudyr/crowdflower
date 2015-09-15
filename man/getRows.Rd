@@ -4,7 +4,7 @@
 \alias{getRows}
 \title{Retrieve rows with judgment information for a job.}
 \usage{
-getRows(id, n = Inf, type = "aggregated")
+getRows(id, n = Inf, type = "aggregated", ...)
 }
 \arguments{
 \item{id}{ID for job.}
@@ -13,6 +13,8 @@ getRows(id, n = Inf, type = "aggregated")
 
 \item{type}{How responses should be aggregated ("aggregate", to take
 aggregated responses; or "full" for all responses)}
+
+\item{...}{Additional arguments passed to \code{\link{APIcall}}.}
 }
 \description{
 \code{getRows} retrieves rows with judgment information for the

@@ -4,7 +4,7 @@
 \alias{createJob}
 \title{Creates a new job}
 \usage{
-createJob(title = NULL, instructions = NULL, cml = NULL)
+createJob(title = NULL, instructions = NULL, cml = NULL, ...)
 }
 \arguments{
 \item{title}{Title for new job}
@@ -12,6 +12,8 @@ createJob(title = NULL, instructions = NULL, cml = NULL)
 \item{instructions}{Instructions for new job}
 
 \item{cml}{Layout for new job.}
+
+\item{...}{Additional arguments passed to \code{\link{APIcall}}.}
 }
 \description{
 \code{createJob} creates a new CrowdFlower Job.
