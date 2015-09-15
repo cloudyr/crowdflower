@@ -4,7 +4,7 @@
 \alias{authCF}
 \title{Authenticate connection to CrowdFlower API.}
 \usage{
-authCF(api_key)
+authCF(api_key = NULL)
 }
 \arguments{
 \item{api_key}{User's API key to connect to CrowdFlower's API, available in
@@ -13,5 +13,8 @@ authCF(api_key)
 \description{
 \code{authCF} stores the user's API Key in a local environment
 and checks that the connection was successful.
+}
+\seealso{
+\url{https://success.crowdflower.com/hc/en-us/articles/202703445-CrowdFlower-API-Integrating-with-the-API#api_key}
 }
 

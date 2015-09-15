@@ -1,29 +1,28 @@
-#' @rdname authCF
-#' @export
-#'
-#' @title 
 #' Authenticate connection to CrowdFlower API.
 #'
-#' @description
 #' \code{authCF} stores the user's API Key in a local environment
-#' and checks that the connection was successful.
+#' and checks that the connection was successful.  
 #'
 #' @param api_key User's API key to connect to CrowdFlower's API, available in
 #' \url{https://make.crowdflower.com/account/user}.
-#'
+#' @rdname authCF
+#' @seealso \url{https://success.crowdflower.com/hc/en-us/articles/202703445-CrowdFlower-API-Integrating-with-the-API#api_key}
+#' @export
+authCF <- function(api_key = NULL) { 
 
-authCF <- function(api_key){
-
-	# API key will be stored in new environment
+# 	# get the key if none supplied
+#     if (is.null(api_key)) return(getKey())
+#     
+    # API key will be stored in new environment
 	#cf_key_cache$api_key <- api_key
-	assign("api_key", api_key, envir=cf_key_cache)
+	assign("api_key", api_key, envir = cf_key_cache)
 
 	# testing that it works
 	key <- getKey()
 	account <- APIcall("account.json")
 
 	# returning information message
-	if ('auth_key' %in% names(account) && account$auth_key == key){
+	if ('auth_key' %in% names(account) && account$auth_key == key) {
 		message('Authentication successful.')
 	} 
 	else {
@@ -37,8 +36,7 @@ authCF <- function(api_key){
 #'
 #' @title 
 #' Return API key from local environment.
-
-getKey <- function(){
+getKey <- function() {
 
 	# returns api key from cf_key_cache environment
 	error <- tryCatch(key <- get("api_key", envir=cf_key_cache),
@@ -70,7 +68,6 @@ getKey <- function(){
 #'
 #' @param base_url Base URL of API request.
 #'
-
 APIcall <- function(endpoint, params=NULL, body=NULL, type="GET", base_url='https://api.crowdflower.com/v1/'){
 
 	# params for API call
