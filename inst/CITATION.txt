@@ -1,0 +1,15 @@
+citHeader("To cite package 'crowdflower' in publications use:")
+
+year <- sub(".*(2[[:digit:]]{3})-.*", "\\1", meta$Date, perl = TRUE)
+vers <- paste("R package version", meta$Version)
+
+citEntry(entry="Manual",
+         title = "crowdflower: R Client for the CrowdFlower API",
+         author = personList(as.person("Pablo Barberá"), as.person("Ken Benoit"), as.person("Thomas J. Leeper")),
+         year = year,
+         note = vers,
+         textVersion =
+         paste("Pablo Barberá, Ken Benoit, and Thomas J. Leeper. (",
+               year,
+               "). crowdflower: R Client for the CrowdFlower API. ",
+               vers, ".", sep=""))
