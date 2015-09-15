@@ -1,12 +1,12 @@
-setwd("~/git/crowdflower")
+if (Sys.info()["user"] != "kbenoit")
+    setwd("~/git/crowdflower")
 
 # library(devtools)
 # document()
 # build()
 # install.packages("../crowdflower_0.1.tar.gz", repo=NULL, type="source")
 
-library(devtools)
-install_github('leeper/crowdflower', ref="dev")
+devtools::install_github('leeper/crowdflower', ref="dev")
 
 # test
 library(crowdflower)
