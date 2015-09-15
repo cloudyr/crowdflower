@@ -4,8 +4,6 @@ quanteda 0.1
 Initial release
 ---------------
 
-* authCF() tests connection to the CrowdFlower API and stores API key in package environment.
-
 * getAccount() and getJobs() retrieve information about authenticated user and currents jobs.
 
 * createJob() creates a new task with a given title, set of instructions, and CML layout.

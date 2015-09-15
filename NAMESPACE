@@ -2,11 +2,9 @@
 
 export(APIcall)
 export(addData)
-export(authCF)
 export(createJob)
 export(getAccount)
 export(getJobs)
-export(getKey)
 export(getResults)
 export(getRows)
 export(getStatus)
