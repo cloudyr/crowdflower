@@ -29,7 +29,8 @@ Sys.setenv("CROWDFLOWER_API_KEY" = "example12345apikeystring")
 [![CRAN Version](http://www.r-pkg.org/badges/version/crowdflower)](http://cran.r-project.org/package=crowdflower)
 ![Downloads](http://cranlogs.r-pkg.org/badges/crowdflower)
 [![Travis-CI Build Status](https://travis-ci.org/cloudyr/crowdflower.png?branch=master)](https://travis-ci.org/cloudyr/crowdflower)
-[![Appveyor Build Status](https://ci.appveyor.com/api/projects/status/3lwggwiv9xkhhb3p/branch/master?svg=true)](https://ci.appveyor.com/project/cloudyr/crowdflower/branch/master)
+[![Build status](https://ci.appveyor.com/api/projects/status/3lwggwiv9xkhhb3p?svg=true)](https://ci.appveyor.com/project/leeper/crowdflower)
+[![codecov.io](http://codecov.io/github/cloudyr/crowdflower/coverage.svg?branch=master)](http://codecov.io/github/cloudyr/crowdflower?branch=master)
 
 ## Examples ##
 
