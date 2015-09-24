@@ -1,6 +1,3 @@
-# environment where API key will be stored
-cf_key_cache <- new.env()
-
 
 unlistWithNA <- function(lst, field){
 

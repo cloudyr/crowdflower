@@ -7,12 +7,23 @@
 getStatus(id, ...)
 }
 \arguments{
-\item{id}{ID for job.}
+\item{id}{A character string containing an ID for job.}
 
 \item{...}{Additional arguments passed to \code{\link{APIcall}}.}
+}
+\value{
+Details about a job.
 }
 \description{
 \code{getStatus} gets the status of the job identified by the
 id parameter of the request.
+}
+\examples{
+\dontrun{
+getStatus('jobid')
+}
+}
+\seealso{
+\code{\link{getRows}}, \code{\link{getResults}}
 }
 

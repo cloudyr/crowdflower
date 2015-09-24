@@ -8,9 +8,18 @@
 #' \code{getStatus} gets the status of the job identified by the 
 #' id parameter of the request.
 #'
-#' @param id ID for job.
+#' @param id A character string containing an ID for job.
 #'
 #' @param ... Additional arguments passed to \code{\link{APIcall}}.
+#'
+#' @return Details about a job.
+#' 
+#' @examples
+#' \dontrun{
+#' getStatus('jobid')
+#' }
+#'
+#' @seealso \code{\link{getRows}}, \code{\link{getResults}}
 
 
 getStatus <- function(id, ...){

@@ -19,6 +19,8 @@
 #' @param type type of requests (GET, POST, PUT).
 #'
 #' @param base_url Base URL of API request.
+#'
+#' @return A character string contianing the JSON response from the Crowdflower API.
 
 APIcall <- function(endpoint, params=NULL, body=NULL, type="GET", 
                     key = Sys.getenv("CROWDFLOWER_API_KEY"),

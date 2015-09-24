@@ -4,7 +4,7 @@
 #' @title 
 #' Updates settings for a given job.
 #'
-#' @param id ID for job to be updated.
+#' @param id A character string containing an ID for job to be updated.
 #'
 #' @param title New title.
 #' 
@@ -13,15 +13,24 @@
 #' @param cml New layout for job.
 #'
 #' @param ... Additional arguments passed to \code{\link{APIcall}}.
-
+#'
+#' @return A character string contianing the job ID, invisibly.
+#'
+#' @examples 
+#' \dontrun{
+#' # update job's title
+#' updateJob(id, title = "New Title")
+#' }
+#'
+#' @seealso \code{\link{createJob}}
 
 updateJob <- function(id, title=NULL, instructions=NULL, cml=NULL, ...){
 
 	# preparing body of request
 	body <- list()
 	if (!is.null(title)) body['job[title]'] <- title
-	if (!is.null(title)) body['job[instructions]'] <- instructions
-	if (!is.null(title)) body['job[cml]'] <- cml
+	if (!is.null(instructions)) body['job[instructions]'] <- instructions
+	if (!is.null(cml)) body['job[cml]'] <- cml
 
 	# API request to create job
 	endpoint <- paste0('jobs/', id, '.json')

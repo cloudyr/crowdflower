@@ -2,10 +2,13 @@
 
 export(APIcall)
 export(addData)
+export(cancelJob)
 export(createJob)
 export(getAccount)
 export(getJobs)
 export(getResults)
 export(getRows)
 export(getStatus)
+export(pauseJob)
+export(resumeJob)
 export(updateJob)

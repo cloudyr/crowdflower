@@ -8,9 +8,20 @@
 #' \code{getJobs} queries for all jobs under the account related 
 #' to the API key for the authenticated user.
 #'
-#' @param n Number of recent jobs to return.
+#' @param n An integer specifying the number of recent jobs to return.
 #'
 #' @param ... Additional arguments passed to \code{\link{APIcall}}.
+#'
+#' @return A data.frame containing details of all jobs.
+#'
+#' @references \href{https://success.crowdflower.com/hc/en-us/articles/202703425-CrowdFlower-API-Requests-Guide#account_information}{Crowdflower API documentation}
+#' 
+#' @examples
+#' \dontrun{
+#' getJobs(n = 10)
+#' }
+#'
+#' @seealso \code{\link{getAccount}}
 
 
 getJobs <- function(n=10, ...){

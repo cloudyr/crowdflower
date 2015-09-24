@@ -21,6 +21,9 @@ APIcall(endpoint, params = NULL, body = NULL, type = "GET",
 
 \item{base_url}{Base URL of API request.}
 }
+\value{
+A character string contianing the JSON response from the Crowdflower API.
+}
 \description{
 \code{APIcall} connects to the CrowdFlower API and executes an
 API request.

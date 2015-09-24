@@ -7,12 +7,26 @@
 getJobs(n = 10, ...)
 }
 \arguments{
-\item{n}{Number of recent jobs to return.}
+\item{n}{An integer specifying the number of recent jobs to return.}
 
 \item{...}{Additional arguments passed to \code{\link{APIcall}}.}
+}
+\value{
+A data.frame containing details of all jobs.
 }
 \description{
 \code{getJobs} queries for all jobs under the account related
 to the API key for the authenticated user.
+}
+\examples{
+\dontrun{
+getJobs(n = 10)
+}
+}
+\references{
+\href{https://success.crowdflower.com/hc/en-us/articles/202703425-CrowdFlower-API-Requests-Guide#account_information}{Crowdflower API documentation}
+}
+\seealso{
+\code{\link{getAccount}}
 }
 

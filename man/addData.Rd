@@ -4,16 +4,33 @@
 \alias{addData}
 \title{Uploads data from a data frame to a CrowdFlower Job}
 \usage{
-addData(id, df, ...)
+addData(id, df, verbose = TRUE, ...)
 }
 \arguments{
 \item{id}{ID for job to be updated.}
 
 \item{df}{Data frame with data to be uploaded}
 
+\item{verbose}{A logical indicating whether to print additional information about the request.}
+
 \item{...}{Additional arguments passed to \code{\link{APIcall}}.}
+}
+\value{
+A character string contianing the job ID, invisibly.
 }
 \description{
 Uploads data from a data frame to a CrowdFlower Job
+}
+\examples{
+\dontrun{
+d <- data.frame(variable = 1:3)
+addData(id = 'jobid', df = d)
+}
+}
+\references{
+\href{https://success.crowdflower.com/hc/en-us/articles/202703425-CrowdFlower-API-Requests-Guide#data}{Crowdflower API documentation}
+}
+\seealso{
+\code{\link{updateJob}}, \code{\link{getStatus}}, \code{\link{getResults}}
 }
 

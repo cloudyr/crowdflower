@@ -9,8 +9,19 @@ getAccount(...)
 \arguments{
 \item{...}{Additional arguments passed to \code{\link{APIcall}}.}
 }
+\value{
+Account details.
+}
 \description{
 \code{getAccount} retrieves the CrowdFlower account information
 related to the API key for the authenticated user
+}
+\examples{
+\dontrun{
+getAccount()
+}
+}
+\references{
+\href{https://success.crowdflower.com/hc/en-us/articles/202703425-CrowdFlower-API-Requests-Guide#account_information}{Crowdflower API documentation}
 }
 

@@ -8,10 +8,24 @@
 #'
 #' @param df Data frame with data to be uploaded
 #'
+#' @param verbose A logical indicating whether to print additional information about the request.
+#'
 #' @param ... Additional arguments passed to \code{\link{APIcall}}.
+#'
+#' @references \href{https://success.crowdflower.com/hc/en-us/articles/202703425-CrowdFlower-API-Requests-Guide#data}{Crowdflower API documentation}
+#'
+#' @return A character string contianing the job ID, invisibly.
+#' 
+#' @examples
+#' \dontrun{
+#' d <- data.frame(variable = 1:3)
+#' addData(id = 'jobid', df = d)
+#' }
+#'
+#' @seealso \code{\link{updateJob}}, \code{\link{getStatus}}, \code{\link{getResults}}
 
 
-addData <- function(id, df, ...){
+addData <- function(id, df, verbose = TRUE, ...){
 
 	# loop over rows
 	for (i in 1:nrow(df)){
@@ -23,6 +37,7 @@ addData <- function(id, df, ...){
 		unit <- APIcall(endpoint, type="POST-DATA", body=body, ...)
 	}
 
-	message(nrow(df), " new rows successfully created.")
-
+	if (verbose) message(nrow(df), " new rows successfully created.")
+	
+	return(invisible(unit)) # is this what we want?
 }

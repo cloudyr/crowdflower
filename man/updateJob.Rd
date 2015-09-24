@@ -7,7 +7,7 @@
 updateJob(id, title = NULL, instructions = NULL, cml = NULL, ...)
 }
 \arguments{
-\item{id}{ID for job to be updated.}
+\item{id}{A character string containing an ID for job to be updated.}
 
 \item{title}{New title.}
 
@@ -17,7 +17,19 @@ updateJob(id, title = NULL, instructions = NULL, cml = NULL, ...)
 
 \item{...}{Additional arguments passed to \code{\link{APIcall}}.}
 }
+\value{
+A character string contianing the job ID, invisibly.
+}
 \description{
 Updates settings for a given job.
+}
+\examples{
+\dontrun{
+# update job's title
+updateJob(id, title = "New Title")
+}
+}
+\seealso{
+\code{\link{createJob}}
 }
 

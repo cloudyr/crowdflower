@@ -4,20 +4,33 @@
 \alias{getRows}
 \title{Retrieve rows with judgment information for a job.}
 \usage{
-getRows(id, n = Inf, type = "aggregated", ...)
+getRows(id, n = Inf, type = "aggregated", verbose = TRUE, ...)
 }
 \arguments{
-\item{id}{ID for job.}
+\item{id}{A character string containing an ID for job.}
 
 \item{n}{Number of rows to return.}
 
 \item{type}{How responses should be aggregated ("aggregate", to take
 aggregated responses; or "full" for all responses)}
 
+\item{verbose}{A logical indicating whether to print additional information about the request.}
+
 \item{...}{Additional arguments passed to \code{\link{APIcall}}.}
+}
+\value{
+A data.frame containing judgment information
 }
 \description{
 \code{getRows} retrieves rows with judgment information for the
 job ID indicated in the request.
+}
+\examples{
+\dontrun{
+getRows('jobid')
+}
+}
+\seealso{
+\code{\link{getStatus}}, \code{\link{getResults}}
 }
 

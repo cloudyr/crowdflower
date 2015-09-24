@@ -4,18 +4,36 @@
 \alias{createJob}
 \title{Creates a new job}
 \usage{
-createJob(title = NULL, instructions = NULL, cml = NULL, ...)
+createJob(title = NULL, instructions = NULL, cml = NULL, verbose = TRUE,
+  ...)
 }
 \arguments{
-\item{title}{Title for new job}
+\item{title}{A character string containing the title for a new job.}
 
-\item{instructions}{Instructions for new job}
+\item{instructions}{A character string containing instructions for a new job.}
 
 \item{cml}{Layout for new job.}
 
+\item{verbose}{A logical indicating whether to print additional information about the request.}
+
 \item{...}{Additional arguments passed to \code{\link{APIcall}}.}
+}
+\value{
+A character string contianing the job ID, invisibly.
 }
 \description{
 \code{createJob} creates a new CrowdFlower Job.
+}
+\examples{
+\dontrun{
+createJob(title = 'Job Title',
+          instructions = 'Some instructions')
+}
+}
+\references{
+\href{https://success.crowdflower.com/hc/en-us/articles/202703425-CrowdFlower-API-Requests-Guide}{Crowdflower API documentation}
+}
+\seealso{
+\code{\link{updateJob}}, \code{\link{getStatus}}, \code{\link{getResults}}
 }
 
