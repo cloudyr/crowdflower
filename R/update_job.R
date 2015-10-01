@@ -14,7 +14,7 @@
 #'
 #' @param ... Additional arguments passed to \code{\link{APIcall}}.
 #'
-#' @return A character string contianing the job ID, invisibly.
+#' @return A character string containing the job ID, invisibly.
 #'
 #' @examples 
 #' \dontrun{

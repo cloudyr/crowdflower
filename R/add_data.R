@@ -14,7 +14,7 @@
 #'
 #' @references \href{https://success.crowdflower.com/hc/en-us/articles/202703425-CrowdFlower-API-Requests-Guide#data}{Crowdflower API documentation}
 #'
-#' @return A character string contianing the job ID, invisibly.
+#' @return A character string containing the job ID, invisibly.
 #' 
 #' @examples
 #' \dontrun{
