@@ -16,7 +16,7 @@ copyJob(id, rows = TRUE, verbose = TRUE, ...)
 \item{...}{Additional arguments passed to \code{\link{APIcall}}.}
 }
 \value{
-A character string contianing the job ID, invisibly.
+A character string containing the job ID, invisibly.
 }
 \description{
 \code{copyJob} copies an existing job to a new job ID.

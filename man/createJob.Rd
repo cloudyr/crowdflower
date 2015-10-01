@@ -19,7 +19,7 @@ createJob(title = NULL, instructions = NULL, cml = NULL, verbose = TRUE,
 \item{...}{Additional arguments passed to \code{\link{APIcall}}.}
 }
 \value{
-A character string contianing the job ID, invisibly.
+A character string containing the job ID, invisibly.
 }
 \description{
 \code{createJob} creates a new CrowdFlower Job.

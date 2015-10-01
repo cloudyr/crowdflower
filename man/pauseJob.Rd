@@ -12,7 +12,7 @@ pauseJob(id, ...)
 \item{...}{Additional arguments passed to \code{\link{APIcall}}.}
 }
 \value{
-A character string contianing the job ID, invisibly.
+A character string containing the job ID, invisibly.
 }
 \description{
 \code{pauseJob} pauses a currently running job.
@@ -23,6 +23,6 @@ pauseJob('jobid')
 }
 }
 \seealso{
-\code{\link{cancelJob}}, \code{\link{resumeJob}}
+\code{\link{launchJob}}, \code{\link{cancelJob}}, \code{\link{resumeJob}}
 }
 

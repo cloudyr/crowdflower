@@ -4,7 +4,8 @@
 \alias{updateJob}
 \title{Updates settings for a given job.}
 \usage{
-updateJob(id, title = NULL, instructions = NULL, cml = NULL, ...)
+updateJob(id, title = NULL, instructions = NULL, cml = NULL,
+  payment_cents = NULL, units_per_assignment = NULL, ...)
 }
 \arguments{
 \item{id}{A character string containing an ID for job to be updated.}
@@ -15,10 +16,14 @@ updateJob(id, title = NULL, instructions = NULL, cml = NULL, ...)
 
 \item{cml}{New layout for job.}
 
+\item{payment_cents}{Amount, in cents, that contributors will be paid per task.}
+
+\item{units_per_assignment}{Number of rows that will comprise one page within a job.}
+
 \item{...}{Additional arguments passed to \code{\link{APIcall}}.}
 }
 \value{
-A character string contianing the job ID, invisibly.
+A character string containing the job ID, invisibly.
 }
 \description{
 Updates settings for a given job.

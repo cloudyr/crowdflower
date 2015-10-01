@@ -16,7 +16,7 @@ addData(id, df, verbose = TRUE, ...)
 \item{...}{Additional arguments passed to \code{\link{APIcall}}.}
 }
 \value{
-A character string contianing the job ID, invisibly.
+A character string containing the job ID, invisibly.
 }
 \description{
 Uploads data from a data frame to a CrowdFlower Job
