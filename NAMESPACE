@@ -3,6 +3,7 @@
 export(APIcall)
 export(addData)
 export(cancelJob)
+export(copyJob)
 export(createJob)
 export(getAccount)
 export(getJobs)
