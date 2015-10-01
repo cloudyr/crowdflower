@@ -25,7 +25,7 @@
 #' @seealso \code{\link{createJob}}, \code{\link{updateJob}}
 
 
-copyJob <- function(id, rows = TRUE, verbose = TRUE, ...){
+getStatus <- function(id, rows = TRUE, verbose = TRUE, ...){
 
 	# API request
 	endpoint <- paste0('jobs/', id, '/copy.json')
