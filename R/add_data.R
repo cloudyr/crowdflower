@@ -27,17 +27,25 @@
 
 addData <- function(id, df, verbose = TRUE, ...){
 
+	if (verbose) pb <- txtProgressBar(min=1, max=nrow(df), style=3)
+
 	# loop over rows
 	for (i in 1:nrow(df)){
 
-		dd <- sapply(df[1,], as.list) # converting row to list
+		dd <- sapply(df[i,], as.list) # converting row to list
 		endpoint <- paste0('jobs/', id, '/units.json')
 		body <- list(unit = list('data' = dd))
 
 		unit <- APIcall(endpoint, type="POST-DATA", body=body, ...)
+		Sys.sleep(0.02) # adding small pause to avoid hitting rate limit
+						# (40 requests per second)
+
+		if (verbose) setTxtProgressBar(pb, i)
 	}
 
 	if (verbose) message(nrow(df), " new rows successfully created.")
 	
-	return(invisible(unit)) # is this what we want?
+	#return(invisible(unit)) # is this what we want?
+	return(invisible(unit$job_id)) 	# returning job ID (consistent with other functions; 
+									# we can use pipe operator ?)
 }
