@@ -1,6 +1,11 @@
 language: r
 sudo: required
-r_github_packages:
-- jimhester/covr
+r_packages:
+- covr
+- drat
 after_success:
 - Rscript -e 'library(covr);codecov()'
+- test $TRAVIS_PULL_REQUEST == "false" && test $TRAVIS_BRANCH == "master" && bash drat.sh
+env:
+  global:
+    secure: CpE/FqvYBXQ4IeB/k0IELTLeeouvN4q1+8vKRh3nKZ8yDGSXQzDBd3OhzsPS9AZcChlM7izS+kSJgnBAKkaLz/7Pwao0ZMEhoT/IzsT9MQoz1ReI/U1EqoZJlcONxdxhPMbqz9amvZzf0wCRBLuEiLg9olYb4Mct4wUljVT5M0W7/5imW/bdDbWuQcin5LqQfuyXOVD/mZIwis3rsvZ4P6QkbXW5hJJ8PzstGMnkPtBNjB2yY9BqAREi4DId0gveTNUYGO6BC48jmWqLPwyRgnnb7QCo20QF+LgtgeU0egu1C/P5Fo0GH1hSQ7iGm4Lp3B7A86BGzRhvmYfGo0Mupd5nf5pbCzUacyz/MsiBD/Wzsd3K6mNl03P80QPGY4h7QGP5IOOF1XBTTD20+Qg2O7HiL+UFigLXpNENZNL8/MosnsIwdxlEE6f618Wql29arcGCYkjMmTc4Hz/TmVPgL3why2Y1BrQuQOxNOWhRMb84k8S44MPccwaE0bSlzuN0VC0GODTL+NDJE6uswVDpsIaUcWtdN32eKKPE5aZL+IWcN7tMHdjjYh2S7kD/rarjDnzxSWSiAwP9zH8jLn3eC0UcuaUhsr6rOoTioekzAT3t9OmvTZPJMrDhhHpSVoURbXKUuHSAlqUGf7q4enhCbQnaF0+PAT3rZQLjAsVkdl8=
