@@ -1,0 +1,17 @@
+<div class='html-element-wrapper'><div>
+    <p><span style='font-weight: normal;'>
+        Read the text below paying close attention to detail:
+    </span></p>
+    <p><strong>{{content}}</strong></p>
+</div>
+</div><cml:radios 
+    label='What is the sentiment of the opinion expressed in the tweet?' 
+    name='sentiment' aggregation='agg' validates='required' gold='true'>
+    <cml:radio label='Very Positive' value='5' />
+    <cml:radio label='Slightly Positive' value='4' />
+    <cml:radio label='Neutral' value='3' />
+    <cml:radio label='Slightly Negative' value='2' />
+    <cml:radio label='Very Negative' value='1' />
+    <cml:radio label='This post is not related to political candidates' 
+        value='not_relevant' />
+</cml:radios>
