@@ -60,9 +60,9 @@ test_that("Get all jobs", {
     expect_true(is.data.frame(getJobs(page = NULL)), label = "return all jobs")
     expect_true(is.data.frame(getJobs(page = 1)), label = "return 1st page of jobs")
 })
-test_that("Launch to on-demand workforce", {})
-test_that("Launch to internal channel", {})
-test_that("Launch to on-demand and internal", {})
+#test_that("Launch to on-demand workforce", {})
+#test_that("Launch to internal channel", {})
+#test_that("Launch to on-demand and internal", {})
 test_that("Get job status", {
     expect_true(is.list(getStatus(j)))
 })
@@ -140,8 +140,8 @@ df <- data.frame(
 addData(j, df)
 
 # downloading rows from existing job
-results <- getRows(id='724144', type="aggregated")
-results <- getRows(id='724144', type="full") # one coder
-results <- getRows(id='754202', type="aggregated")
-results <- getRows(id='754202', type="full") # multiple coders
+#results <- getRows(id='724144', type="aggregated")
+#results <- getRows(id='724144', type="full") # one coder
+#results <- getRows(id='754202', type="aggregated")
+#results <- getRows(id='754202', type="full") # multiple coders
 
