@@ -48,26 +48,27 @@ getJobs <- function(page = NULL, ...){
                 }
                 out <- do.call("rbind", d)
             } else {
-                out <- structure(list(id = integer(0), 
-                                      title = character(0), 
-                                      judgments_per_unit = integer(0), 
-                                      units_per_assignment = integer(0), 
-                                      max_judgments_per_worker = logical(0), 
-                                      max_judgments_per_ip = logical(0), 
-                                      gold_per_assignment = integer(0), 
-                                      payment_cents = integer(0), 
-                                      completed_at = logical(0), 
-                                      state = character(0), 
-                                      created_at = character(0), 
-                                      units_count = integer(0), 
-                                      golds_count = integer(0), 
-                                      judgments_count = integer(0), 
-                                      crowd_costs = numeric(0), 
-                                      quiz_mode_enabled = logical(0), 
-                                      completed = logical(0)), class = "data.frame")
+                out <- d[[1]]
             }
         } else {
-            out <- data.frame(id = integer())
+            out <- structure(list(id = integer(0), 
+                                  title = character(0), 
+                                  judgments_per_unit = integer(0), 
+                                  units_per_assignment = integer(0), 
+                                  max_judgments_per_worker = logical(0), 
+                                  max_judgments_per_ip = logical(0), 
+                                  gold_per_assignment = integer(0), 
+                                  payment_cents = integer(0), 
+                                  completed_at = logical(0), 
+                                  state = character(0), 
+                                  created_at = character(0), 
+                                  units_count = integer(0), 
+                                  golds_count = integer(0), 
+                                  judgments_count = integer(0), 
+                                  crowd_costs = numeric(0), 
+                                  quiz_mode_enabled = logical(0), 
+                                  completed = logical(0)), class = "data.frame")
+            
         }
     } else {
         # return selected job pages
