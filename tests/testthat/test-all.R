@@ -48,7 +48,9 @@ test_that("Get all jobs", {
 test_that("Launch to on-demand workforce", {})
 test_that("Launch to internal channel", {})
 test_that("Launch to on-demand and internal", {})
-test_that("Get job status", {})
+test_that("Get job status", {
+    expect_true(is.list(getStatus(j)))
+})
 test_that("Pause job", {})
 test_that("Resume job", {})
 test_that("Cancel job", {})
