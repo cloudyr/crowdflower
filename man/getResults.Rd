@@ -2,9 +2,14 @@
 % Please edit documentation in R/get_results.R
 \name{getResults}
 \alias{getResults}
+\alias{regenerateReport}
 \title{Generate and retrieve job results}
 \usage{
-getResults(id, report_type, verbose = TRUE, ...)
+getResults(id, report_type = c("full", "aggregated", "json", "gold_report",
+  "workset", "source"), verbose = TRUE, ...)
+
+regenerateReport(id, report_type = c("full", "aggregated", "json",
+  "gold_report", "workset", "source"), verbose = TRUE, ...)
 }
 \arguments{
 \item{id}{A character string containing an ID for job.}
@@ -29,7 +34,15 @@ response, as well as the individual judgments, for the first 50 rows.
 }
 \examples{
 \dontrun{
-getResults(id = "jobid", report_type = "")
+# create new job
+f1 <- system.file("templates/instructions1.html", package = "crowdflower")
+f2 <- system.file("templates/cml1.xml", package = "crowdflower")
+j <- createJob(title = "Job Title", 
+               instructions = readChar(f1, nchars = 1e8L),
+               cml = readChar(f2, nchars = 1e8L))
+
+# get results for job
+getResults(id = j, report_type = "")
 }
 
 }

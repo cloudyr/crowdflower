@@ -23,8 +23,15 @@ A character string containing the job ID, invisibly.
 }
 \examples{
 \dontrun{
+# create new job
+f1 <- system.file("templates/instructions1.html", package = "crowdflower")
+f2 <- system.file("templates/cml1.xml", package = "crowdflower")
+j <- createJob(title = "Job Title", 
+               instructions = readChar(f1, nchars = 1e8L),
+               cml = readChar(f2, nchars = 1e8L))
+
 d <- data.frame(variable = 1:3)
-addData(id = 'jobid', data = d)
+addData(id = j, data = d)
 }
 
 }

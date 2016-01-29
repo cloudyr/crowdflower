@@ -39,6 +39,6 @@ j <- createJob(title = "Job Title",
 \href{https://success.crowdflower.com/hc/en-us/articles/202703425-CrowdFlower-API-Requests-Guide}{Crowdflower API documentation}
 }
 \seealso{
-\code{\link{updateJob}}, \code{\link{getStatus}}, \code{\link{getResults}}
+\code{\link{updateJob}}, \code{\link{addData}}, \code{\link{launchJob}}, \code{\link{getStatus}}, \code{\link{getResults}}
 }
 

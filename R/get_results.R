@@ -28,26 +28,44 @@
 #' 
 #' @examples
 #' \dontrun{
-#' getResults(id = "jobid", report_type = "")
+#' # create new job
+#' f1 <- system.file("templates/instructions1.html", package = "crowdflower")
+#' f2 <- system.file("templates/cml1.xml", package = "crowdflower")
+#' j <- createJob(title = "Job Title", 
+#'                instructions = readChar(f1, nchars = 1e8L),
+#'                cml = readChar(f2, nchars = 1e8L))
+#'
+#' # get results for job
+#' getResults(id = j, report_type = "")
 #' }
 #'
 #' @seealso \code{\link{getAccount}}
+getResults <- function(id, 
+                       report_type = c("full", "aggregated", "json", "gold_report", "workset", "source"), 
+                       verbose = TRUE, 
+                       ...){
 
+    endpoint2 <- paste0('jobs/', id, '.csv')
+    crowdflowerAPIQuery(endpoint2, query = list(type = match.arg(report_type)), type="GET", ...)
 
-getResults <- function(id, report_type, verbose = TRUE, ...){
+}
 
-    if (verbose) message("Generating results report...")
+#' @rdname getResults
+#' @export
+regenerateReport <- function(id, 
+                             report_type = c("full", "aggregated", "json", "gold_report", "workset", "source"), 
+                             verbose = TRUE, 
+                             ...){
 
-    # Step 1: regenerate report
-    endpoint <- paste0('jobs/', id, '/regenerate')
-    params <- paste0("&type=", report_type)
-    results <- crowdflowerAPIQuery(endpoint, params, type="POST", ...)
-
-    if (verbose) message(results, '\n')
-
-    # Step 2: download report
-    if (report_type=="full") filename <- paste0('f', id, '.csv')
-
-    ### I was not able to figure out how to do this ###
-
+    if (verbose) {
+        message("Generating results report...")
+    }
+    endpoint1 <- paste0('jobs/', id, '/regenerate')
+    results <- crowdflowerAPIQuery(endpoint1, query = list(type = match.arg(report_type)), type="POST", ...)
+    
+    if (results != "OK") {
+        stop("Report regeneration failed!")
+    }
+    return(TRUE)
+    
 }

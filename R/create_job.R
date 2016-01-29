@@ -31,7 +31,7 @@
 #'                cml = readChar(f2, nchars = 1e8L))
 #' }
 #'
-#' @seealso \code{\link{updateJob}}, \code{\link{getStatus}}, \code{\link{getResults}}
+#' @seealso \code{\link{updateJob}}, \code{\link{addData}}, \code{\link{launchJob}}, \code{\link{getStatus}}, \code{\link{getResults}}
 
 createJob <- function(title = NULL, instructions = NULL, cml = NULL, verbose = TRUE, ...){
 
