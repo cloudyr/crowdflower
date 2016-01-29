@@ -10,7 +10,7 @@
 #'
 #' @param ... Additional arguments passed to \code{\link{APIcall}}.
 #'
-#' @return Account details.
+#' @return A list containing account details for the authenticated user.
 #'
 #' @references \href{https://success.crowdflower.com/hc/en-us/articles/202703425-CrowdFlower-API-Requests-Guide#account_information}{Crowdflower API documentation}
 #' 
@@ -21,8 +21,8 @@
 
 getAccount <- function(...){
 
-	# initial API request
-	account <- APIcall("account.json", ...)
-	return(account)
+    # initial API request
+    account <- APIcall("account.json", ...)
+    return(account)
 
 }
