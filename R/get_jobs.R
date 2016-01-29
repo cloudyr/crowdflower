@@ -8,43 +8,74 @@
 #' \code{getJobs} queries for all jobs under the account related 
 #' to the API key for the authenticated user.
 #'
-#' @param n An integer specifying the number of recent jobs to return.
+#' @param page A vector of integers specifying which page(s) of results 
+#' to return. A page contains up to 10 jobs. The default (\code{NULL}) 
+#' is to return all jobs.
 #'
 #' @param ... Additional arguments passed to \code{\link{APIcall}}.
 #'
-#' @return A data.frame containing details of all jobs.
+#' @return A data.frame containing details of all jobs. The \code{id} 
+#' column provides the Crowdflower Job ID for each job.
 #'
 #' @references \href{https://success.crowdflower.com/hc/en-us/articles/202703425-CrowdFlower-API-Requests-Guide#account_information}{Crowdflower API documentation}
 #' 
 #' @examples
 #' \dontrun{
-#' getJobs(n = 10)
+#' # return first page of jobs
+#' getJobs(page = 1)
+#'
+#' # return all jobs
+#' getJobs()
 #' }
 #'
 #' @seealso \code{\link{getAccount}}
 
 
-getJobs <- function(n=10, ...){
+getJobs <- function(page = NULL, ...){
 
-	# initial API request
-	jobs <- APIcall("jobs.json")
-	df <- jobDataToDF(jobs)
-
-	if (n>10){
-		# if more than 10 are requested, continue until
-		# n is reached, or when no more data is returned		
-		page <- 2
-		
-		while (nrow(df)<=n && length(jobs)>0){
-			
-			params <- paste0('&page=', page)
-			jobs <- APIcall("jobs.json", params, ...)
-			newdf <- jobDataToDF(jobs)
-			df <- rbind(df, newdf)
-			page <- page + 1
-		}
-	}		
-
-	return(df)
-
+    if (is.null(page)) {
+        # return all jobs
+        jobs <- APIcall("jobs.json", query = list(page = 1), ....)
+        if (length(jobs)) {
+            d <- list(jobDataToDF(jobs))
+            if (nrow(d[[1]]) == 10) {
+                p <- 2
+                nr <- 10
+                while (nr == 10) {
+                    d[[p]] <- jobDataToDF(getJobs(page = p, ...))
+                    nr <- nrow(d[[p]])
+                    p <- p + 1
+                }
+                out <- do.call("rbind", d)
+            } else {
+                out <- structure(list(id = integer(0), 
+                                      title = character(0), 
+                                      judgments_per_unit = integer(0), 
+                                      units_per_assignment = integer(0), 
+                                      max_judgments_per_worker = logical(0), 
+                                      max_judgments_per_ip = logical(0), 
+                                      gold_per_assignment = integer(0), 
+                                      payment_cents = integer(0), 
+                                      completed_at = logical(0), 
+                                      state = character(0), 
+                                      created_at = character(0), 
+                                      units_count = integer(0), 
+                                      golds_count = integer(0), 
+                                      judgments_count = integer(0), 
+                                      crowd_costs = numeric(0), 
+                                      quiz_mode_enabled = logical(0), 
+                                      completed = logical(0)), class = "data.frame")
+            }
+        } else {
+            out <- data.frame(id = integer())
+        }
+    } else {
+        # return selected job pages
+        out <- do.call("rbind", lapply(page, function(x) {
+            a <- APIcall("jobs.json", query = list(page = x), ....)
+            jobDataToDF(a)
+        }))
+    }
+    
+    return(out)
 }
