@@ -132,33 +132,12 @@ test_that("Unflag a contributor", {})
 test_that("Reject a contributor", {})
 
 
-# testing authentication
-Sys.setenv("CROWDFLOWER_API_KEY" = readLines("api-key.txt")) 
-
-# getting list of jobs
-jobs <- getJobs(n=100)
-str(jobs)
-
-# getting account info
-account <- getAccount()
-account$first_name
-
-# create test job (with title, instructions, layout)
-
-# update title of job
-updateJob(job, title="Judge The Sentiment Of Tweets About Candidates")
-
 # adding data
 df <- data.frame(
     tweet_id = c(1, 2, 3, 4, 5),
     content = c('tweet1', 'tweet2', 'tweet3', 'tweet4', 'tweet5'),
     stringsAsFactors=F)
-addData(job, df)
-
-# checking status of job
-info <- getStatus(job)
-info$all_units
-info$completed_units_estimate
+addData(j, df)
 
 # downloading rows from existing job
 results <- getRows(id='724144', type="aggregated")
