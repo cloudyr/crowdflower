@@ -66,9 +66,12 @@ test_that("Launch to on-demand and internal", {})
 test_that("Get job status", {
     expect_true(is.list(getStatus(j)))
 })
-test_that("Pause job", {})
-test_that("Resume job", {})
-test_that("Cancel job", {})
+test_that("Control job", {
+    expect_true(is.list(launchJob(j, units = 1)), label = "launch job")
+    expect_error(pauseJob(j), label = "pause job")
+    expect_error(resumeJob(j), label = "resume job")
+    expect_error(cancelJob(j), label = "cancel job")
+})
 
 context("Results")
 test_that("Job reports", {
