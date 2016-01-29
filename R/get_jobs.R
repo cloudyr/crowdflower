@@ -12,7 +12,7 @@
 #' to return. A page contains up to 10 jobs. The default (\code{NULL}) 
 #' is to return all jobs.
 #'
-#' @param ... Additional arguments passed to \code{\link{APIcall}}.
+#' @param ... Additional arguments passed to \code{\link{crowdflowerAPIQuery}}.
 #'
 #' @return A data.frame containing details of all jobs. The \code{id} 
 #' column provides the Crowdflower Job ID for each job.
@@ -35,7 +35,7 @@ getJobs <- function(page = NULL, ...){
 
     if (is.null(page)) {
         # return all jobs
-        jobs <- APIcall("jobs.json", query = list(page = 1), ....)
+        jobs <- crowdflowerAPIQuery("jobs.json", query = list(page = 1), ....)
         if (length(jobs)) {
             d <- list(jobDataToDF(jobs))
             if (nrow(d[[1]]) == 10) {
@@ -73,7 +73,7 @@ getJobs <- function(page = NULL, ...){
     } else {
         # return selected job pages
         out <- do.call("rbind", lapply(page, function(x) {
-            a <- APIcall("jobs.json", query = list(page = x), ....)
+            a <- crowdflowerAPIQuery("jobs.json", query = list(page = x), ....)
             jobDataToDF(a)
         }))
     }

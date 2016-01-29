@@ -18,7 +18,7 @@ questions from the original job. Ignored if \code{rows = TRUE}.}
 \item{verbose}{A logical indicating whether to print additional 
 information about the request.}
 
-\item{...}{Additional arguments passed to \code{\link{APIcall}}.}
+\item{...}{Additional arguments passed to \code{\link{crowdflowerAPIQuery}}.}
 }
 \value{
 A character string containing the job ID, invisibly.

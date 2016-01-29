@@ -13,7 +13,7 @@
 #'
 #' @param verbose A logical indicating whether to print additional information about the request.
 #'
-#' @param ... Additional arguments passed to \code{\link{APIcall}}.
+#' @param ... Additional arguments passed to \code{\link{crowdflowerAPIQuery}}.
 #'
 #' @references \href{https://success.crowdflower.com/hc/en-us/articles/202703425-CrowdFlower-API-Requests-Guide#data}{Crowdflower API documentation}
 #'
@@ -41,7 +41,7 @@ addData <- function(id, data, verbose = TRUE, ...){
         endpoint <- paste0('jobs/', id, '/units.json')
         body <- list(unit = list('data' = dd))
 
-        unit <- APIcall(endpoint, type="POST-DATA", body=body, ...)
+        unit <- crowdflowerAPIQuery(endpoint, type="POST-DATA", body=body, ...)
         Sys.sleep(0.02) # adding small pause to avoid hitting rate limit
                         # (40 requests per second)
 

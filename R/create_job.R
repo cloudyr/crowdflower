@@ -15,7 +15,7 @@
 #'
 #' @param verbose A logical indicating whether to print additional information about the request.
 #'
-#' @param ... Additional arguments passed to \code{\link{APIcall}}.
+#' @param ... Additional arguments passed to \code{\link{crowdflowerAPIQuery}}.
 #'
 #' @return An integer specify the job ID.
 #'
@@ -42,7 +42,7 @@ createJob <- function(title = NULL, instructions = NULL, cml = NULL, verbose = T
     if (!is.null(cml)) body['job[cml]'] <- cml
 
     # API request to create job
-    newjob <- APIcall("jobs.json", type="POST", body=body, ...)
+    newjob <- crowdflowerAPIQuery("jobs.json", type="POST", body=body, ...)
     if (verbose) message("Job successfully created with ID = ", newjob$id)
 
     return(newjob$id)

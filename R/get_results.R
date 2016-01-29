@@ -22,7 +22,7 @@
 #'
 #' @param verbose A logical indicating whether to print additional information about the request.
 #'
-#' @param ... Additional arguments passed to \code{\link{APIcall}}.
+#' @param ... Additional arguments passed to \code{\link{crowdflowerAPIQuery}}.
 #'
 #' @references \href{https://success.crowdflower.com/hc/en-us/articles/202703425-CrowdFlower-API-Requests-Guide#get_results}{Crowdflower API documentation}
 #' 
@@ -41,7 +41,7 @@ getResults <- function(id, report_type, verbose = TRUE, ...){
     # Step 1: regenerate report
     endpoint <- paste0('jobs/', id, '/regenerate')
     params <- paste0("&type=", report_type)
-    results <- APIcall(endpoint, params, type="POST", ...)
+    results <- crowdflowerAPIQuery(endpoint, params, type="POST", ...)
 
     if (verbose) message(results, '\n')
 

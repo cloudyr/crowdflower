@@ -16,7 +16,7 @@
 #'
 #' @param verbose A logical indicating whether to print details of the request.
 #'
-#' @param ... Additional arguments passed to \code{\link{APIcall}}.
+#' @param ... Additional arguments passed to \code{\link{crowdflowerAPIQuery}}.
 #'
 #' @return A list containing details of the job.
 #' 
@@ -60,7 +60,7 @@ launchJob <- function(id, channel="cf_internal", units=100, verbose = FALSE, ...
 
     # API request
     endpoint <- paste0('jobs/', id, '/orders.json')
-    jobinfo <- APIcall(endpoint, type="POST", body=body, ...)
+    jobinfo <- crowdflowerAPIQuery(endpoint, type="POST", body=body, ...)
 
     if (verbose) {
         message(sprintf("Job %s successfully launched", id))
@@ -81,7 +81,7 @@ launchJob <- function(id, channel="cf_internal", units=100, verbose = FALSE, ...
 #'
 #' @param verbose A logical indicating whether to print details of the request.
 #'
-#' @param ... Additional arguments passed to \code{\link{APIcall}}.
+#' @param ... Additional arguments passed to \code{\link{crowdflowerAPIQuery}}.
 #'
 #' @return A logical indicating the operation was successful, otherwise an error.
 #' 
@@ -112,7 +112,7 @@ launchJob <- function(id, channel="cf_internal", units=100, verbose = FALSE, ...
 pauseJob <- function(id, verbose = FALSE, ...){
     # API request
     endpoint <- paste0('jobs/', id, '/pause.json')
-    jobinfo <- APIcall(endpoint, ...)
+    jobinfo <- crowdflowerAPIQuery(endpoint, ...)
 
     if (verbose) {
         message(sprintf("Job %s successfully paused", id))
@@ -133,7 +133,7 @@ pauseJob <- function(id, verbose = FALSE, ...){
 #'
 #' @param verbose A logical indicating whether to print details of the request.
 #'
-#' @param ... Additional arguments passed to \code{\link{APIcall}}.
+#' @param ... Additional arguments passed to \code{\link{crowdflowerAPIQuery}}.
 #'
 #' @return A logical indicating the operation was successful, otherwise an error.
 #' 
@@ -164,7 +164,7 @@ pauseJob <- function(id, verbose = FALSE, ...){
 cancelJob <- function(id, verbose = FALSE, ...){
     # API request
     endpoint <- paste0('jobs/', id, '/cancel.json')
-    jobinfo <- APIcall(endpoint, ...)
+    jobinfo <- crowdflowerAPIQuery(endpoint, ...)
 
     if (verbose) {
         message(sprintf("Job %s successfully cancelled", id))
@@ -185,7 +185,7 @@ cancelJob <- function(id, verbose = FALSE, ...){
 #'
 #' @param verbose A logical indicating whether to print details of the request.
 #'
-#' @param ... Additional arguments passed to \code{\link{APIcall}}.
+#' @param ... Additional arguments passed to \code{\link{crowdflowerAPIQuery}}.
 #'
 #' @return A logical indicating the operation was successful, otherwise an error.
 #' 
@@ -216,7 +216,7 @@ cancelJob <- function(id, verbose = FALSE, ...){
 resumeJob <- function(id, verbose = FALSE, ...){
     # API request
     endpoint <- paste0('jobs/', id, '/resume.json')
-    jobinfo <- APIcall(endpoint, ...)
+    jobinfo <- crowdflowerAPIQuery(endpoint, ...)
 
     if (verbose) {
         message(sprintf("Job %s successfully resumed", id))

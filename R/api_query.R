@@ -1,11 +1,11 @@
-#' @rdname APIcall
+#' @rdname crowdflowerAPIQuery
 #' @export
 #'
 #' @title 
 #' Execute API call to CrowdFlower API.
 #'
 #' @description
-#' \code{APIcall} connects to the CrowdFlower API and executes an
+#' \code{crowdflowerAPIQuery} connects to the CrowdFlower API and executes an
 #' API request.
 #'
 #' @param endpoint endpoint of API request.
@@ -24,7 +24,7 @@
 #'
 #' @return An integer specifying the new Crowdflower job ID.
 
-APIcall <- function(endpoint, 
+crowdflowerAPIQuery <- function(endpoint, 
                     query = NULL, 
                     body = NULL, 
                     type = "GET", 

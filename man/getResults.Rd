@@ -13,7 +13,7 @@ getResults(id, report_type, verbose = TRUE, ...)
 
 \item{verbose}{A logical indicating whether to print additional information about the request.}
 
-\item{...}{Additional arguments passed to \code{\link{APIcall}}.}
+\item{...}{Additional arguments passed to \code{\link{crowdflowerAPIQuery}}.}
 }
 \description{
 \code{getResults} regenerates one of six types of reports within

@@ -9,7 +9,7 @@
 #'
 #' @param id A character string containing an ID for job.
 #'
-#' @param ... Additional arguments passed to \code{\link{APIcall}}.
+#' @param ... Additional arguments passed to \code{\link{crowdflowerAPIQuery}}.
 #'
 #' @return A list
 #'
@@ -32,7 +32,7 @@
 getJobLegend <- function(id, ...){
 
     endpoint <- paste0('jobs/', id, '/legend.json')
-    out <- APIcall(endpoint, type = "GET", ...)
+    out <- crowdflowerAPIQuery(endpoint, type = "GET", ...)
     
     return(out)
 

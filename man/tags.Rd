@@ -15,7 +15,7 @@ replaceJobTags(id, tags, verbose = TRUE, ...)
 \arguments{
 \item{id}{A character string containing an ID for job.}
 
-\item{...}{Additional arguments passed to \code{\link{APIcall}}.}
+\item{...}{Additional arguments passed to \code{\link{crowdflowerAPIQuery}}.}
 
 \item{tags}{For \code{addJobTags}, a character vector specifying one or more tags to add. For \code{replaceJobTags}, the same but to \emph{replace} rather than \emph{add} the tags.}
 

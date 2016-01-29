@@ -17,7 +17,7 @@
 #'
 #' @param verbose A logical indicating whether to print additional information about the request.
 #'
-#' @param ... Additional arguments passed to \code{\link{APIcall}}.
+#' @param ... Additional arguments passed to \code{\link{crowdflowerAPIQuery}}.
 #'
 #' @return A data.frame containing judgment information
 #' 
@@ -34,7 +34,7 @@ getRows <- function(id, n=Inf, type="aggregated", verbose = TRUE, ...){
     # initial API request
     endpoint <- paste0('jobs/', id, '/judgments.json')
     params <- "&page=1"
-    rows <- newrows <- APIcall(endpoint, params)
+    rows <- newrows <- crowdflowerAPIQuery(endpoint, params)
 
     if (verbose) message(length(rows), ' rows downloaded')
 
@@ -46,7 +46,7 @@ getRows <- function(id, n=Inf, type="aggregated", verbose = TRUE, ...){
         while (length(rows)<=n && length(newrows)>0){
             
             params <- paste0('&page=', page)
-            newrows <- APIcall(endpoint, params, ...)
+            newrows <- crowdflowerAPIQuery(endpoint, params, ...)
 
             if (length(newrows)>0){
                 rows <- c(rows, newrows)

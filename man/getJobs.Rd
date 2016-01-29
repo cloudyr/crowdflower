@@ -11,7 +11,7 @@ getJobs(page = NULL, ...)
 to return. A page contains up to 10 jobs. The default (\code{NULL}) 
 is to return all jobs.}
 
-\item{...}{Additional arguments passed to \code{\link{APIcall}}.}
+\item{...}{Additional arguments passed to \code{\link{crowdflowerAPIQuery}}.}
 }
 \value{
 A data.frame containing details of all jobs. The \code{id} 

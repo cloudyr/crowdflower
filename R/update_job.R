@@ -24,7 +24,7 @@
 #' @param auto_launch A logical indicating whether to automatically 
 #' launch rows as they are added.
 #'
-#' @param ... Additional arguments passed to \code{\link{APIcall}}.
+#' @param ... Additional arguments passed to \code{\link{crowdflowerAPIQuery}}.
 #'
 #' @return A character string containing the job ID, invisibly.
 #'
@@ -75,7 +75,7 @@ updateJob <- function(id,
     
     # API request to create job
     endpoint <- paste0('jobs/', id, '.json')
-    newjob <- APIcall(endpoint, type = "PUT", body = body, ...)
+    newjob <- crowdflowerAPIQuery(endpoint, type = "PUT", body = body, ...)
     message("Job successfully updated with ID = ", newjob$id)
 
     return(invisible(newjob$id))

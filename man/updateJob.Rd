@@ -26,7 +26,7 @@ one page within a job.}
 \item{auto_launch}{A logical indicating whether to automatically 
 launch rows as they are added.}
 
-\item{...}{Additional arguments passed to \code{\link{APIcall}}.}
+\item{...}{Additional arguments passed to \code{\link{crowdflowerAPIQuery}}.}
 }
 \value{
 A character string containing the job ID, invisibly.

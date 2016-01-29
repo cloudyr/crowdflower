@@ -18,7 +18,7 @@
 #' @param verbose A logical indicating whether to print additional 
 #' information about the request.
 #'
-#' @param ... Additional arguments passed to \code{\link{APIcall}}.
+#' @param ... Additional arguments passed to \code{\link{crowdflowerAPIQuery}}.
 #'
 #' @return A character string containing the job ID, invisibly.
 #' 
@@ -52,11 +52,11 @@ copyJob <- function(id, rows = TRUE, gold = FALSE, verbose = TRUE, ...){
     # API request
     endpoint <- paste0('jobs/', id, '/copy.json')
     if (rows) {
-        newjob <- APIcall(endpoint, query = list("all_units" = "true"), ...)
+        newjob <- crowdflowerAPIQuery(endpoint, query = list("all_units" = "true"), ...)
     } else if (gold) {
-        newjob <- APIcall(endpoint, query = list("gold" = "true"), ...)
+        newjob <- crowdflowerAPIQuery(endpoint, query = list("gold" = "true"), ...)
     } else {
-        newjob <- APIcall(endpoint, ...)
+        newjob <- crowdflowerAPIQuery(endpoint, ...)
     }
 
     if (verbose) {

@@ -8,7 +8,7 @@
 #'
 #' @param id A character string containing an ID for job.
 #'
-#' @param ... Additional arguments passed to \code{\link{APIcall}}.
+#' @param ... Additional arguments passed to \code{\link{crowdflowerAPIQuery}}.
 #'
 #' @return For \code{getJobTags}, a character vector of tags. Otherwise, a logical \code{TRUE}, or an error.
 #'
@@ -37,7 +37,7 @@
 getJobTags <- function(id, ...){
 
     endpoint <- paste0('jobs/', id, '/tags')
-    out <- APIcall(endpoint, type = "GET", ...)
+    out <- crowdflowerAPIQuery(endpoint, type = "GET", ...)
     
     out2 <- unlist(lapply(out, `[[`, "name"))
     if (is.null(out2)) {
@@ -56,7 +56,7 @@ getJobTags <- function(id, ...){
 addJobTags <- function(id, tags, verbose = TRUE, ...){
 
     endpoint <- paste0('jobs/', id, '/tags')
-    out <- APIcall(endpoint, type = "POST", 
+    out <- crowdflowerAPIQuery(endpoint, type = "POST", 
                    body = list(tags = paste(tags, collapse = ",")), 
                    encode = "multipart", ...)
     if (verbose) {
@@ -71,7 +71,7 @@ addJobTags <- function(id, tags, verbose = TRUE, ...){
 replaceJobTags <- function(id, tags, verbose = TRUE, ...){
 
     endpoint <- paste0('jobs/', id, '/tags')
-    out <- APIcall(endpoint, type = "PUT", 
+    out <- crowdflowerAPIQuery(endpoint, type = "PUT", 
                    body = list(tags = paste(tags, collapse = ",")), 
                    encode = "multipart", ...)
     if (verbose) {

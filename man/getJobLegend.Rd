@@ -9,7 +9,7 @@ getJobLegend(id, ...)
 \arguments{
 \item{id}{A character string containing an ID for job.}
 
-\item{...}{Additional arguments passed to \code{\link{APIcall}}.}
+\item{...}{Additional arguments passed to \code{\link{crowdflowerAPIQuery}}.}
 }
 \value{
 A list

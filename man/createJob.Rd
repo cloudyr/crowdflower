@@ -16,7 +16,7 @@ createJob(title = NULL, instructions = NULL, cml = NULL, verbose = TRUE,
 
 \item{verbose}{A logical indicating whether to print additional information about the request.}
 
-\item{...}{Additional arguments passed to \code{\link{APIcall}}.}
+\item{...}{Additional arguments passed to \code{\link{crowdflowerAPIQuery}}.}
 }
 \value{
 An integer specify the job ID.

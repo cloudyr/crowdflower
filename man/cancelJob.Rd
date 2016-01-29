@@ -11,7 +11,7 @@ cancelJob(id, verbose = FALSE, ...)
 
 \item{verbose}{A logical indicating whether to print details of the request.}
 
-\item{...}{Additional arguments passed to \code{\link{APIcall}}.}
+\item{...}{Additional arguments passed to \code{\link{crowdflowerAPIQuery}}.}
 }
 \value{
 A logical indicating the operation was successful, otherwise an error.

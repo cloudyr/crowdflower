@@ -110,6 +110,12 @@ test_that("Replace tags", {
 context("Add data to job")
 #test_that("Add CSV data to job", {})
 #test_that("Add JSON data to job", {})
+# adding data
+df <- data.frame(
+    tweet_id = c(1, 2, 3, 4, 5),
+    content = c('tweet1', 'tweet2', 'tweet3', 'tweet4', 'tweet5'),
+    stringsAsFactors=F)
+#addData(j, df)
 
 
 context("Row operations")
@@ -148,13 +154,3 @@ test_that("Notify a contributor", {})
 test_that("Flag a contributor", {})
 test_that("Unflag a contributor", {})
 test_that("Reject a contributor", {})
-
-
-# adding data
-df <- data.frame(
-    tweet_id = c(1, 2, 3, 4, 5),
-    content = c('tweet1', 'tweet2', 'tweet3', 'tweet4', 'tweet5'),
-    stringsAsFactors=F)
-addData(j, df)
-
-

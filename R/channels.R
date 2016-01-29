@@ -10,7 +10,7 @@
 #'
 #' @param id A character string containing the name of a channel, as returned by \code{\link{listChannels}}.
 #'
-#' @param ... Additional arguments passed to \code{\link{APIcall}}.
+#' @param ... Additional arguments passed to \code{\link{crowdflowerAPIQuery}}.
 #'
 #' @return A logical \code{TRUE}, or an error.
 #'
@@ -39,7 +39,7 @@
 addChannel <- function(id, channel, verbose = TRUE, ...){
 
     endpoint <- paste0('jobs/', id, '/channels')
-    out <- APIcall(endpoint, type = "POST", 
+    out <- crowdflowerAPIQuery(endpoint, type = "POST", 
                    body = list(channels = channel), 
                    encode = "json", ...)
     if (verbose) {
@@ -54,7 +54,7 @@ addChannel <- function(id, channel, verbose = TRUE, ...){
 removeChannel <- function(id, channel, verbose = TRUE, ...){
 
     endpoint <- paste0('jobs/', id, '/disable_channel')
-    out <- APIcall(endpoint, type = "POST", 
+    out <- crowdflowerAPIQuery(endpoint, type = "POST", 
                    body = list(channel_name = channel), 
                    encode = "json", ...)
     if (verbose) {

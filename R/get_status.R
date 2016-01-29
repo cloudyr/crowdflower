@@ -10,7 +10,7 @@
 #'
 #' @param id A character string containing an ID for job.
 #'
-#' @param ... Additional arguments passed to \code{\link{APIcall}}.
+#' @param ... Additional arguments passed to \code{\link{crowdflowerAPIQuery}}.
 #'
 #' @return Details about a job.
 #' 
@@ -29,7 +29,7 @@ getStatus <- function(id, ...){
 
     # API request
     endpoint <- paste0('jobs/', id, '/ping.json')
-    jobinfo <- APIcall(endpoint, ...)
+    jobinfo <- crowdflowerAPIQuery(endpoint, ...)
 
     return(jobinfo)
 }

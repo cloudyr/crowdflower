@@ -16,7 +16,7 @@ launchJob(id, channel = "cf_internal", units = 100, verbose = FALSE, ...)
 
 \item{verbose}{A logical indicating whether to print details of the request.}
 
-\item{...}{Additional arguments passed to \code{\link{APIcall}}.}
+\item{...}{Additional arguments passed to \code{\link{crowdflowerAPIQuery}}.}
 }
 \value{
 A list containing details of the job.
