@@ -12,9 +12,24 @@ test_that("Create basic job", {
     cml <- readChar(f2, nchars = 1e8L)
     expect_true(is.integer(j <- createJob(title, instructions, cml)))
 })
-test_that("Create Job from JSON", {})
-test_that("Create Job from CSV", {})
-test_that("Create Job from Data Feed", {})
+# https://success.crowdflower.com/hc/en-us/articles/202703425-CrowdFlower-API-Requests-Guide#create_with_json
+#test_that("Create Job from JSON", {})
+# https://success.crowdflower.com/hc/en-us/articles/202703425-CrowdFlower-API-Requests-Guide#create_with_csv
+#test_that("Create Job from CSV", {})
+# https://success.crowdflower.com/hc/en-us/articles/202703425-CrowdFlower-API-Requests-Guide#create_with_feed
+#test_that("Create Job from Data Feed", {})
+
+context("Copy Job")
+test_that("Copy Job", {
+    expect_true(is.integer(copyJob(j, rows = TRUE)))
+})
+test_that("Copy Job without Rows", {
+    expect_true(is.integer(copyJob(j, rows = FALSE)))
+})
+test_that("Copy Job with only test questions", {
+    expect_true(is.integer(copyJob(j, rows = FALSE, gold = TRUE)))
+})
+
 
 context("Update Job")
 test_that("Update job title", {
@@ -82,10 +97,6 @@ context("Add data to job")
 test_that("Add CSV data to job", {})
 test_that("Add JSON data to job", {})
 
-context("Copy Job")
-test_that("Copy Job", {})
-test_that("Copy Job without Rows", {})
-test_that("Copy Job with only test questions", {})
 
 context("Row operations")
 test_that("Create new row", {})
