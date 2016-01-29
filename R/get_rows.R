@@ -31,33 +31,35 @@
 
 getRows <- function(id, n=Inf, type="aggregated", verbose = TRUE, ...){
 
-	# initial API request
-	endpoint <- paste0('jobs/', id, '/judgments.json')
-	params <- "&page=1"
-	rows <- newrows <- APIcall(endpoint, params)
+    # initial API request
+    endpoint <- paste0('jobs/', id, '/judgments.json')
+    params <- "&page=1"
+    rows <- newrows <- APIcall(endpoint, params)
 
-	if (verbose) message(length(rows), ' rows downloaded')
+    if (verbose) message(length(rows), ' rows downloaded')
 
-	if (n>100){
-		# if more than 100 are requested, continue until
-		# n is reached, or when no more data is returned		
-		page <- 2
-		
-		while (length(rows)<=n && length(newrows)>0){
-			
-			params <- paste0('&page=', page)
-			newrows <- APIcall(endpoint, params, ...)
+    if (n>100){
+        # if more than 100 are requested, continue until
+        # n is reached, or when no more data is returned        
+        page <- 2
+        
+        while (length(rows)<=n && length(newrows)>0){
+            
+            params <- paste0('&page=', page)
+            newrows <- APIcall(endpoint, params, ...)
 
-			if (length(newrows)>0){
-				rows <- c(rows, newrows)
-				page <- page + 1
-				if (verbose) message(length(rows), ' rows downloaded')
-			}
-		}
-	}		
+            if (length(newrows)>0){
+                rows <- c(rows, newrows)
+                page <- page + 1
+                if (verbose) {
+                    message(length(rows), ' rows downloaded')
+                }
+            }
+        }
+    }        
 
-	df <- rowDataToDF(rows, type)
+    df <- rowDataToDF(rows, type)
 
-	return(df)
+    return(df)
 
 }

@@ -23,9 +23,8 @@ id parameter of the request.
 j <- createJob(title = 'Job Title', 
                instructions = 'Some instructions')
 
-getStatus(j) # get status
-
-
+# get status
+getStatus(j)
 }
 
 }

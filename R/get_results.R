@@ -36,18 +36,18 @@
 
 getResults <- function(id, report_type, verbose = TRUE, ...){
 
-	if (verbose) message("Generating results report...")
+    if (verbose) message("Generating results report...")
 
-	# Step 1: regenerate report
-	endpoint <- paste0('jobs/', id, '/regenerate')
-	params <- paste0("&type=", report_type)
-	results <- APIcall(endpoint, params, type="POST", ...)
+    # Step 1: regenerate report
+    endpoint <- paste0('jobs/', id, '/regenerate')
+    params <- paste0("&type=", report_type)
+    results <- APIcall(endpoint, params, type="POST", ...)
 
-	if (verbose) message(results, '\n')
+    if (verbose) message(results, '\n')
 
-	# Step 2: download report
-	if (report_type=="full") filename <- paste0('f', id, '.csv')
+    # Step 2: download report
+    if (report_type=="full") filename <- paste0('f', id, '.csv')
 
-	### I was not able to figure out how to do this ###
+    ### I was not able to figure out how to do this ###
 
 }
