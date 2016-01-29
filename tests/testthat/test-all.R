@@ -81,24 +81,35 @@ test_that("Job reports", {
     # gold_report
     # workset
     # source
+# downloading rows from existing job
+#results <- getRows(id='724144', type="aggregated")
+#results <- getRows(id='724144', type="full") # one coder
+#results <- getRows(id='754202', type="aggregated")
+#results <- getRows(id='754202', type="full") # multiple coders
 })
-test_that("Get job legend", {})
+test_that("Get job legend", {
+    expect_true(is.list(getJobLegend(j)))
+})
 test_that("Get judgments per row", {})
 test_that("Get judgments rows and judgments", {})
 
 
 
 context("Job tags")
-test_that("Add new tag to job", {})
 test_that("View tags", {
-    j <- getJobs(page = 1)
-    j[, "id"]
+    expect_true(is.character(getJobTags(j)))
 })
-test_that("Replace tags", {})
+test_that("Add new tag to job", {
+    expect_true(addJobTags(j, "foo"))
+    expect_true(addJobTags(j, c("foo","bar")))
+})
+test_that("Replace tags", {
+    expect_true(replaceJobTags(j, c("boo", "far"))
+})
 
 context("Add data to job")
-test_that("Add CSV data to job", {})
-test_that("Add JSON data to job", {})
+#test_that("Add CSV data to job", {})
+#test_that("Add JSON data to job", {})
 
 
 context("Row operations")
@@ -120,9 +131,16 @@ test_that("Convert to test questions", {})
 
 
 context("Channels")
-test_that("Get all channels", {})
-test_that("Add channel to job", {})
-test_that("Remove channel from job", {})
+test_that("Get all channels", {
+    expect_true(is.character(listChannels(j)))
+})
+test_that("Add channel to job", {
+    ch <- listChannels(j)
+    expect_true(addChannel(j, ch[1]))
+})
+test_that("Remove channel from job", {
+    expect_true(addChannel(j, ch[1]))
+})
 
 context("Contributors")
 test_that("Pay a bonus", {})
@@ -139,9 +157,4 @@ df <- data.frame(
     stringsAsFactors=F)
 addData(j, df)
 
-# downloading rows from existing job
-#results <- getRows(id='724144', type="aggregated")
-#results <- getRows(id='724144', type="full") # one coder
-#results <- getRows(id='754202', type="aggregated")
-#results <- getRows(id='754202', type="full") # multiple coders
 
