@@ -6,7 +6,7 @@
 \usage{
 updateJob(id, title = NULL, instructions = NULL, cml = NULL,
   payment_cents = NULL, units_per_assignment = NULL, auto_launch = NULL,
-  ...)
+  verbose = TRUE, ...)
 }
 \arguments{
 \item{id}{A character string containing an ID for job to be updated.}
@@ -25,6 +25,9 @@ one page within a job.}
 
 \item{auto_launch}{A logical indicating whether to automatically 
 launch rows as they are added.}
+
+\item{verbose}{A logical indicating whether to print additional 
+information about the request.}
 
 \item{...}{Additional arguments passed to \code{\link{crowdflowerAPIQuery}}.}
 }

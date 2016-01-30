@@ -149,8 +149,8 @@ test_that("Remove channel from job", {
 })
 
 context("Contributors")
-#test_that("Pay a bonus", {})
-#test_that("Notify a contributor", {})
-#test_that("Flag a contributor", {})
-#test_that("Unflag a contributor", {})
-#test_that("Reject a contributor", {})
+#test_that("Pay a bonus", { expect_true(payBonus(j, worker, "0.01")) })
+#test_that("Notify a contributor", { expect_true(payBonus(j, worker, "test message")) })
+#test_that("Flag a contributor", { expect_true(flagContributor(j, worker, "test flag")) })
+#test_that("Unflag a contributor", { expect_true(unflagContributor(j, worker, "test unflag")) })
+#test_that("Reject a contributor", { expect_true(rejectContributor(j, worker, "test rejection")) })

@@ -24,6 +24,9 @@
 #' @param auto_launch A logical indicating whether to automatically 
 #' launch rows as they are added.
 #'
+#' @param verbose A logical indicating whether to print additional 
+#' information about the request.
+#'
 #' @param ... Additional arguments passed to \code{\link{crowdflowerAPIQuery}}.
 #'
 #' @return A character string containing the job ID, invisibly.
@@ -50,6 +53,7 @@ updateJob <- function(id,
                       payment_cents = NULL, 
                       units_per_assignment = NULL, 
                       auto_launch = NULL,
+                      verbose = TRUE, 
                       ...){
 
     # preparing body of request
@@ -76,8 +80,11 @@ updateJob <- function(id,
     # API request to create job
     endpoint <- paste0('jobs/', id, '.json')
     newjob <- crowdflowerAPIQuery(endpoint, type = "PUT", body = body, ...)
-    message("Job successfully updated with ID = ", newjob$id)
-
+    
+    if (verbose) {
+        message("Job successfully updated with ID = ", newjob$id)
+    }
+    
     return(invisible(newjob$id))
 
 }
