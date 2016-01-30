@@ -129,9 +129,7 @@ context("Row operations")
     # finalized
     # canceled
 #})
-
-
-#test_that("Cancel a unit", {})
+#test_that("Cancel a row", {})
 #test_that("Convert to test questions", {})
 
 
