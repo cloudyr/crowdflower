@@ -74,7 +74,7 @@ test_that("Control job", {
 })
 
 context("Results")
-test_that("Job reports", {
+#test_that("Job reports", {
     # full
     # aggregated
     # json
@@ -86,12 +86,12 @@ test_that("Job reports", {
 #results <- getRows(id='724144', type="full") # one coder
 #results <- getRows(id='754202', type="aggregated")
 #results <- getRows(id='754202', type="full") # multiple coders
-})
+#})
 test_that("Get job legend", {
     expect_true(is.list(getJobLegend(j)))
 })
-test_that("Get judgments per row", {})
-test_that("Get judgments rows and judgments", {})
+#test_that("Get judgments per row", {})
+#test_that("Get judgments rows and judgments", {})
 
 
 
@@ -119,20 +119,20 @@ df <- data.frame(
 
 
 context("Row operations")
-test_that("Create new row", {})
-test_that("Copy row", {})
-test_that("Get rows count", {})
-test_that("Get rows for a job", {})
-test_that("Change state of job", {
+#test_that("Create new row", {})
+#test_that("Copy row", {})
+#test_that("Get rows count", {})
+#test_that("Get rows for a job", {})
+#test_that("Change state of job", {
     # new
     # golden
     # finalized
     # canceled
-})
+#})
 
 
-test_that("Cancel a unit", {})
-test_that("Convert to test questions", {})
+#test_that("Cancel a unit", {})
+#test_that("Convert to test questions", {})
 
 
 
@@ -149,8 +149,8 @@ test_that("Remove channel from job", {
 })
 
 context("Contributors")
-test_that("Pay a bonus", {})
-test_that("Notify a contributor", {})
-test_that("Flag a contributor", {})
-test_that("Unflag a contributor", {})
-test_that("Reject a contributor", {})
+#test_that("Pay a bonus", {})
+#test_that("Notify a contributor", {})
+#test_that("Flag a contributor", {})
+#test_that("Unflag a contributor", {})
+#test_that("Reject a contributor", {})
