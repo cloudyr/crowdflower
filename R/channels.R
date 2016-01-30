@@ -8,7 +8,9 @@
 #'
 #' @param id A character string containing an ID for job.
 #'
-#' @param id A character string containing the name of a channel, as returned by \code{\link{listChannels}}.
+#' @param channel A character string containing the name of a channel, as returned by \code{\link{listChannels}}.
+#'
+#' @param verbose A logical indicating whether to print additional information about the request.
 #'
 #' @param ... Additional arguments passed to \code{\link{crowdflowerAPIQuery}}.
 #'

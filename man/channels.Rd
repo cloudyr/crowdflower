@@ -12,9 +12,11 @@ removeChannel(id, channel, verbose = TRUE, ...)
 \arguments{
 \item{id}{A character string containing an ID for job.}
 
-\item{...}{Additional arguments passed to \code{\link{crowdflowerAPIQuery}}.}
+\item{channel}{A character string containing the name of a channel, as returned by \code{\link{listChannels}}.}
 
-\item{id}{A character string containing the name of a channel, as returned by \code{\link{listChannels}}.}
+\item{verbose}{A logical indicating whether to print additional information about the request.}
+
+\item{...}{Additional arguments passed to \code{\link{crowdflowerAPIQuery}}.}
 }
 \value{
 A logical \code{TRUE}, or an error.

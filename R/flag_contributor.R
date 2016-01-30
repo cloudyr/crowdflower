@@ -58,7 +58,7 @@ unflagContributor <- function(id, worker, reason, ...){
 
 }
 
-#' @rdname rejectContributor
+#' @rdname flagContributor
 #' @export
 unflagContributor <- function(id, worker, reason, ...){
 

@@ -30,12 +30,11 @@
 #'
 #' @seealso \code{\link{getAccount}}
 
-
 getJobs <- function(page = NULL, ...){
 
     if (is.null(page)) {
         # return all jobs
-        jobs <- crowdflowerAPIQuery("jobs.json", query = list(page = 1), ....)
+        jobs <- crowdflowerAPIQuery("jobs.json", query = list(page = 1), ...)
         if (length(jobs)) {
             d <- list(jobDataToDF(jobs))
             if (nrow(d[[1]]) == 10) {
@@ -73,7 +72,7 @@ getJobs <- function(page = NULL, ...){
     } else {
         # return selected job pages
         out <- do.call("rbind", lapply(page, function(x) {
-            a <- crowdflowerAPIQuery("jobs.json", query = list(page = x), ....)
+            a <- crowdflowerAPIQuery("jobs.json", query = list(page = x), ...)
             jobDataToDF(a)
         }))
     }

@@ -8,6 +8,8 @@
 flagContributor(id, worker, reason, ...)
 
 unflagContributor(id, worker, reason, ...)
+
+unflagContributor(id, worker, reason, ...)
 }
 \arguments{
 \item{id}{A character string containing an ID for job to be updated.}

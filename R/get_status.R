@@ -31,5 +31,19 @@ getStatus <- function(id, ...){
     endpoint <- paste0('jobs/', id, '/ping.json')
     jobinfo <- crowdflowerAPIQuery(endpoint, ...)
 
-    return(jobinfo)
+    return(structure(c(list(id = id), jobinfo), class = "crowdflower_job_status"))
+}
+
+print.crowdflower_job_status <- function(x, ...) {
+    cat("Job ID:             ", x$id, "\n", sep = "")
+    cat("Gold units:         ", x$golden_units, "\n", sep = "")
+    cat("All units:          ", x$all_units, "\n", sep = "")
+    cat("Ordered units:      ", x$ordered_units, "\n", sep = "")
+    cat("Completed units:    ", x$completed_units_estimate, "\n", sep = "")
+    cat("Judgments needed:   ", x$needed_judgments, "\n", sep = "")
+    cat("Total judgments:    ", x$all_judgments, "\n", sep = "")
+    cat("Tainted judgments:  ", x$tainted_judgments, "\n", sep = "")
+    cat("Completed Gold:     ", x$completed_gold_estimate, "\n", sep = "")
+    cat("Completed Non-Gold: ", x$completed_non_gold_estimate, "\n\n", sep = "")
+    invisible(x)
 }
