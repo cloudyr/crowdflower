@@ -33,4 +33,5 @@ get_jobs()
 \seealso{
 \code{\link{get_account}}
 }
+\keyword{jobs}
 

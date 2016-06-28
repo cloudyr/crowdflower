@@ -43,4 +43,5 @@ reject_contributor(j, worker, "This is unacceptable.")
 \seealso{
 \code{\link{create_job}}
 }
+\keyword{contributors}
 

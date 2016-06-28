@@ -24,4 +24,5 @@ getAccount()
 \references{
 \href{https://success.crowdflower.com/hc/en-us/articles/202703425-CrowdFlower-API-Requests-Guide#account_information}{Crowdflower API documentation}
 }
+\keyword{account}
 

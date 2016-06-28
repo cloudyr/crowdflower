@@ -12,6 +12,7 @@
 #' get_status(j)
 #' }
 #' @seealso \code{\link{get_rows}}, \code{\link{get_results}}
+#' @keywords jobs
 #' @export
 get_status <- function(id, ...){
 

@@ -64,7 +64,6 @@ get_status(j)
 # get results once completed
 get_results(j)
 }
-
 }
 \references{
 \href{https://success.crowdflower.com/hc/en-us/categories/200176379-CrowdFlower-REST-API}{API Overview}

@@ -19,6 +19,7 @@
 #' }
 #'
 #' @seealso \code{\link{create_job}}
+#' @keywords contributors
 #' @export
 flag_contributor <- function(id, worker, reason, ...){
 

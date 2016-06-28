@@ -47,4 +47,5 @@ j2 <- copy_job(id = j1, rows = FALSE)
 \seealso{
 \code{\link{create_job}}, \code{\link{update_job}}
 }
+\keyword{jobs}
 

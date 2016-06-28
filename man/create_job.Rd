@@ -40,4 +40,5 @@ j <- create_job(title = "Job Title",
 \seealso{
 \code{\link{update_job}}, \code{\link{add_data}}, \code{\link{launch_job}}, \code{\link{get_status}}, \code{\link{get_results}}
 }
+\keyword{jobs}
 

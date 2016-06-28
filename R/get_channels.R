@@ -23,6 +23,7 @@
 #' remove_channel(j, ch[1])
 #' }
 #' @seealso \code{\link{add_channel}}, \code{\link{remove_channel}}
+#' @keywords channels
 #' @export
 list_channels <- function(id, ...){
 

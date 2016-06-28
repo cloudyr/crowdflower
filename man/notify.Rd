@@ -38,4 +38,5 @@ pay_bonus(j, w, "0.01")
 \seealso{
 \code{\link{create_job}}
 }
+\keyword{contributors}
 

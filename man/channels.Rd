@@ -47,4 +47,5 @@ remove_channel(j, ch[1])
 \seealso{
 \code{\link{create_job}}
 }
+\keyword{channels}
 

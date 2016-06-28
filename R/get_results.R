@@ -29,6 +29,7 @@
 #' get_results(id = j, report_type = "")
 #' }
 #' @seealso \code{\link{get_account}}
+#' @keywords jobs data
 #' @export
 get_results <- function(id, 
                        report_type = c("full", "aggregated", "json", "gold_report", "workset", "source"), 

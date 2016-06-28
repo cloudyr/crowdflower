@@ -15,6 +15,7 @@
 #' get_jobs()
 #' }
 #' @seealso \code{\link{get_account}}
+#' @keywords jobs
 #' @export
 get_jobs <- function(page = NULL, ...){
 

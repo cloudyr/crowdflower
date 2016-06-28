@@ -1,5 +1,5 @@
 #' @title Get Job Legend
-#' @description Get the \dQuote{legend} for a job
+#' @description Get the \dQuote{legend} (description) for a job
 #' @param id A character string containing an ID for job.
 #' @param ... Additional arguments passed to \code{\link{cf_query}}.
 #' @return A list
@@ -16,6 +16,7 @@
 #' get_job_legend(id, title = "New Title")
 #' }
 #' @seealso \code{\link{create_job}}
+#' @keywords jobs
 #' @export
 get_job_legend <- function(id, ...){
 

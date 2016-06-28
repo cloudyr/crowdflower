@@ -16,6 +16,7 @@
 #' pay_bonus(j, w, "0.01")
 #' }
 #' @seealso \code{\link{create_job}}
+#' @keywords contributors
 #' @export
 pay_bonus <- function(id, worker, amount, ...){
 

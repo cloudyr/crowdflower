@@ -48,4 +48,5 @@ update_job(id, instructions = "blank", units_per_assignment = 3)
 \seealso{
 \code{\link{create_job}}
 }
+\keyword{jobs}
 

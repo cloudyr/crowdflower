@@ -15,7 +15,7 @@ get_job_legend(id, ...)
 A list
 }
 \description{
-Get the \dQuote{legend} for a job
+Get the \dQuote{legend} (description) for a job
 }
 \examples{
 \dontrun{
@@ -33,4 +33,5 @@ get_job_legend(id, title = "New Title")
 \seealso{
 \code{\link{create_job}}
 }
+\keyword{jobs}
 

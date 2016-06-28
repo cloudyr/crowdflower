@@ -11,6 +11,7 @@
 #' get_rows('jobid')
 #' }
 #' @seealso \code{\link{get_status}}, \code{\link{get_results}}
+#' @keywords jobs data
 #' @export
 get_rows <- function(id, n=Inf, type="aggregated", verbose = TRUE, ...){
 

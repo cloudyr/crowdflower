@@ -27,6 +27,7 @@
 #' j2 <- copy_job(id = j1, rows = FALSE)
 #' }
 #' @seealso \code{\link{create_job}}, \code{\link{update_job}}
+#' @keywords jobs
 #' @export
 copy_job <- function(id, rows = TRUE, gold = FALSE, verbose = TRUE, ...){
 

@@ -40,4 +40,6 @@ add_data(id = j, data = d)
 \seealso{
 \code{\link{update_job}}, \code{\link{get_status}}, \code{\link{get_results}}
 }
+\keyword{data}
+\keyword{jobs}
 

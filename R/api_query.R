@@ -10,7 +10,6 @@
 #' @param ... Additional arguments passed to an HTTP request function, e.g, \code{\link[httr]{GET}} or \code{\link[httr]{POST}}.
 #' @return An integer specifying the new Crowdflower job ID.
 #' @export
-
 cf_query <- function(endpoint, 
                     query = NULL, 
                     body = NULL, 

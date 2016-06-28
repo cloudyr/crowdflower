@@ -24,6 +24,7 @@
 #' get_tags(j)
 #' }
 #' @seealso \code{\link{create_job}}
+#' @keywords tags
 #' @export
 get_tags <- function(id, ...){
 

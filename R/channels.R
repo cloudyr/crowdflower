@@ -26,6 +26,7 @@
 #' remove_channel(j, ch[1])
 #' }
 #' @seealso \code{\link{create_job}}
+#' @keywords channels
 #' @export
 add_channel <- function(id, channel, verbose = TRUE, ...){
 

@@ -60,6 +60,5 @@
 #' # get results once completed
 #' get_results(j)
 #' }
-#'
 #' @seealso \code{\link{create_job}}, \code{\link{getChannels}}, \code{\link{add_data}}, \code{\link{get_status}}, \code{\link{get_results}}
 "_PACKAGE"

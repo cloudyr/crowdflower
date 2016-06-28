@@ -51,4 +51,6 @@ get_results(id = j, report_type = "")
 \seealso{
 \code{\link{get_account}}
 }
+\keyword{data}
+\keyword{jobs}
 

@@ -17,6 +17,7 @@
 #'                cml = readChar(f2, nchars = 1e8L))
 #' }
 #' @seealso \code{\link{update_job}}, \code{\link{add_data}}, \code{\link{launch_job}}, \code{\link{get_status}}, \code{\link{get_results}}
+#' @keywords jobs
 #' @export
 create_job <- function(title = NULL, instructions = NULL, cml = NULL, verbose = TRUE, ...){
 

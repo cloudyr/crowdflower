@@ -9,8 +9,8 @@
 #' \dontrun{
 #' getAccount()
 #' }
+#' @keywords account
 #' @export
-
 get_account <- function(...){
 
     # initial API request

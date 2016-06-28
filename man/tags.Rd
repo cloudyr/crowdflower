@@ -50,4 +50,5 @@ get_tags(j)
 \seealso{
 \code{\link{create_job}}
 }
+\keyword{tags}
 

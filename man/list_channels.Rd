@@ -40,4 +40,5 @@ remove_channel(j, ch[1])
 \seealso{
 \code{\link{add_channel}}, \code{\link{remove_channel}}
 }
+\keyword{channels}
 

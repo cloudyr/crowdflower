@@ -29,4 +29,5 @@ get_status(j)
 \seealso{
 \code{\link{get_rows}}, \code{\link{get_results}}
 }
+\keyword{jobs}
 

@@ -31,4 +31,6 @@ get_rows('jobid')
 \seealso{
 \code{\link{get_status}}, \code{\link{get_results}}
 }
+\keyword{data}
+\keyword{jobs}
 
