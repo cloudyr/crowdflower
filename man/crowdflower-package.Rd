@@ -71,6 +71,6 @@ get_results(j)
 \href{https://success.crowdflower.com/hc/en-us/articles/202703425-CrowdFlower-API-Requests-Guide}{API Request Guide}
 }
 \seealso{
-\code{\link{create_job}}, \code{\link{getChannels}}, \code{\link{add_data}}, \code{\link{get_status}}, \code{\link{get_results}}
+\code{\link{create_job}}, \code{\link{list_channels}}, \code{\link{add_data}}, \code{\link{get_status}}, \code{\link{get_results}}
 }
 

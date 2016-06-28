@@ -21,6 +21,8 @@
 #' }
 #' @seealso \code{\link{update_job}}, \code{\link{get_status}}, \code{\link{get_results}}
 #' @keywords jobs data
+#' @importFrom utils write.csv
+#' @importFrom httr upload_file content_type
 #' @export
 add_data <- function(id, data, verbose = TRUE, ...){
 
