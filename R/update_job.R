@@ -1,4 +1,3 @@
-#' @export
 #' @title Updates job settings.
 #' @description Updates settings for a given job.
 #' @param id A character string containing an ID for job to be updated.
@@ -23,6 +22,7 @@
 #' update_job(id, instructions = "blank", units_per_assignment = 3)
 #' }
 #' @seealso \code{\link{create_job}}
+#' @export
 update_job <- function(id, 
                       title = NULL, 
                       instructions = NULL, 
