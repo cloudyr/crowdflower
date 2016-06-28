@@ -2,7 +2,7 @@
 #' @title Contact Contributors
 #' @description Contact a contributor via email or pay a contributor a bonus in U.S. cents
 #' @param id A character string containing an ID for job to be updated.
-#' @param worker A character string containing a worker/contributor ID.
+#' @param contributor A character string containing a contributor/contributor ID.
 #' @param amount A character string containing a bonus amount in U.S. cents.
 #' @param msg A character string containing a message to be sent to the contributor.
 #' @param ... Additional arguments passed to \code{\link{cf_query}}.
@@ -18,13 +18,13 @@
 #' @seealso \code{\link{job_create}}
 #' @keywords contributors
 #' @export
-job_contributor_bonus <- function(id, worker, amount, ...){
+job_contributor_bonus <- function(id, contributor, amount, ...){
 
     # preparing body of request
     body <- list(message = amount)
     
     # API request to create job
-    endpoint <- paste0('jobs/', id, '/workers/', worker, '/bonus.json')
+    endpoint <- paste0('jobs/', id, '/workers/', contributor, '/bonus.json')
     out <- cf_query(endpoint, type = "POST", body = body, ...)
     
     return(out)
@@ -33,13 +33,13 @@ job_contributor_bonus <- function(id, worker, amount, ...){
 
 #' @rdname notify
 #' @export
-job_contributor_notify <- function(id, worker, msg, ...){
+job_contributor_notify <- function(id, contributor, msg, ...){
 
     # preparing body of request
     body <- list(message = msg)
     
     # API request to create job
-    endpoint <- paste0('jobs/', id, '/workers/', worker, '/notify.json')
+    endpoint <- paste0('jobs/', id, '/workers/', contributor, '/notify.json')
     out <- cf_query(endpoint, type = "POST", body = body, ...)
     
     return(out)

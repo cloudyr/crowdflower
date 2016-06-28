@@ -14,14 +14,13 @@
 #' @seealso \code{\link{job_status}}, \code{\link{report_get}}
 #' @keywords jobs data
 #' @export
-results_get <- function(id, n=Inf, unit = NULL, type="aggregated", verbose = TRUE, ...){
-
+results_get <- function(id, n=Inf, unit = NULL, type = c("aggregated", "full"), verbose = TRUE, ...){
 
     if (!is.null(unit)) {
         # initial API request
         endpoint <- paste0('jobs/', id, 'units/', unit, '/judgments.json')
         rows <- cf_query(endpoint, ...)
-        dat <- rowDataToDF(rows, type)
+        dat <- rowDataToDF(rows, match.arg(type))
     } else {
         # initial API request
         endpoint <- paste0('jobs/', id, '/judgments.json')
@@ -51,7 +50,7 @@ results_get <- function(id, n=Inf, unit = NULL, type="aggregated", verbose = TRU
                 }
             }
         }
-        dat <- rowDataToDF(rows, type)
+        dat <- rowDataToDF(rows, match.arg(type))
     }
     return(dat)
 }

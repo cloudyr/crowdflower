@@ -5,14 +5,14 @@
 \alias{job_contributor_notify}
 \title{Contact Contributors}
 \usage{
-job_contributor_bonus(id, worker, amount, ...)
+job_contributor_bonus(id, contributor, amount, ...)
 
-job_contributor_notify(id, worker, msg, ...)
+job_contributor_notify(id, contributor, msg, ...)
 }
 \arguments{
 \item{id}{A character string containing an ID for job to be updated.}
 
-\item{worker}{A character string containing a worker/contributor ID.}
+\item{contributor}{A character string containing a contributor/contributor ID.}
 
 \item{amount}{A character string containing a bonus amount in U.S. cents.}
 

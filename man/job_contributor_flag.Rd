@@ -6,16 +6,16 @@
 \alias{job_contributor_unflag}
 \title{Flag/unflag/reject Contributors}
 \usage{
-job_contributor_flag(id, worker, reason, ...)
+job_contributor_flag(id, contributor, reason, ...)
 
-job_contributor_unflag(id, worker, reason, ...)
+job_contributor_unflag(id, contributor, reason, ...)
 
-job_contributor_reject(id, worker, reason, ...)
+job_contributor_reject(id, contributor, reason, ...)
 }
 \arguments{
 \item{id}{A character string containing an ID for job to be updated.}
 
-\item{worker}{A character string containing a worker/contributor ID.}
+\item{contributor}{A character string containing a contributor/contributor ID.}
 
 \item{reason}{A character string containing a reason for flagging/unflagging/rejecting.}
 
@@ -30,13 +30,13 @@ Flag/unflag or reject a contributor
 \examples{
 \dontrun{
 # Flag contributor
-job_contributor_flag(j, worker, "Looks problematic")
+job_contributor_flag(j, contributor, "Looks problematic")
 
 # Unflag contributor
-job_contributor_unflag(j, worker, "Actually, all is well")
+job_contributor_unflag(j, contributor, "Actually, all is well")
 
 # Reject contributor
-job_contributor_reject(j, worker, "This is unacceptable.")
+job_contributor_reject(j, contributor, "This is unacceptable.")
 }
 
 }

@@ -4,7 +4,7 @@
 \alias{results_get}
 \title{Retrieve rows with judgment information for a job.}
 \usage{
-results_get(id, n = Inf, unit = NULL, type = "aggregated",
+results_get(id, n = Inf, unit = NULL, type = c("aggregated", "full"),
   verbose = TRUE, ...)
 }
 \arguments{

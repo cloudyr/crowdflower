@@ -1,10 +1,9 @@
-#' @title 
-#' Retrieve list of all jobs.
+#' @title Retrieve list of all jobs.
 #' @description \code{cf_jobs_list} queries for all jobs under the account related to the API key for the authenticated user.
 #' @param page A vector of integers specifying which page(s) of results to return. A page contains up to 10 jobs. The default (\code{NULL}) is to return all jobs.
 #' @param ... Additional arguments passed to \code{\link{cf_query}}.
-#' @return A data.frame containing details of all jobs. The \code{id} 
-#' column provides the Crowdflower Job ID for each job.
+#' @return A data.frame containing details of all jobs. The \code{id} column provides the Crowdflower Job ID for each job.
+#' @details Use \code{\link{job_get}} to return a single job object as a list.
 #' @references \href{https://success.crowdflower.com/hc/en-us/articles/202703425-CrowdFlower-API-Requests-Guide#account_information}{Crowdflower API documentation}
 #' @examples
 #' \dontrun{
@@ -14,8 +13,8 @@
 #' # return all jobs
 #' cf_jobs_list()
 #' }
-#' @seealso \code{\link{cf_account}}
-#' @keywords jobs
+#' @seealso \code{\link{cf_account}}, \code{\link{job_get}}
+#' @keywords account, jobs
 #' @export
 cf_jobs_list <- function(page = NULL, ...){
 
