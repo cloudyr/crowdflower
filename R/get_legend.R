@@ -8,17 +8,17 @@
 #' # create new job
 #' f1 <- system.file("templates/instructions1.html", package = "crowdflower")
 #' f2 <- system.file("templates/cml1.xml", package = "crowdflower")
-#' j <- create_job(title = "Job Title", 
+#' j <- job_create(title = "Job Title", 
 #'                instructions = readChar(f1, nchars = 1e8L),
 #'                cml = readChar(f2, nchars = 1e8L))
 #'
 #' # get the legend
-#' get_job_legend(id, title = "New Title")
+#' job_legend_get(id, title = "New Title")
 #' }
-#' @seealso \code{\link{create_job}}
+#' @seealso \code{\link{job_create}}
 #' @keywords jobs
 #' @export
-get_job_legend <- function(id, ...){
+job_legend_get <- function(id, ...){
 
     endpoint <- paste0('jobs/', id, '/legend.json')
     out <- cf_query(endpoint, type = "GET", ...)

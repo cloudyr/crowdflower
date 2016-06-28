@@ -11,7 +11,7 @@
 #' }
 #' @keywords account
 #' @export
-get_account <- function(...){
+cf_account <- function(...){
 
     # initial API request
     account <- cf_query("account.json", ...)

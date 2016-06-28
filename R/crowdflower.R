@@ -40,25 +40,25 @@
 #' # create new job
 #' f1 <- system.file("templates/instructions1.html", package = "crowdflower")
 #' f2 <- system.file("templates/cml1.xml", package = "crowdflower")
-#' j <- create_job(title = "Job Title", 
+#' j <- job_create(title = "Job Title", 
 #'                instructions = readChar(f1, nchars = 1e8L),
 #'                cml = readChar(f2, nchars = 1e8L))
 #'
 #' # add one or more channels
-#' add_channel(j, "neobux")
+#' channel_add(j, "neobux")
 #' 
 #' # upload data
 #' d <- data.frame(variable = 1:3)
-#' add_data(id = j, data = d)
+#' job_add_data(id = j, data = d)
 #'
 #' # launch the job
-#' launch_job(j)
+#' job_launch(j)
 #'
 #' # monitor the job
-#' get_status(j)
+#' job_status(j)
 #'
 #' # get results once completed
-#' get_results(j)
+#' report_get(j)
 #' }
-#' @seealso \code{\link{create_job}}, \code{\link{list_channels}}, \code{\link{add_data}}, \code{\link{get_status}}, \code{\link{get_results}}
+#' @seealso \code{\link{job_create}}, \code{\link{job_channels}}, \code{\link{job_add_data}}, \code{\link{job_status}}, \code{\link{report_get}}
 "_PACKAGE"

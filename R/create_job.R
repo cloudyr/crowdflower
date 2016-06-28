@@ -1,5 +1,5 @@
 #' @title Creates a new job
-#' @description \code{create_job} creates a new CrowdFlower Job.
+#' @description \code{job_create} creates a new CrowdFlower Job.
 #' @param title A character string containing the title for a new job.
 #' @param instructions A character string containing instructions for a new job.
 #' @param cml Layout for new job.
@@ -12,14 +12,14 @@
 #' # create new job
 #' f1 <- system.file("templates/instructions1.html", package = "crowdflower")
 #' f2 <- system.file("templates/cml1.xml", package = "crowdflower")
-#' j <- create_job(title = "Job Title", 
+#' j <- job_create(title = "Job Title", 
 #'                instructions = readChar(f1, nchars = 1e8L),
 #'                cml = readChar(f2, nchars = 1e8L))
 #' }
-#' @seealso \code{\link{update_job}}, \code{\link{add_data}}, \code{\link{launch_job}}, \code{\link{get_status}}, \code{\link{get_results}}
+#' @seealso \code{\link{job_update}}, \code{\link{job_add_data}}, \code{\link{job_launch}}, \code{\link{job_status}}, \code{\link{report_get}}
 #' @keywords jobs
 #' @export
-create_job <- function(title = NULL, instructions = NULL, cml = NULL, verbose = TRUE, ...){
+job_create <- function(title = NULL, instructions = NULL, cml = NULL, verbose = TRUE, ...){
 
     # preparing body of request
     body <- list()

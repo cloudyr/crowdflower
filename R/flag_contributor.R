@@ -1,4 +1,4 @@
-#' @rdname flag_contributor
+#' @rdname contributor_flag
 #' @title Flag/unflag/reject Contributors
 #' @description  Flag/unflag or reject a contributor
 #' @param id A character string containing an ID for job to be updated.
@@ -9,19 +9,19 @@
 #' @examples 
 #' \dontrun{
 #' # Flag contributor
-#' flag_contributor(j, worker, "Looks problematic")
+#' contributor_flag(j, worker, "Looks problematic")
 #'
 #' # Unflag contributor
-#' unflag_contributor(j, worker, "Actually, all is well")
+#' job_contributor_unflag(j, worker, "Actually, all is well")
 #'
 #' # Reject contributor
-#' reject_contributor(j, worker, "This is unacceptable.")
+#' job_contributor_reject(j, worker, "This is unacceptable.")
 #' }
 #'
-#' @seealso \code{\link{create_job}}
+#' @seealso \code{\link{job_create}}
 #' @keywords contributors
 #' @export
-flag_contributor <- function(id, worker, reason, ...){
+contributor_flag <- function(id, worker, reason, ...){
 
     # preparing body of request
     body <- list(flag = reason)
@@ -34,9 +34,9 @@ flag_contributor <- function(id, worker, reason, ...){
 
 }
 
-#' @rdname flag_contributor
+#' @rdname contributor_flag
 #' @export
-unflag_contributor <- function(id, worker, reason, ...){
+job_contributor_unflag <- function(id, worker, reason, ...){
 
     # preparing body of request
     body <- list(unflag = reason)
@@ -49,9 +49,9 @@ unflag_contributor <- function(id, worker, reason, ...){
 
 }
 
-#' @rdname flag_contributor
+#' @rdname contributor_flag
 #' @export
-reject_contributor <- function(id, worker, reason, ...){
+job_contributor_reject <- function(id, worker, reason, ...){
 
     # preparing body of request
     body <- list(reject = reason)

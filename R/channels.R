@@ -2,7 +2,7 @@
 #' @title Get and set job channels
 #' @description Get, set, and replace the \dQuote{tags} for a job
 #' @param id A character string containing an ID for job.
-#' @param channel A character string containing the name of a channel, as returned by \code{\link{list_channels}}.
+#' @param channel A character string containing the name of a channel, as returned by \code{\link{job_channels}}.
 #' @param verbose A logical indicating whether to print additional information about the request.
 #' @param ... Additional arguments passed to \code{\link{cf_query}}.
 #' @return A logical \code{TRUE}, or an error.
@@ -11,24 +11,24 @@
 #' # create new job
 #' f1 <- system.file("templates/instructions1.html", package = "crowdflower")
 #' f2 <- system.file("templates/cml1.xml", package = "crowdflower")
-#' j <- create_job(title = "Job Title", 
+#' j <- job_create(title = "Job Title", 
 #'                instructions = readChar(f1, nchars = 1e8L),
 #'                cml = readChar(f2, nchars = 1e8L))
 #'
 #' # list available channels
-#' ch <- list_channels(j)
+#' ch <- job_channels(j)
 #' ch
 #'
 #' # add new channel
-#' add_channel(j, ch[1])
+#' channel_add(j, ch[1])
 #' 
 #' # remove a channel
-#' remove_channel(j, ch[1])
+#' job_channel_remove(j, ch[1])
 #' }
-#' @seealso \code{\link{create_job}}
+#' @seealso \code{\link{job_create}}
 #' @keywords channels
 #' @export
-add_channel <- function(id, channel, verbose = TRUE, ...){
+channel_add <- function(id, channel, verbose = TRUE, ...){
 
     endpoint <- paste0('jobs/', id, '/channels')
     out <- cf_query(endpoint, type = "POST", 
@@ -43,7 +43,7 @@ add_channel <- function(id, channel, verbose = TRUE, ...){
 
 #' @rdname channels
 #' @export
-remove_channel <- function(id, channel, verbose = TRUE, ...){
+job_channel_remove <- function(id, channel, verbose = TRUE, ...){
 
     endpoint <- paste0('jobs/', id, '/disable_channel')
     out <- cf_query(endpoint, type = "POST", 

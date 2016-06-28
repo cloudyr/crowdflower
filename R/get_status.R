@@ -1,20 +1,20 @@
 #' @title Retrieve the status of a job
-#' @description \code{get_status} gets the status of the job identified by the id parameter of the request.
+#' @description \code{job_status} gets the status of the job identified by the id parameter of the request.
 #' @param id A character string containing an ID for job.
 #' @param ... Additional arguments passed to \code{\link{cf_query}}.
 #' @return Details about a job.
 #' @examples
 #' \dontrun{
-#' j <- create_job(title = 'Job Title', 
+#' j <- job_create(title = 'Job Title', 
 #'                instructions = 'Some instructions')
 #' 
 #' # get status
-#' get_status(j)
+#' job_status(j)
 #' }
-#' @seealso \code{\link{get_rows}}, \code{\link{get_results}}
+#' @seealso \code{\link{results_get}}, \code{\link{report_get}}
 #' @keywords jobs
 #' @export
-get_status <- function(id, ...){
+job_status <- function(id, ...){
 
     # API request
     endpoint <- paste0('jobs/', id, '/ping.json')

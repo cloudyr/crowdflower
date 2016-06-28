@@ -10,15 +10,15 @@
 #' @examples 
 #' \dontrun{
 #' # Send message
-#' notify_contributor(j, w, "Great work!")
+#' job_contributor_notify(j, w, "Great work!")
 #'
 #' # Pay bonus
-#' pay_bonus(j, w, "0.01")
+#' job_contributor_bonus(j, w, "0.01")
 #' }
-#' @seealso \code{\link{create_job}}
+#' @seealso \code{\link{job_create}}
 #' @keywords contributors
 #' @export
-pay_bonus <- function(id, worker, amount, ...){
+job_contributor_bonus <- function(id, worker, amount, ...){
 
     # preparing body of request
     body <- list(message = amount)
@@ -33,7 +33,7 @@ pay_bonus <- function(id, worker, amount, ...){
 
 #' @rdname notify
 #' @export
-notify_contributor <- function(id, worker, msg, ...){
+job_contributor_notify <- function(id, worker, msg, ...){
 
     # preparing body of request
     body <- list(message = msg)

@@ -13,18 +13,18 @@
 #' @examples 
 #' \dontrun{
 #' # update job's title
-#' update_job(id, title = "New Title")
+#' job_update(id, title = "New Title")
 #'
 #' # update job's payment
-#' update_job(id, payment_cents = "0.1")
+#' job_update(id, payment_cents = "0.1")
 #'
 #' # update job's instructions and units
-#' update_job(id, instructions = "blank", units_per_assignment = 3)
+#' job_update(id, instructions = "blank", units_per_assignment = 3)
 #' }
-#' @seealso \code{\link{create_job}}
+#' @seealso \code{\link{job_create}}
 #' @keywords jobs
 #' @export
-update_job <- function(id, 
+job_update <- function(id, 
                       title = NULL, 
                       instructions = NULL, 
                       cml = NULL, 

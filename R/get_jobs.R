@@ -1,6 +1,6 @@
 #' @title 
 #' Retrieve list of all jobs.
-#' @description \code{get_jobs} queries for all jobs under the account related to the API key for the authenticated user.
+#' @description \code{cf_jobs_list} queries for all jobs under the account related to the API key for the authenticated user.
 #' @param page A vector of integers specifying which page(s) of results to return. A page contains up to 10 jobs. The default (\code{NULL}) is to return all jobs.
 #' @param ... Additional arguments passed to \code{\link{cf_query}}.
 #' @return A data.frame containing details of all jobs. The \code{id} 
@@ -9,15 +9,15 @@
 #' @examples
 #' \dontrun{
 #' # return first page of jobs
-#' get_jobs(page = 1)
+#' cf_jobs_list(page = 1)
 #'
 #' # return all jobs
-#' get_jobs()
+#' cf_jobs_list()
 #' }
-#' @seealso \code{\link{get_account}}
+#' @seealso \code{\link{cf_account}}
 #' @keywords jobs
 #' @export
-get_jobs <- function(page = NULL, ...){
+cf_jobs_list <- function(page = NULL, ...){
 
     if (is.null(page)) {
         # return all jobs
@@ -28,7 +28,7 @@ get_jobs <- function(page = NULL, ...){
                 p <- 2
                 nr <- 10
                 while (nr == 10) {
-                    d[[p]] <- jobDataToDF(get_jobs(page = p, ...))
+                    d[[p]] <- jobDataToDF(cf_jobs_list(page = p, ...))
                     nr <- nrow(d[[p]])
                     p <- p + 1
                 }

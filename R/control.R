@@ -1,38 +1,38 @@
-#' @rdname launch_job
+#' @rdname job_launch
 #' @title Control a job
 #' @description Launch, pause, resume, or cancel a job
-#' @details \code{launch_job} launches a new job. \code{pause_job} pauses a currently running job. \code{resume_job} resumes a job. \code{cancel_job} cancels a job.
+#' @details \code{job_launch} launches a new job. \code{job_pause} pauses a currently running job. \code{job_resume} resumes a job. \code{job_cancel} cancels a job.
 #' @param id A character string containing an ID for job.
 #' @param channel Either "on_demand" (for On Demand worforce), \dQuote{cf_internal} (for the Internal Channel) or "both"
 #' @param units Units to be launched.
 #' @param verbose A logical indicating whether to print details of the request.
 #' @param ... Additional arguments passed to \code{\link{cf_query}}.
-#' @return For \code{launch_job}, a list containing details of the job. Otherwise, a logical indicating the operation was successful, otherwise an error.
+#' @return For \code{job_launch}, a list containing details of the job. Otherwise, a logical indicating the operation was successful, otherwise an error.
 #' @examples
 #' \dontrun{
 #' # create new job
 #' f1 <- system.file("templates/instructions1.html", package = "crowdflower")
 #' f2 <- system.file("templates/cml1.xml", package = "crowdflower")
-#' j <- create_job(title = "Job Title", 
+#' j <- job_create(title = "Job Title", 
 #'                instructions = readChar(f1, nchars = 1e8L),
 #'                cml = readChar(f2, nchars = 1e8L))
 #' 
 #' # launch the job
-#' launch_job(j)
+#' job_launch(j)
 #'
 #' # pause the job
-#' pause_job(j)
+#' job_pause(j)
 #'
 #' # resume the job
-#' resume_job(j)
+#' job_resume(j)
 #' 
 #' # cancel the job
-#' cancel_job(j)
+#' job_cancel(j)
 #' }
-#' @seealso \code{\link{pause_job}}, \code{\link{cancel_job}}, \code{\link{resume_job}}
+#' @seealso \code{\link{job_pause}}, \code{\link{job_cancel}}, \code{\link{job_resume}}
 #' @keywords jobs
 #' @export
-launch_job <- function(id, channel="cf_internal", units=100, verbose = FALSE, ...){
+job_launch <- function(id, channel="cf_internal", units=100, verbose = FALSE, ...){
     
     # preparing body of request
     body <- list()
@@ -56,9 +56,9 @@ launch_job <- function(id, channel="cf_internal", units=100, verbose = FALSE, ..
     return(jobinfo)
 }
 
-#' @rdname launch_job
+#' @rdname job_launch
 #' @export
-pause_job <- function(id, verbose = FALSE, ...){
+job_pause <- function(id, verbose = FALSE, ...){
     # API request
     endpoint <- paste0('jobs/', id, '/pause.json')
     jobinfo <- cf_query(endpoint, ...)
@@ -69,9 +69,9 @@ pause_job <- function(id, verbose = FALSE, ...){
     return(invisible(TRUE))
 }
 
-#' @rdname launch_job
+#' @rdname job_launch
 #' @export
-cancel_job <- function(id, verbose = FALSE, ...){
+job_cancel <- function(id, verbose = FALSE, ...){
     # API request
     endpoint <- paste0('jobs/', id, '/cancel.json')
     jobinfo <- cf_query(endpoint, ...)
@@ -82,9 +82,9 @@ cancel_job <- function(id, verbose = FALSE, ...){
     return(invisible(TRUE))
 }
 
-#' @rdname launch_job
+#' @rdname job_launch
 #' @export
-resume_job <- function(id, verbose = FALSE, ...){
+job_resume <- function(id, verbose = FALSE, ...){
     # API request
     endpoint <- paste0('jobs/', id, '/resume.json')
     jobinfo <- cf_query(endpoint, ...)
