@@ -6,9 +6,17 @@
 \usage{
 job_convert_gold(id)
 }
+\arguments{
+\item{id}{ID for job whose gold questions will be converted}
+}
+\value{
+nothing (but will print a status message)
+}
 \description{
 Convert to test questions all rows where column "_golden" is set to "true".
 Corresponds to the "Convert Uploaded Test Questions" button on the Data page
 of the web interface.
 }
+\keyword{gold}
+\keyword{jobs}
 

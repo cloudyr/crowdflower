@@ -12,7 +12,8 @@ Description: Provides programmatic access to the CrowdFlower crowdsourcing API
 License: GPL-3
 Imports:
     utils,
-    httr
+    httr,
+    R6
 Suggests:
     testthat
 URL: http://github.com/cloudyr/crowdflower
