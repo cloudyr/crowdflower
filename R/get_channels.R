@@ -13,19 +13,19 @@
 #'                cml = readChar(f2, nchars = 1e8L))
 #'
 #' # list available channels
-#' ch <- job_channels(j)
+#' ch <- job_channel_list(j)
 #' ch
 #'
 #' # add new channel
-#' channel_add(j, ch[1])
+#' job_channel_add(j, ch[1])
 #' 
 #' # remove a channel
 #' job_channel_remove(j, ch[1])
 #' }
-#' @seealso \code{\link{channel_add}}, \code{\link{job_channel_remove}}
+#' @seealso \code{\link{job_channel_add}}, \code{\link{job_channel_remove}}
 #' @keywords channels
 #' @export
-job_channels <- function(id, ...){
+job_channel_list <- function(id, ...){
 
     endpoint <- paste0('jobs/', id, '/channels')
     out <- cf_query(endpoint, type = "GET", ...)

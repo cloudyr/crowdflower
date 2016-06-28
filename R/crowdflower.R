@@ -45,7 +45,7 @@
 #'                cml = readChar(f2, nchars = 1e8L))
 #'
 #' # add one or more channels
-#' channel_add(j, "neobux")
+#' job_channel_add(j, "neobux")
 #' 
 #' # upload data
 #' d <- data.frame(variable = 1:3)
@@ -60,5 +60,5 @@
 #' # get results once completed
 #' report_get(j)
 #' }
-#' @seealso \code{\link{job_create}}, \code{\link{job_channels}}, \code{\link{job_add_data}}, \code{\link{job_status}}, \code{\link{report_get}}
+#' @seealso \code{\link{job_create}}, \code{\link{job_channel_list}}, \code{\link{job_add_data}}, \code{\link{job_status}}, \code{\link{report_get}}
 "_PACKAGE"

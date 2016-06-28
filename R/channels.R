@@ -2,7 +2,7 @@
 #' @title Get and set job channels
 #' @description Get, set, and replace the \dQuote{tags} for a job
 #' @param id A character string containing an ID for job.
-#' @param channel A character string containing the name of a channel, as returned by \code{\link{job_channels}}.
+#' @param channel A character string containing the name of a channel, as returned by \code{\link{job_channel_list}}.
 #' @param verbose A logical indicating whether to print additional information about the request.
 #' @param ... Additional arguments passed to \code{\link{cf_query}}.
 #' @return A logical \code{TRUE}, or an error.
@@ -16,11 +16,11 @@
 #'                cml = readChar(f2, nchars = 1e8L))
 #'
 #' # list available channels
-#' ch <- job_channels(j)
+#' ch <- job_channel_list(j)
 #' ch
 #'
 #' # add new channel
-#' channel_add(j, ch[1])
+#' job_channel_add(j, ch[1])
 #' 
 #' # remove a channel
 #' job_channel_remove(j, ch[1])
@@ -28,7 +28,7 @@
 #' @seealso \code{\link{job_create}}
 #' @keywords channels
 #' @export
-channel_add <- function(id, channel, verbose = TRUE, ...){
+job_channel_add <- function(id, channel, verbose = TRUE, ...){
 
     endpoint <- paste0('jobs/', id, '/channels')
     out <- cf_query(endpoint, type = "POST", 

@@ -1,4 +1,4 @@
-#' @rdname contributor_flag
+#' @rdname job_contributor_flag
 #' @title Flag/unflag/reject Contributors
 #' @description  Flag/unflag or reject a contributor
 #' @param id A character string containing an ID for job to be updated.
@@ -9,7 +9,7 @@
 #' @examples 
 #' \dontrun{
 #' # Flag contributor
-#' contributor_flag(j, worker, "Looks problematic")
+#' job_contributor_flag(j, worker, "Looks problematic")
 #'
 #' # Unflag contributor
 #' job_contributor_unflag(j, worker, "Actually, all is well")
@@ -21,7 +21,7 @@
 #' @seealso \code{\link{job_create}}
 #' @keywords contributors
 #' @export
-contributor_flag <- function(id, worker, reason, ...){
+job_contributor_flag <- function(id, worker, reason, ...){
 
     # preparing body of request
     body <- list(flag = reason)
@@ -34,7 +34,7 @@ contributor_flag <- function(id, worker, reason, ...){
 
 }
 
-#' @rdname contributor_flag
+#' @rdname job_contributor_flag
 #' @export
 job_contributor_unflag <- function(id, worker, reason, ...){
 
@@ -49,7 +49,7 @@ job_contributor_unflag <- function(id, worker, reason, ...){
 
 }
 
-#' @rdname contributor_flag
+#' @rdname job_contributor_flag
 #' @export
 job_contributor_reject <- function(id, worker, reason, ...){
 
