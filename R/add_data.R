@@ -1,24 +1,12 @@
 #' @rdname addData
-#' @export
-#'
-#' @title 
-#' Uploads data to a CrowdFlower Job
-#'
-#' @description
-#' \code{addData} uploads data from a data.frame to a CrowdFlower Job
-#'
+#' @title Uploads data to a CrowdFlower Job
+#' @description \code{addData} uploads data from a data.frame to a CrowdFlower Job
 #' @param id ID for job to be updated.
-#'
-#' @param data A data.frame with data to be uploaded
-#'
+#' @param data A filename or data.frame with data to be uploaded.
 #' @param verbose A logical indicating whether to print additional information about the request.
-#'
 #' @param ... Additional arguments passed to \code{\link{crowdflowerAPIQuery}}.
-#'
 #' @references \href{https://success.crowdflower.com/hc/en-us/articles/202703425-CrowdFlower-API-Requests-Guide#data}{Crowdflower API documentation}
-#'
 #' @return A character string containing the job ID, invisibly.
-#' 
 #' @examples
 #' \dontrun{
 #' # create new job
@@ -31,37 +19,23 @@
 #' d <- data.frame(variable = 1:3)
 #' addData(id = j, data = d)
 #' }
-#'
 #' @seealso \code{\link{updateJob}}, \code{\link{getStatus}}, \code{\link{getResults}}
-
+#' @export
 
 addData <- function(id, data, verbose = TRUE, ...){
 
-    if (verbose) {
-        pb <- txtProgressBar(min=1, max=nrow(data), style=3)
-    }
-    
-    # loop over rows
-    for (i in 1:nrow(data)){
-
-        dd <- sapply(data[i,], as.list) # converting row to list
-        endpoint <- paste0('jobs/', id, '/units.json')
-        body <- list(unit = list('data' = dd))
-
-        unit <- crowdflowerAPIQuery(endpoint, type="POST-DATA", body=body, ...)
-        Sys.sleep(0.02) # adding small pause to avoid hitting rate limit
-                        # (40 requests per second)
-
-        if (verbose) {
-            setTxtProgressBar(pb, i)
+    if (is.character(data)) {
+        if (!file.exists(data)) {
+            stop(paste0("'data' file ", data, " does not exist."))
         }
-    }
-
-    if (verbose) {
-        message(nrow(data), " new rows successfully created.")
+    } else {
+        f <- tempfile(fileext = ".csv")
+        write.csv(data, file = f)
+        on.exit(unlink(f))
+        data <- f
     }
     
-    #return(invisible(unit)) # is this what we want?
-    return(invisible(unit$job_id))     # returning job ID (consistent with other functions; 
-                                    # we can use pipe operator ?)
+    out <- crowdflowerAPIQuery(paste0("jobs/upload.json"), type = "POST", body = data, content_type("text/csv"), ...)
+    
+    return(invisible(out$job_id))
 }
