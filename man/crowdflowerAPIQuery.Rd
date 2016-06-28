@@ -27,7 +27,6 @@ crowdflowerAPIQuery(endpoint, query = NULL, body = NULL, type = "GET",
 An integer specifying the new Crowdflower job ID.
 }
 \description{
-\code{crowdflowerAPIQuery} connects to the CrowdFlower API and executes an
-API request.
+\code{crowdflowerAPIQuery} connects to the CrowdFlower API and executes an API request.
 }
 

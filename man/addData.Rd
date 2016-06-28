@@ -9,7 +9,7 @@ addData(id, data, verbose = TRUE, ...)
 \arguments{
 \item{id}{ID for job to be updated.}
 
-\item{data}{A data.frame with data to be uploaded}
+\item{data}{A filename or data.frame with data to be uploaded.}
 
 \item{verbose}{A logical indicating whether to print additional information about the request.}
 
@@ -33,7 +33,6 @@ j <- createJob(title = "Job Title",
 d <- data.frame(variable = 1:3)
 addData(id = j, data = d)
 }
-
 }
 \references{
 \href{https://success.crowdflower.com/hc/en-us/articles/202703425-CrowdFlower-API-Requests-Guide#data}{Crowdflower API documentation}

@@ -1,28 +1,15 @@
 #' @rdname crowdflowerAPIQuery
-#' @export
-#'
-#' @title 
-#' Execute API call to CrowdFlower API.
-#'
-#' @description
-#' \code{crowdflowerAPIQuery} connects to the CrowdFlower API and executes an
-#' API request.
-#'
+#' @title Execute API call to CrowdFlower API.
+#' @description \code{crowdflowerAPIQuery} connects to the CrowdFlower API and executes an API request.
 #' @param endpoint endpoint of API request.
-#'
 #' @param query A list containing named URL query parameters to add to request URL.
-#'
 #' @param body additional parameters to add to request body.
-#'
 #' @param key A character string containing a Crowdflower API key.
-#'
 #' @param type type of requests (GET, POST, PUT).
-#'
 #' @param base_url Base URL of API request.
-#'
 #' @param ... Additional arguments passed to an HTTP request function, e.g, \code{\link[httr]{GET}} or \code{\link[httr]{POST}}.
-#'
 #' @return An integer specifying the new Crowdflower job ID.
+#' @export
 
 crowdflowerAPIQuery <- function(endpoint, 
                     query = NULL, 
