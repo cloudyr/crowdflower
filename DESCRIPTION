@@ -17,4 +17,4 @@ Suggests:
 URL: http://github.com/cloudyr/crowdflower
 Encoding: UTF-8
 BugReports: https://github.com/cloudyr/crowdflower/issues
-RoxygenNote: 5.0.1.9000
+RoxygenNote: 5.0.1
