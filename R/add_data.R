@@ -35,7 +35,7 @@ addData <- function(id, data, verbose = TRUE, ...){
         data <- f
     }
     
-    out <- crowdflowerAPIQuery(paste0("jobs/upload.json"), type = "POST", 
+    out <- crowdflowerAPIQuery(paste0("jobs/", id, "/upload.json"), type = "POST", 
                                body = upload_file(data), 
                                content_type("text/csv"), ...)
     
