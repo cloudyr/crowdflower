@@ -4,7 +4,10 @@
 #' 
 #' Convert to test questions all rows where column "_golden" is set to "true".
 #' Corresponds to the "Convert Uploaded Test Questions" button on the Data page
-#' of the web interface. 
+#' of the web interface.
+#' @param id ID for job whose gold questions will be converted
+#' @return nothing (but will print a status message)
+#' @keywords jobs gold 
 #' @export
 job_convert_gold <- function(id) {
     msg <- try(cf_query(endpoint <- paste0("jobs/", id, "/gold"), type = "PUT"))
