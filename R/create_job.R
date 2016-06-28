@@ -29,7 +29,8 @@ job_create <- function(title = NULL, instructions = NULL, cml = NULL, verbose = 
 
     # API request to create job
     newjob <- cf_query("jobs.json", type="POST", body=body, ...)
-    if (verbose) message("Job successfully created with ID = ", newjob$id)
-
+    if (verbose) {
+        message("Job successfully created with ID = ", newjob$id)
+    }
     return(newjob$id)
 }
