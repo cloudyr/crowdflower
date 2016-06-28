@@ -1,3 +1,4 @@
+#' @rdname channels
 #' @title Get and set job channels
 #' @description Get, set, and replace the \dQuote{tags} for a job
 #' @param id A character string containing an ID for job.
