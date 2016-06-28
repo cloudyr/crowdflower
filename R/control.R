@@ -1,50 +1,36 @@
-#' @rdname launchJob
-#' @export
-#'
-#' @title 
-#' Pause a job
-#'
-#' @description
-#' \code{launchJob} launches a new job.
-#'
+#' @title Pause a job
+#' @description \code{launch_job} launches a new job.
 #' @param id A character string containing an ID for job.
-#'
-#' @param channel Either "on_demand" (for On Demand worforce), "cf_internal"
-#' (for the Internal Channel) or "both"
-#'
+#' @param channel Either "on_demand" (for On Demand worforce), \dQuote{cf_internal} (for the Internal Channel) or "both"
 #' @param units Units to be launched.
-#'
 #' @param verbose A logical indicating whether to print details of the request.
-#'
-#' @param ... Additional arguments passed to \code{\link{crowdflowerAPIQuery}}.
-#'
+#' @param ... Additional arguments passed to \code{\link{cf_query}}.
 #' @return A list containing details of the job.
-#' 
 #' @examples
 #' \dontrun{
 #' # create new job
 #' f1 <- system.file("templates/instructions1.html", package = "crowdflower")
 #' f2 <- system.file("templates/cml1.xml", package = "crowdflower")
-#' j <- createJob(title = "Job Title", 
+#' j <- create_job(title = "Job Title", 
 #'                instructions = readChar(f1, nchars = 1e8L),
 #'                cml = readChar(f2, nchars = 1e8L))
 #' 
 #' # launch the job
-#' launchJob(j)
+#' launch_job(j)
 #'
 #' # pause the job
-#' pauseJob(j)
+#' pause_job(j)
 #'
 #' # resume the job
-#' resumeJob(j)
+#' resume_job(j)
 #' 
 #' # cancel the job
-#' cancelJob(j)
+#' cancel_job(j)
 #' }
-#'
-#' @seealso \code{\link{pauseJob}}, \code{\link{cancelJob}}, \code{\link{resumeJob}}
+#' @seealso \code{\link{pause_job}}, \code{\link{cancel_job}}, \code{\link{resume_job}}
+#' @export
 
-launchJob <- function(id, channel="cf_internal", units=100, verbose = FALSE, ...){
+launch_job <- function(id, channel="cf_internal", units=100, verbose = FALSE, ...){
     
     # preparing body of request
     body <- list()
@@ -60,7 +46,7 @@ launchJob <- function(id, channel="cf_internal", units=100, verbose = FALSE, ...
 
     # API request
     endpoint <- paste0('jobs/', id, '/orders.json')
-    jobinfo <- crowdflowerAPIQuery(endpoint, type="POST", body=body, ...)
+    jobinfo <- cf_query(endpoint, type="POST", body=body, ...)
 
     if (verbose) {
         message(sprintf("Job %s successfully launched", id))
@@ -68,51 +54,39 @@ launchJob <- function(id, channel="cf_internal", units=100, verbose = FALSE, ...
     return(jobinfo)
 }
 
-#' @rdname pauseJob
-#' @export
-#'
-#' @title 
-#' Pause a job
-#'
-#' @description
-#' \code{pauseJob} pauses a currently running job.
-#'
+#' @title Pause a job
+#' @description \code{pause_job} pauses a currently running job.
 #' @param id A character string containing an ID for job.
-#'
 #' @param verbose A logical indicating whether to print details of the request.
-#'
-#' @param ... Additional arguments passed to \code{\link{crowdflowerAPIQuery}}.
-#'
+#' @param ... Additional arguments passed to \code{\link{cf_query}}.
 #' @return A logical indicating the operation was successful, otherwise an error.
-#' 
 #' @examples
 #' \dontrun{
 #' # create new job
 #' f1 <- system.file("templates/instructions1.html", package = "crowdflower")
 #' f2 <- system.file("templates/cml1.xml", package = "crowdflower")
-#' j <- createJob(title = "Job Title", 
+#' j <- create_job(title = "Job Title", 
 #'                instructions = readChar(f1, nchars = 1e8L),
 #'                cml = readChar(f2, nchars = 1e8L))
 #' 
 #' # launch the job
-#' launchJob(j)
+#' launch_job(j)
 #'
 #' # pause the job
-#' pauseJob(j)
+#' pause_job(j)
 #'
 #' # resume the job
-#' resumeJob(j)
+#' resume_job(j)
 #' 
 #' # cancel the job
-#' cancelJob(j)
+#' cancel_job(j)
 #' }
-#'
-#' @seealso \code{\link{launchJob}}, \code{\link{cancelJob}}, \code{\link{resumeJob}}
-
-pauseJob <- function(id, verbose = FALSE, ...){
+#' @seealso \code{\link{launch_job}}, \code{\link{cancel_job}}, \code{\link{resume_job}}
+#' @export
+pause_job <- function(id, verbose = FALSE, ...){
     # API request
     endpoint <- paste0('jobs/', id, '/pause.json')
-    jobinfo <- crowdflowerAPIQuery(endpoint, ...)
+    jobinfo <- cf_query(endpoint, ...)
 
     if (verbose) {
         message(sprintf("Job %s successfully paused", id))
@@ -120,51 +94,40 @@ pauseJob <- function(id, verbose = FALSE, ...){
     return(invisible(TRUE))
 }
 
-#' @rdname cancelJob
-#' @export
-#'
-#' @title 
-#' Cancel a job
-#'
-#' @description
-#' \code{pauseJob} cancels a currently running job.
-#'
+#' @title Cancel a job
+#' @description \code{pause_job} cancels a currently running job.
 #' @param id A character string containing an ID for job.
-#'
 #' @param verbose A logical indicating whether to print details of the request.
-#'
-#' @param ... Additional arguments passed to \code{\link{crowdflowerAPIQuery}}.
-#'
+#' @param ... Additional arguments passed to \code{\link{cf_query}}.
 #' @return A logical indicating the operation was successful, otherwise an error.
-#' 
 #' @examples
 #' \dontrun{
 #' # create new job
 #' f1 <- system.file("templates/instructions1.html", package = "crowdflower")
 #' f2 <- system.file("templates/cml1.xml", package = "crowdflower")
-#' j <- createJob(title = "Job Title", 
+#' j <- create_job(title = "Job Title", 
 #'                instructions = readChar(f1, nchars = 1e8L),
 #'                cml = readChar(f2, nchars = 1e8L))
 #' 
 #' # launch the job
-#' launchJob(j)
+#' launch_job(j)
 #'
 #' # pause the job
-#' pauseJob(j)
+#' pause_job(j)
 #'
 #' # resume the job
-#' resumeJob(j)
+#' resume_job(j)
 #' 
 #' # cancel the job
-#' cancelJob(j)
+#' cancel_job(j)
 #' }
 #'
-#' @seealso \code{\link{launchJob}}, \code{\link{pauseJob}}, \code{\link{resumeJob}}
-
-cancelJob <- function(id, verbose = FALSE, ...){
+#' @seealso \code{\link{launch_job}}, \code{\link{pause_job}}, \code{\link{resume_job}}
+#' @export
+cancel_job <- function(id, verbose = FALSE, ...){
     # API request
     endpoint <- paste0('jobs/', id, '/cancel.json')
-    jobinfo <- crowdflowerAPIQuery(endpoint, ...)
+    jobinfo <- cf_query(endpoint, ...)
 
     if (verbose) {
         message(sprintf("Job %s successfully cancelled", id))
@@ -172,51 +135,39 @@ cancelJob <- function(id, verbose = FALSE, ...){
     return(invisible(TRUE))
 }
 
-#' @rdname resumeJob
-#' @export
-#'
-#' @title 
-#' Pause a job
-#'
-#' @description
-#' \code{resumeJob} resumes a currently paused job.
-#'
+#' @title Pause a job
+#' @description \code{resume_job} resumes a currently paused job.
 #' @param id A character string containing an ID for job.
-#'
 #' @param verbose A logical indicating whether to print details of the request.
-#'
-#' @param ... Additional arguments passed to \code{\link{crowdflowerAPIQuery}}.
-#'
+#' @param ... Additional arguments passed to \code{\link{cf_query}}.
 #' @return A logical indicating the operation was successful, otherwise an error.
-#' 
 #' @examples
 #' \dontrun{
 #' # create new job
 #' f1 <- system.file("templates/instructions1.html", package = "crowdflower")
 #' f2 <- system.file("templates/cml1.xml", package = "crowdflower")
-#' j <- createJob(title = "Job Title", 
+#' j <- create_job(title = "Job Title", 
 #'                instructions = readChar(f1, nchars = 1e8L),
 #'                cml = readChar(f2, nchars = 1e8L))
 #' 
 #' # launch the job
-#' launchJob(j)
+#' launch_job(j)
 #'
 #' # pause the job
-#' pauseJob(j)
+#' pause_job(j)
 #'
 #' # resume the job
-#' resumeJob(j)
+#' resume_job(j)
 #' 
 #' # cancel the job
-#' cancelJob(j)
+#' cancel_job(j)
 #' }
-#'
-#' @seealso \code{\link{launchJob}}, \code{\link{cancelJob}}, \code{\link{pauseJob}}
-
-resumeJob <- function(id, verbose = FALSE, ...){
+#' @seealso \code{\link{launch_job}}, \code{\link{cancel_job}}, \code{\link{pause_job}}
+#' @export
+resume_job <- function(id, verbose = FALSE, ...){
     # API request
     endpoint <- paste0('jobs/', id, '/resume.json')
-    jobinfo <- crowdflowerAPIQuery(endpoint, ...)
+    jobinfo <- cf_query(endpoint, ...)
 
     if (verbose) {
         message(sprintf("Job %s successfully resumed", id))

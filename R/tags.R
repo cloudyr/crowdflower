@@ -1,43 +1,34 @@
 #' @rdname tags
-#'
-#' @title 
-#' Get and set job tags
-#'
-#' @description 
-#' Get, set, and replace the \dQuote{tags} for a job
-#'
+#' @title Get and set job tags
+#' @description Get, set, and replace the \dQuote{tags} for a job
 #' @param id A character string containing an ID for job.
-#'
-#' @param ... Additional arguments passed to \code{\link{crowdflowerAPIQuery}}.
-#'
-#' @return For \code{getJobTags}, a character vector of tags. Otherwise, a logical \code{TRUE}, or an error.
-#'
+#' @param ... Additional arguments passed to \code{\link{cf_query}}.
+#' @return For \code{get_tags}, a character vector of tags. Otherwise, a logical \code{TRUE}, or an error.
 #' @examples 
 #' \dontrun{
 #' # create new job
 #' f1 <- system.file("templates/instructions1.html", package = "crowdflower")
 #' f2 <- system.file("templates/cml1.xml", package = "crowdflower")
-#' j <- createJob(title = "Job Title", 
+#' j <- create_job(title = "Job Title", 
 #'                instructions = readChar(f1, nchars = 1e8L),
 #'                cml = readChar(f2, nchars = 1e8L))
 #'
 #' # get tags
-#' getJobTags(j)
+#' get_tags(j)
 #'
 #' # add new tag
-#' addJobTags(j, "textanalysis")
+#' add_tags(j, "textanalysis")
 #' 
 #' # replace tags
-#' addJobTags(j, c("foo", "bar"))
-#' getJobTags(j)
+#' add_tags(j, c("foo", "bar"))
+#' get_tags(j)
 #' }
-#'
-#' @seealso \code{\link{createJob}}
+#' @seealso \code{\link{create_job}}
 #' @export
-getJobTags <- function(id, ...){
+get_tags <- function(id, ...){
 
     endpoint <- paste0('jobs/', id, '/tags')
-    out <- crowdflowerAPIQuery(endpoint, type = "GET", ...)
+    out <- cf_query(endpoint, type = "GET", ...)
     
     out2 <- unlist(lapply(out, `[[`, "name"))
     if (is.null(out2)) {
@@ -48,15 +39,13 @@ getJobTags <- function(id, ...){
 }
 
 #' @rdname tags
-#' @param tags For \code{addJobTags}, a character vector specifying one or more tags to add. For \code{replaceJobTags}, the same but to \emph{replace} rather than \emph{add} the tags.
-#'
+#' @param tags For \code{add_tags}, a character vector specifying one or more tags to add. For \code{replace_tags}, the same but to \emph{replace} rather than \emph{add} the tags.
 #' @param verbose A logical indicating whether to print additional information about the request.
-#'
 #' @export
-addJobTags <- function(id, tags, verbose = TRUE, ...){
+add_tags <- function(id, tags, verbose = TRUE, ...){
 
     endpoint <- paste0('jobs/', id, '/tags')
-    out <- crowdflowerAPIQuery(endpoint, type = "POST", 
+    out <- cf_query(endpoint, type = "POST", 
                    body = list(tags = paste(tags, collapse = ",")), 
                    encode = "multipart", ...)
     if (verbose) {
@@ -68,10 +57,10 @@ addJobTags <- function(id, tags, verbose = TRUE, ...){
 
 #' @rdname tags
 #' @export
-replaceJobTags <- function(id, tags, verbose = TRUE, ...){
+replace_tags <- function(id, tags, verbose = TRUE, ...){
 
     endpoint <- paste0('jobs/', id, '/tags')
-    out <- crowdflowerAPIQuery(endpoint, type = "PUT", 
+    out <- cf_query(endpoint, type = "PUT", 
                    body = list(tags = paste(tags, collapse = ",")), 
                    encode = "multipart", ...)
     if (verbose) {

@@ -1,47 +1,33 @@
-#' @rdname getJobs
-#' @export
-#'
 #' @title 
 #' Retrieve list of all jobs.
-#'
-#' @description
-#' \code{getJobs} queries for all jobs under the account related 
-#' to the API key for the authenticated user.
-#'
-#' @param page A vector of integers specifying which page(s) of results 
-#' to return. A page contains up to 10 jobs. The default (\code{NULL}) 
-#' is to return all jobs.
-#'
-#' @param ... Additional arguments passed to \code{\link{crowdflowerAPIQuery}}.
-#'
+#' @description \code{get_jobs} queries for all jobs under the account related to the API key for the authenticated user.
+#' @param page A vector of integers specifying which page(s) of results to return. A page contains up to 10 jobs. The default (\code{NULL}) is to return all jobs.
+#' @param ... Additional arguments passed to \code{\link{cf_query}}.
 #' @return A data.frame containing details of all jobs. The \code{id} 
 #' column provides the Crowdflower Job ID for each job.
-#'
 #' @references \href{https://success.crowdflower.com/hc/en-us/articles/202703425-CrowdFlower-API-Requests-Guide#account_information}{Crowdflower API documentation}
-#' 
 #' @examples
 #' \dontrun{
 #' # return first page of jobs
-#' getJobs(page = 1)
+#' get_jobs(page = 1)
 #'
 #' # return all jobs
-#' getJobs()
+#' get_jobs()
 #' }
-#'
-#' @seealso \code{\link{getAccount}}
-
-getJobs <- function(page = NULL, ...){
+#' @seealso \code{\link{get_account}}
+#' @export
+get_jobs <- function(page = NULL, ...){
 
     if (is.null(page)) {
         # return all jobs
-        jobs <- crowdflowerAPIQuery("jobs.json", query = list(page = 1), ...)
+        jobs <- cf_query("jobs.json", query = list(page = 1), ...)
         if (length(jobs)) {
             d <- list(jobDataToDF(jobs))
             if (nrow(d[[1]]) == 10) {
                 p <- 2
                 nr <- 10
                 while (nr == 10) {
-                    d[[p]] <- jobDataToDF(getJobs(page = p, ...))
+                    d[[p]] <- jobDataToDF(get_jobs(page = p, ...))
                     nr <- nrow(d[[p]])
                     p <- p + 1
                 }
@@ -72,7 +58,7 @@ getJobs <- function(page = NULL, ...){
     } else {
         # return selected job pages
         out <- do.call("rbind", lapply(page, function(x) {
-            a <- crowdflowerAPIQuery("jobs.json", query = list(page = x), ...)
+            a <- cf_query("jobs.json", query = list(page = x), ...)
             jobDataToDF(a)
         }))
     }

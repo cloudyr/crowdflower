@@ -1,52 +1,29 @@
-#' @rdname updateJob
 #' @export
-#'
-#' @title 
-#' Updates job settings.
-#'
-#' @description 
-#' Updates settings for a given job.
-#'
+#' @title Updates job settings.
+#' @description Updates settings for a given job.
 #' @param id A character string containing an ID for job to be updated.
-#'
 #' @param title New title.
-#' 
 #' @param instructions New set of instructions.
-#'
 #' @param cml New layout for job.
-#'
-#' @param payment_cents Amount, in U.S. cents, that contributors 
-#' will be paid per task.
-#'
-#' @param units_per_assignment Number of rows that will comprise 
-#' one page within a job.
-#'
-#' @param auto_launch A logical indicating whether to automatically 
-#' launch rows as they are added.
-#'
-#' @param verbose A logical indicating whether to print additional 
-#' information about the request.
-#'
-#' @param ... Additional arguments passed to \code{\link{crowdflowerAPIQuery}}.
-#'
+#' @param payment_cents Amount, in U.S. cents, that contributors will be paid per task.
+#' @param units_per_assignment Number of rows that will comprise one page within a job.
+#' @param auto_launch A logical indicating whether to automatically launch rows as they are added.
+#' @param verbose A logical indicating whether to print additional information about the request.
+#' @param ... Additional arguments passed to \code{\link{cf_query}}.
 #' @return A character string containing the job ID, invisibly.
-#'
 #' @examples 
 #' \dontrun{
 #' # update job's title
-#' updateJob(id, title = "New Title")
+#' update_job(id, title = "New Title")
 #'
 #' # update job's payment
-#' updateJob(id, payment_cents = "0.1")
+#' update_job(id, payment_cents = "0.1")
 #'
 #' # update job's instructions and units
-#' updateJob(id, instructions = "blank", units_per_assignment = 3)
-#'
+#' update_job(id, instructions = "blank", units_per_assignment = 3)
 #' }
-#'
-#' @seealso \code{\link{createJob}}
-
-updateJob <- function(id, 
+#' @seealso \code{\link{create_job}}
+update_job <- function(id, 
                       title = NULL, 
                       instructions = NULL, 
                       cml = NULL, 
@@ -79,7 +56,7 @@ updateJob <- function(id,
     
     # API request to create job
     endpoint <- paste0('jobs/', id, '.json')
-    newjob <- crowdflowerAPIQuery(endpoint, type = "PUT", body = body, ...)
+    newjob <- cf_query(endpoint, type = "PUT", body = body, ...)
     
     if (verbose) {
         message("Job successfully updated with ID = ", newjob$id)

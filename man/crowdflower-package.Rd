@@ -44,25 +44,25 @@ crowdsourcing platform.
 # create new job
 f1 <- system.file("templates/instructions1.html", package = "crowdflower")
 f2 <- system.file("templates/cml1.xml", package = "crowdflower")
-j <- createJob(title = "Job Title", 
+j <- create_job(title = "Job Title", 
                instructions = readChar(f1, nchars = 1e8L),
                cml = readChar(f2, nchars = 1e8L))
 
 # add one or more channels
-addChannel(j, "neobux")
+add_channel(j, "neobux")
 
 # upload data
 d <- data.frame(variable = 1:3)
-addData(id = j, data = d)
+add_data(id = j, data = d)
 
 # launch the job
-launchJob(j)
+launch_job(j)
 
 # monitor the job
-getStatus(j)
+get_status(j)
 
 # get results once completed
-getResults(j)
+get_results(j)
 }
 
 }
@@ -72,6 +72,6 @@ getResults(j)
 \href{https://success.crowdflower.com/hc/en-us/articles/202703425-CrowdFlower-API-Requests-Guide}{API Request Guide}
 }
 \seealso{
-\code{\link{createJob}}, \code{\link{getChannels}}, \code{\link{addData}}, \code{\link{getStatus}}, \code{\link{getResults}}
+\code{\link{create_job}}, \code{\link{getChannels}}, \code{\link{add_data}}, \code{\link{get_status}}, \code{\link{get_results}}
 }
 
