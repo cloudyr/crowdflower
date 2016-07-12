@@ -1,2 +1,6 @@
 library("testthat")
-#test_check("crowdflower")
+
+if (Sys.getenv("CROWDFLOWER_API_KEY") != "") {
+    library("crowdflower")
+    #test_check("crowdflower")
+}
