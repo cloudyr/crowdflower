@@ -20,7 +20,7 @@ A list containing details of all jobs. The \code{id} field provides the Crowdflo
 Get a single Crowdflower job
 }
 \seealso{
-\code{\link{cf_job_list}}, \code{\link{cf_account}}
+\code{\link{cf_account}}
 }
 \keyword{jobs}
 

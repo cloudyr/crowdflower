@@ -2,7 +2,7 @@
 % Please edit documentation in R/cf_jobs_list.R
 \name{cf_jobs_list}
 \alias{cf_jobs_list}
-\title{Retrieve list of all jobs.}
+\title{Retrieve list of all jobs}
 \usage{
 cf_jobs_list(page = NULL, ...)
 }
@@ -35,6 +35,6 @@ cf_jobs_list()
 \seealso{
 \code{\link{cf_account}}, \code{\link{job_get}}
 }
-\keyword{account,}
+\keyword{account}
 \keyword{jobs}
 

@@ -1,14 +1,14 @@
-#' @rdname cf_query
-#' @title Execute API call to CrowdFlower API.
-#' @description \code{cf_query} connects to the CrowdFlower API and executes an API request.
-#' @param endpoint endpoint of API request.
+#' @title Execute a Crowdflower API call
+#' @description Connects to the CrowdFlower API and executes an API request, returning the content of the HTTP response.
+#' @param endpoint A character string specifying the endpoint of API request relative to \code{base_url}
 #' @param query A list containing named URL query parameters to add to request URL.
-#' @param body additional parameters to add to request body.
+#' @param body Additional parameters to add to request body.
 #' @param key A character string containing a Crowdflower API key.
-#' @param type type of requests (GET, POST, PUT).
-#' @param base_url Base URL of API request.
-#' @param ... Additional arguments passed to an HTTP request function, e.g, \code{\link[httr]{GET}} or \code{\link[httr]{POST}}.
-#' @return An integer specifying the new Crowdflower job ID.
+#' @param type A character string specifying the type of HTTP request (\dQuote{GET}, \dQuote{POST}, \dQuote{PUT}, etc.).
+#' @param base_url A character string specifying the base URL of API request.
+#' @param ... Additional arguments passed to an HTTP request function (e.g, \code{\link[httr]{GET}}, \code{\link[httr]{POST}}, \code{\link[httr]{PUT}}).
+#' @return A character string containing the content of the HTTP request.
+#' @importFrom httr GET POST PUT stop_for_status content
 #' @export
 cf_query <- function(endpoint, 
                     query = NULL, 

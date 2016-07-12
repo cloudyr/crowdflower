@@ -1,4 +1,4 @@
-#' @title Retrieve list of all jobs.
+#' @title Retrieve list of all jobs
 #' @description \code{cf_jobs_list} queries for all jobs under the account related to the API key for the authenticated user.
 #' @param page A vector of integers specifying which page(s) of results to return. A page contains up to 10 jobs. The default (\code{NULL}) is to return all jobs.
 #' @param ... Additional arguments passed to \code{\link{cf_query}}.
@@ -14,7 +14,7 @@
 #' cf_jobs_list()
 #' }
 #' @seealso \code{\link{cf_account}}, \code{\link{job_get}}
-#' @keywords account, jobs
+#' @keywords account jobs
 #' @export
 cf_jobs_list <- function(page = NULL, ...){
 

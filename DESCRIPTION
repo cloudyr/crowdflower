@@ -5,8 +5,8 @@ Authors@R: c(person("Kenneth", "Benoit", email = "kbenoit@lse.ac.uk", role = c("
              person("Pablo", "Barberá", email = "pablo.barbera@nyu.edu", role = "aut"), 
              person("Thomas J.", "Leeper", email = "thosjleeper@gmail.com", role = "aut"))
 Maintainer: Kenneth Benoit <kbenoit@lse.ac.uk>
-Version: 0.1.8
-Date: 2016-06-28
+Version: 0.2.0
+Date: 2016-07-12
 Description: Provides programmatic access to the CrowdFlower crowdsourcing API
     <http://www.crowdflower.com/>.
 License: GPL-3

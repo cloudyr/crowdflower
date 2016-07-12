@@ -5,13 +5,14 @@
 #' @section Methods:
 #' \itemize{
 #'   \item \code{add_data(data, ...)} Add a data.frame or CSV file of data to a job using \code{\link{job_add_data}}
+#'   \item \code{convert_gold()} Convert uploaded questions to \dQuote{gold questions} using \code{\link{job_convert_gold}}
 #'   \item \code{launch(channel = , units = 100)} Launch the job using \code{\link{job_launch}}.
 #'   \item \code{pause()} Pause the job using \code{\link{job_pause}}
 #'   \item \code{resume()} Resume the (paused) job using \code{\link{job_resume}}
 #'   \item \code{cancel()} Cancel the job using \code{\link{job_cancel}}
 #'   \item \code{get()} Get information about the job using \code{\link{job_get}}
 #'   \item \code{get_unit(unit)} Get data on a given unit (row) from the job using \code{\link{results_get}}
-#'   \item \code{get_results(n = Inf)} Return a specified number of results from the job using \code{\link{job_results_get}}. Default is all results.
+#'   \item \code{get_results(n = Inf)} Return a specified number of results from the job using \code{\link{results_get}}. Default is all results.
 #'   \item \code{get_report()} Return a report document using \code{\link{report_get}}. Default is the \dQuote{full} report.
 #'   \item \code{report_regenerate()} Regenerate a report using \code{\link{report_regenerate}}.
 #'   \item \code{contributor} Initialize a new R6 \dQuote{Contributor} object in order to \code{flag()}, \code{unflag()}, \code{reject()}, \code{bonus()}, or \code{notify()} a contributor (worker).
@@ -61,6 +62,9 @@ Job <- R6::R6Class("crowdflower_job",
         # add data
         add_data = function(data, ...) {
             job_add_data(private$id, data, ...)
+        },
+        convert_gold = function(...) {
+            job_convert_gold(private$id, ...)
         },
         
         # control functions

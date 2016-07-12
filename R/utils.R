@@ -1,4 +1,3 @@
-
 unlistWithNA <- function(lst, field){
 
     # takes elements of list with names 'field' and returns a vector
@@ -136,6 +135,3 @@ changeNULLtoNA <- function(lst){
     }
     return(lst)
 }
-
-
-
