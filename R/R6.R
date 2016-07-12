@@ -1,8 +1,59 @@
-#' @rdname R6
-#' @title Job R6 Class
+#' @rdname crowdflower_r6
+#' @title Crowdflower Job R6 Class
 #' @description An R6 class for managing Crowdflower jobs using reference semantics
-#' @details This is an experimental R6 interface for working with Crowdflower jobs
+#' @details This is an experimental R6 interface for working with Crowdflower jobs. The advantage of using a \dQuote{Job}-class object to manage your Crowdflower operations is that the local object is always up-to-date with remote changes and operations can be performed without specifying a job identifier. The semantics of R6 are slightly different from traditional R code, but will quickly make sense after working through some examples.
+#' @section Methods:
+#' \itemize{
+#'   \item \code{add_data(data, ...)} Add a data.frame or CSV file of data to a job using \code{\link{job_add_data}}
+#'   \item \code{launch(channel = , units = 100)} Launch the job using \code{\link{job_launch}}.
+#'   \item \code{pause()} Pause the job using \code{\link{job_pause}}
+#'   \item \code{resume()} Resume the (paused) job using \code{\link{job_resume}}
+#'   \item \code{cancel()} Cancel the job using \code{\link{job_cancel}}
+#'   \item \code{get()} Get information about the job using \code{\link{job_get}}
+#'   \item \code{get_unit(unit)} Get data on a given unit (row) from the job using \code{\link{results_get}}
+#'   \item \code{get_results(n = Inf)} Return a specified number of results from the job using \code{\link{job_results_get}}. Default is all results.
+#'   \item \code{get_report()} Return a report document using \code{\link{report_get}}. Default is the \dQuote{full} report.
+#'   \item \code{report_regenerate()} Regenerate a report using \code{\link{report_regenerate}}.
+#'   \item \code{contributor} Initialize a new R6 \dQuote{Contributor} object in order to \code{flag()}, \code{unflag()}, \code{reject()}, \code{bonus()}, or \code{notify()} a contributor (worker).
+#' }
+#' @section Active Fields:
+#' Active fields are like list elements, but are \dQuote{active} meaning that they are updated against the Crowdflower API each time they accessed. This means that they are always current. They can also be set using the standard \code{<-} operator.
+#' \itemize{
+#'   \item \code{channels} A list of Crowdflower channels on which the job is available.
+#'   \item \code{cml} The Crowdflower Markup Language (CML) describing the job
+#'   \item \code{instructions} Instructions shown to the worker
+#'   \item \code{legend} The legend text being displayed to workers for the job.
+#'   \item \code{status} The job's status.
+#'   \item \code{tags} A list of tags for the job.
+#'   \item \code{title} A list of tags for the job.
+#' }
 #' @seealso \code{\link{job_create}}
+#' @examples
+#' \dontrun{
+#' # initialize a 'job' object for an existing job
+#' job <- Job$new(id = "examplejobid")
+#' job
+#' ## add data to job
+#' job$add_data(data.frame(x = 1:3))
+#' ## get and set a job's title
+#' job$title
+#' job$title <- "New Title"
+#' job$title
+#' 
+#' ## control job
+#' job$launch()
+#' job$pause()
+#' job$resume()
+#' job$cancel()
+#'
+#' ## get results
+#' job$get_results()
+#' 
+#' # initialize a 'contributor' object
+#' worker <- job$contributor("example_contributor")
+#' ## notify the worker
+#' worker$notify("Hello, worker!")
+#' }
 #' @importFrom R6 R6Class
 #' @export
 Job <- R6::R6Class("crowdflower_job",
@@ -27,6 +78,9 @@ Job <- R6::R6Class("crowdflower_job",
         },
         
         # results functions
+        get = function(...) {
+            job_get(id = private$id, ...)
+        },
         get_unit = function(unit, type = "aggregated", ...) {
             results_get(id = private$id, unit = unit, ...)
         },
@@ -34,7 +88,7 @@ Job <- R6::R6Class("crowdflower_job",
             self$results = results_get(id = private$id, n = n, ...)
             results
         },
-        report = function(...) {
+        get_report = function(report_type = "full", ...) {
             report_get(private$id, ...)
         },
         report_regenerate = function(report_type = "full", ...) {
@@ -52,7 +106,17 @@ Job <- R6::R6Class("crowdflower_job",
         },
         
         # sync local copy with crowdflower
-        sync = function(...) { },
+        sync = function(...) {
+            j <- job_get()
+            private$title <- j$title
+            private$instructions <- j$instructions
+            private$cml <- j$cml
+            private$payment_cents <- j$payment_cents
+            private$units_per_assignment <- j$units_per_assignment
+            private$auto_launch <- j$auto_launch
+            private$cml <- j$cml
+            
+        },
         
         # initialization function
         initialize = function(id = NULL, title = NULL, instructions = NULL, cml = NULL, copy = NULL, rows = TRUE, gold = FALSE, ...) {
@@ -67,39 +131,69 @@ Job <- R6::R6Class("crowdflower_job",
         }
     ),
     active = list(
-        channels = function() {
-            job_channel_list(private$id)
+        channels = function(x) {
+            if (missing(x)) {
+                job_channel_list(private$id)
+            } else {
+                # set the channels
+            }
         },
-        legend = function() {
-            job_legend_get(private$id)
+        cml = function(x) {
+            if (missing(x)) {
+                self$get()[["cml"]]
+            } else {
+                job_update(cml = x)
+            }
         },
-        tags = function() {
-            job_tags_get(private$id)
+        instructions = function(x) {
+            if (missing(x)) {
+                self$get()[["instructions"]]
+            } else {
+                job_update(instructions = x)
+            }
+        },
+        legend = function(x) {
+            if (missing(x)) {
+                job_legend_get(private$id)
+            } else {
+                # set the legend
+            }
         },
         status = function() {
             job_status(private$id)
+        },
+        tags = function(x) {
+            if (missing(x)) {
+                job_tags_get(private$id)
+            } else {
+                # set the tags
+            }
+        },
+        title = function(x) {
+            if (missing(x)) {
+                self$get()[["title"]]
+            } else {
+                job_update(title = x)
+            }
         }
     ),
     private = list(
         id = NULL,
-        title = NULL,
         alias = NULL,
-        judgments_per_unit = NULL,
-        units_per_assignment = NULL,
-        pages_per_assignment = NULL,
-        max_judgments_per_worker = NULL,
-        gold_per_assignment = NULL,
+        css = NULL,
         created_at = NULL,
-        updated_at = NULL,
-        instructions = NULL,
-        cml = NULL,
+        data = NULL,
+        gold_per_assignment = NULL,
         js = NULL,
-        css = NULL
-        
+        judgments_per_unit = NULL,
+        max_judgments_per_worker = NULL,
+        pages_per_assignment = NULL,
+        units_per_assignment = NULL,
+        updated_at = NULL        
     )
 )
 
-#' @rdname R6
+#' @rdname crowdflower_r6
 #' @export
 Contributor <- R6::R6Class("crowdflower_contributor",
     public = list(
