@@ -1,3 +1,7 @@
+# crowdflower 0.2.1
+
+* Fix bug in `job_copy()` where rows were incorrectly being copied when `gold = TRUE`. (#7)
+
 # crowdflower 0.2.0
 
 * Revised the package function names to use consistent `camel_case`

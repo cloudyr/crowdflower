@@ -11,7 +11,7 @@ job_copy(id, rows = TRUE, gold = FALSE, verbose = TRUE, ...)
 
 \item{rows}{A logical indicating whether to copy rows from the original job.}
 
-\item{gold}{A logical indicating whether to copy \emph{only} gold questions from the original job. Ignored if \code{rows = TRUE}.}
+\item{gold}{A logical indicating whether to copy \emph{only} gold questions from the original job.}
 
 \item{verbose}{A logical indicating whether to print additional information about the request.}
 
