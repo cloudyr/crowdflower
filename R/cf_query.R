@@ -8,7 +8,7 @@
 #' @param base_url A character string specifying the base URL of API request.
 #' @param ... Additional arguments passed to an HTTP request function (e.g, \code{\link[httr]{GET}}, \code{\link[httr]{POST}}, \code{\link[httr]{PUT}}).
 #' @return A character string containing the content of the HTTP request.
-#' @importFrom httr GET POST PUT stop_for_status content
+#' @importFrom httr GET POST PUT DELETE stop_for_status content
 #' @export
 cf_query <- function(endpoint, 
                     query = NULL, 
@@ -28,6 +28,7 @@ cf_query <- function(endpoint,
                 POST = httr::POST(url, query = query, ..., body = body),
                 "POST-DATA" = httr::POST(url, query = query, ..., body = body, encode="json"),
                 PUT = httr::PUT(url, query = query, ..., body = body),
+                DELETE = httr::DELETE(url, query = query, ...),
                 stop("Value of request 'type' unrecognized."))
     httr::stop_for_status(r)
     

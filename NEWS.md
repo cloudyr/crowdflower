@@ -1,5 +1,6 @@
 # crowdflower 0.2.1
 
+* Added a `job_delete()` function to programmatically delete a job.
 * Fix bug in `job_copy()` where rows were incorrectly being copied when `gold = TRUE`. (#7)
 
 # crowdflower 0.2.0
