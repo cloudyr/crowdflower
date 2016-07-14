@@ -1,5 +1,6 @@
 # crowdflower 0.2.1
 
+* Fixed various issues in `report_get()` to return a more useful response structure, typically a data.frame. (#3)
 * Added a `job_delete()` function to programmatically delete a job.
 * Fix bug in `job_copy()` where rows were incorrectly being copied when `gold = TRUE`. (#7)
 

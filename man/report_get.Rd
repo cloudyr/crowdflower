@@ -6,7 +6,8 @@
 \title{Generate and retrieve job results}
 \usage{
 report_get(id, report_type = c("full", "aggregated", "json", "gold_report",
-  "workset", "source"), verbose = TRUE, ...)
+  "workset", "source"), csv_args = list(stringsAsFactors = FALSE),
+  verbose = TRUE, ...)
 
 report_regenerate(id, report_type = c("full", "aggregated", "json",
   "gold_report", "workset", "source"), verbose = TRUE, ...)
@@ -16,21 +17,30 @@ report_regenerate(id, report_type = c("full", "aggregated", "json",
 
 \item{report_type}{Type of report}
 
+\item{csv_args}{A list of arguments passed to \code{\link[utils]{read.csv}} when \code{report_type = 'source'}.}
+
 \item{verbose}{A logical indicating whether to print additional information about the request.}
 
 \item{...}{Additional arguments passed to \code{\link{cf_query}}.}
 }
+\value{
+If \code{report_type = 'json'}, a list. Otherwise a data.frame.
+}
 \description{
-\code{report_get} regenerates one of six types of reports within
-a job:
-- \code{full}: Returns the Full report containing every judgment.
-- \code{aggregated}: Returns the Aggregated report containing the 
-aggregated response for each row.
-- \code{json}: Returns the JSON report containing the aggregated 
-response, as well as the individual judgments, for the first 50 rows.
-- \code{gold_report}: Returns the Test Question report.
-- \code{workset}: Returns the Contributor report.
-- \code{source}: Returns a CSV of the source data uploaded to the job.
+Results
+}
+\details{
+\code{report_get} regenerates one of six types of reports within a job. Here is how they are described by Crowdflower:
+\itemize{
+  \item \code{full}: Returns the Full report containing every judgment.
+  \item \code{aggregated}: Returns the Aggregated report containing the aggregated response for each row.
+  \item \code{json}: Returns the JSON report containing the aggregated response, as well as the individual judgments, for the first 50 rows.
+  \item \code{gold_report}: Returns the Test Question report.
+  \item \code{workset}: Returns the Contributor report.
+  \item \code{source}: Returns a CSV of the source data uploaded to the job.
+}
+
+Where possible, the package tries to return a data.frame of the results.
 }
 \examples{
 \dontrun{
@@ -42,7 +52,7 @@ j <- job_create(title = "Job Title",
                cml = readChar(f2, nchars = 1e8L))
 
 # get results for job
-report_get(id = j, report_type = "")
+report_get(id = j, report_type = "full")
 }
 }
 \references{

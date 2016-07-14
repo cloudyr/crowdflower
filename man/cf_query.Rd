@@ -5,7 +5,7 @@
 \title{Execute a Crowdflower API call}
 \usage{
 cf_query(endpoint, query = NULL, body = NULL, type = "GET",
-  key = Sys.getenv("CROWDFLOWER_API_KEY"),
+  parse = TRUE, key = Sys.getenv("CROWDFLOWER_API_KEY"),
   base_url = "https://api.crowdflower.com/v1/", ...)
 }
 \arguments{
@@ -16,6 +16,8 @@ cf_query(endpoint, query = NULL, body = NULL, type = "GET",
 \item{body}{Additional parameters to add to request body.}
 
 \item{type}{A character string specifying the type of HTTP request (\dQuote{GET}, \dQuote{POST}, \dQuote{PUT}, etc.).}
+
+\item{parse}{A logical indicating whether to parse the response (\code{TRUE}, the default) or return a raw vector (\code{FALSE}).}
 
 \item{key}{A character string containing a Crowdflower API key.}
 

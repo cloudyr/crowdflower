@@ -13,6 +13,7 @@ License: GPL-3
 Imports:
     utils,
     httr,
+    jsonlite,
     R6
 Suggests:
     testthat
