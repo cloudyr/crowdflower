@@ -3,12 +3,12 @@ unlistWithNA <- function(lst, field){
     # takes elements of list with names 'field' and returns a vector
     # where NULL elements are converted to NAs
 
-    if (length(field)==1){
+    if (length(field) == 1) {
         notnulls <- unlist(lapply(lst, function(x) !is.null(x[[field]])))
         vect <- rep(NA, length(lst))
         vect[notnulls] <- unlist(lapply(lst, function(x) x[[field]]))
     }
-    if (length(field)==2){
+    if (length(field) == 2) {
         notnulls <- unlist(lapply(lst, function(x) !is.null(x[[field[1]]][[field[2]]])))
         vect <- rep(NA, length(lst))
         vect[notnulls] <- unlist(lapply(lst, function(x) x[[field[1]]][[field[2]]]))
@@ -56,12 +56,12 @@ rowDataToDF <- function(rows, type="aggregated"){
     unit.vars <- vars[lengths==1]
     df <- list()
     
-    for (i in 1:length(rows)){
+    for (i in 1:length(rows)) {
 
         # first, replace NULLs with NAs
         rows[[i]] <- changeNULLtoNA(rows[[i]])
 
-        if (type=="aggregated"){
+        if (type == "aggregated") {
 
             df[[i]] <- data.frame()
 
@@ -71,16 +71,14 @@ rowDataToDF <- function(rows, type="aggregated"){
             }
 
             # step 1: DF w/unit-level variables
-            for (var in unit.vars){
+            for (var in unit.vars) {
                 df[[i]][1,var] <- paste0(rows[[i]][[var]][[1]], collapse='\n')
             }
             # step 2: find aggregated responses
-            for (var in response.vars){
+            for (var in response.vars) {
                 df[[i]][,paste0(var, '.agg')] <- rows[[i]][[var]]$agg
             }
-        }
-    
-        if (type=="full"){
+        } else if (type == "full") {
             # step 0: _ids is NOT a unit-level variable
             if ('_ids' %in% unit.vars) unit.vars <- unit.vars[-which(unit.vars=="_ids")]
             if ('_ids' %in% response.vars == FALSE) response.vars <- c(response.vars, '_ids')
@@ -114,22 +112,21 @@ rowDataToDF <- function(rows, type="aggregated"){
 changeNULLtoNA <- function(lst){
 
     # clean 1: NULL to NA
-    nulls <- which(unlist(lapply(lst, length))==0)
-    for (n in names(nulls)){
+    nulls <- which(unlist(lapply(lst, length)) == 0)
+    for (n in names(nulls)) {
         lst[[n]] <- NA
-
     }
     # clean 2: NULL responses to NA
     resp <- which(unlist(lapply(lst, function(x) 'res' %in% names(x))))
-    for (n in names(resp)){
-        if (length(lst[[n]]$res)==0){
+    for (n in names(resp)) {
+        if (length(lst[[n]]$res) == 0) {
             lst[[n]]$res <- NA
         }
     }
     # clean 3: NULL aggregate responses to NA
     agg <- which(unlist(lapply(lst, function(x) 'agg' %in% names(x))))
-    for (n in names(agg)){
-        if (length(lst[[n]]$agg)==0){
+    for (n in names(agg)) {
+        if (length(lst[[n]]$agg) == 0) {
             lst[[n]]$agg <- NA
         }
     }
