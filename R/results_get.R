@@ -47,7 +47,7 @@ results_get <- function(id, n=Inf, unit = NULL, type = c("aggregated", "full"), 
         # initial API request
         endpoint <- paste0('jobs/', id, '/judgments.json')
         rows <- newrows <- cf_query(endpoint, query = list(page = 1), ...)
-
+        
         if (verbose) {
             message(length(rows), ' rows downloaded')
         }
