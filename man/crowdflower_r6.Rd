@@ -26,7 +26,6 @@ This is an experimental R6 interface for working with Crowdflower jobs. The adva
   \item \code{pause()} Pause the job using \code{\link{job_pause}}
   \item \code{resume()} Resume the (paused) job using \code{\link{job_resume}}
   \item \code{cancel()} Cancel the job using \code{\link{job_cancel}}
-  \item \code{get()} Get information about the job using \code{\link{job_get}}
   \item \code{get_unit(unit)} Get data on a given unit (row) from the job using \code{\link{results_get}}
   \item \code{get_results(n = Inf)} Return a specified number of results from the job using \code{\link{results_get}}. Default is all results.
   \item \code{get_report()} Return a report document using \code{\link{report_get}}. Default is the \dQuote{full} report.
@@ -39,13 +38,15 @@ This is an experimental R6 interface for working with Crowdflower jobs. The adva
 
 Active fields are like list elements, but are \dQuote{active} meaning that they are updated against the Crowdflower API each time they accessed. This means that they are always current. They can also be set using the standard \code{<-} operator.
 \itemize{
+  \item \code{auto_launch} A logical specifying whether to auto-launch the job.
   \item \code{channels} A list of Crowdflower channels on which the job is available.
-  \item \code{cml} The Crowdflower Markup Language (CML) describing the job
-  \item \code{instructions} Instructions shown to the worker
-  \item \code{legend} The legend text being displayed to workers for the job.
-  \item \code{status} The job's status.
-  \item \code{tags} A list of tags for the job.
-  \item \code{title} A list of tags for the job.
+  \item \code{cml} A character string contianing the Crowdflower Markup Language (CML) describing the job.
+  \item \code{instructions} A character string containing instructions shown to the worker.
+  \item \code{legend} A character string containing the legend text being displayed to workers for the job.
+  \item \code{payment_cents} A numeric value specifying the payment per unit.
+  \item \code{tags} A character vector of tags for the job.
+  \item \code{title} A character string specifying the job's title.
+  \item \code{units_per_assignment} A numeric value specifying the number of units per assignment.
 }
 }
 \examples{

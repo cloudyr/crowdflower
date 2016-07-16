@@ -10,7 +10,6 @@
 #'   \item \code{pause()} Pause the job using \code{\link{job_pause}}
 #'   \item \code{resume()} Resume the (paused) job using \code{\link{job_resume}}
 #'   \item \code{cancel()} Cancel the job using \code{\link{job_cancel}}
-#'   \item \code{get()} Get information about the job using \code{\link{job_get}}
 #'   \item \code{get_unit(unit)} Get data on a given unit (row) from the job using \code{\link{results_get}}
 #'   \item \code{get_results(n = Inf)} Return a specified number of results from the job using \code{\link{results_get}}. Default is all results.
 #'   \item \code{get_report()} Return a report document using \code{\link{report_get}}. Default is the \dQuote{full} report.
@@ -20,13 +19,15 @@
 #' @section Active Fields:
 #' Active fields are like list elements, but are \dQuote{active} meaning that they are updated against the Crowdflower API each time they accessed. This means that they are always current. They can also be set using the standard \code{<-} operator.
 #' \itemize{
+#'   \item \code{auto_launch} A logical specifying whether to auto-launch the job.
 #'   \item \code{channels} A list of Crowdflower channels on which the job is available.
-#'   \item \code{cml} The Crowdflower Markup Language (CML) describing the job
-#'   \item \code{instructions} Instructions shown to the worker
-#'   \item \code{legend} The legend text being displayed to workers for the job.
-#'   \item \code{status} The job's status.
-#'   \item \code{tags} A list of tags for the job.
-#'   \item \code{title} A list of tags for the job.
+#'   \item \code{cml} A character string contianing the Crowdflower Markup Language (CML) describing the job.
+#'   \item \code{instructions} A character string containing instructions shown to the worker.
+#'   \item \code{legend} A character string containing the legend text being displayed to workers for the job.
+#'   \item \code{payment_cents} A numeric value specifying the payment per unit.
+#'   \item \code{tags} A character vector of tags for the job.
+#'   \item \code{title} A character string specifying the job's title.
+#'   \item \code{units_per_assignment} A numeric value specifying the number of units per assignment.
 #' }
 #' @seealso \code{\link{job_create}}
 #' @examples
@@ -82,9 +83,6 @@ Job <- R6::R6Class("crowdflower_job",
         },
         
         # results functions
-        get = function(...) {
-            job_get(id = private$id, ...)
-        },
         get_unit = function(unit, type = "aggregated", ...) {
             results_get(id = private$id, unit = unit, ...)
         },
@@ -106,20 +104,23 @@ Job <- R6::R6Class("crowdflower_job",
         
         # pretty print method
         print = function() {
+            self$sync(verbose = FALSE)
+            cat("Job:", private$id, "\n")
+            cat("Title:", private$local_details$title, "\n")
+            cat("Units Per Assignment:", private$local_details$units_per_assignment, "\n")
+            cat("Payment:", private$local_details$payment_cents, "\n")
             print(job_status(private$id))
         },
         
         # sync local copy with crowdflower
-        sync = function(...) {
-            j <- job_get()
-            private$title <- j$title
-            private$instructions <- j$instructions
-            private$cml <- j$cml
-            private$payment_cents <- j$payment_cents
-            private$units_per_assignment <- j$units_per_assignment
-            private$auto_launch <- j$auto_launch
-            private$cml <- j$cml
-            
+        sync = function(verbose = FALSE, ...) {
+            private$local_details <- job_get(private$id, verbose = verbose, ...)
+            private$local_status <- job_status(private$id, verbose = verbose, ...)
+        },
+        
+        # update job details
+        update = function(...) {
+            job_update(private$id, ...)
         },
         
         # initialization function
@@ -135,8 +136,17 @@ Job <- R6::R6Class("crowdflower_job",
         }
     ),
     active = list(
+        auto_launch = function(x) {
+            if (missing(x)) {
+                self$sync()
+                private$local_details$auto_launch
+            } else {
+                self$update(auto_launch = x)
+            }
+        },
         channels = function(x) {
             if (missing(x)) {
+                self$sync()
                 job_channel_list(private$id)
             } else {
                 # set the channels
@@ -144,56 +154,64 @@ Job <- R6::R6Class("crowdflower_job",
         },
         cml = function(x) {
             if (missing(x)) {
-                self$get()[["cml"]]
+                self$sync()
+                private$local_details$cml
             } else {
-                job_update(cml = x)
+                self$update(cml = x)
             }
         },
         instructions = function(x) {
             if (missing(x)) {
-                self$get()[["instructions"]]
+                self$sync()
+                private$local_details$instructions
             } else {
-                job_update(instructions = x)
+                self$update(instructions = x)
             }
         },
         legend = function(x) {
             if (missing(x)) {
-                job_legend_get(private$id)
+                self$sync()
+                private$local_details$legend
             } else {
                 # set the legend
             }
         },
-        status = function() {
-            job_status(private$id)
+        payment_cents = function(x) {
+            if (missing(x)) {
+                self$sync()
+                private$local_details$payment_cents
+            } else {
+                self$update(payment_cents = x)
+            }
         },
         tags = function(x) {
             if (missing(x)) {
-                job_tags_get(private$id)
+                job_tags_get(id = private$id)
             } else {
-                # set the tags
+                job_tags_replace(id = private$id, tags = x)
             }
         },
         title = function(x) {
             if (missing(x)) {
-                self$get()[["title"]]
+                self$sync()
+                private$local_details$title
             } else {
-                job_update(title = x)
+                self$update(title = x)
+            }
+        },
+        units_per_assignment = function(x) {
+            if (missing(x)) {
+                self$sync()
+                private$local_details$units_per_assignment
+            } else {
+                self$update(units_per_assignment = x)
             }
         }
     ),
     private = list(
         id = NULL,
-        alias = NULL,
-        css = NULL,
-        created_at = NULL,
-        data = NULL,
-        gold_per_assignment = NULL,
-        js = NULL,
-        judgments_per_unit = NULL,
-        max_judgments_per_worker = NULL,
-        pages_per_assignment = NULL,
-        units_per_assignment = NULL,
-        updated_at = NULL        
+        local_status = list(),
+        local_details = list()
     )
 )
 
