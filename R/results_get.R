@@ -1,5 +1,6 @@
 #' @title Retrieve rows with judgment information for a job.
 #' @description \code{results_get} retrieves rows with judgment information for the job ID indicated in the request. Specifying \code{unit} retrieves only judgments for a specific row (unit).
+#' @details Note that multiple choice responses get aggregated by collapsing all responses into a single value.
 #' @param id A character string containing an ID for job.
 #' @param n Number of rows to return. Specify only \code{n} or \code{unit}, but not both.
 #' @param unit A \dQuote{unit id} for a specific row. Specify only \code{n} or \code{unit}, but not both.
