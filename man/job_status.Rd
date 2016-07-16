@@ -20,14 +20,17 @@ Details about a job.
 \examples{
 \dontrun{
 j <- job_create(title = 'Job Title', 
-               instructions = 'Some instructions')
+                instructions = 'Some instructions')
 
 # get status
 job_status(j)
+
+# delete job
+job_delete(j)
 }
 }
 \seealso{
-\code{\link{results_get}}, \code{\link{report_get}}
+\code{\link{job_get}}, \code{\link{results_get}}, \code{\link{report_get}}
 }
 \keyword{jobs}
 

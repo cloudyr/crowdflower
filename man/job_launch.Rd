@@ -41,8 +41,12 @@ Launch, pause, resume, or cancel a job
 f1 <- system.file("templates/instructions1.html", package = "crowdflower")
 f2 <- system.file("templates/cml1.xml", package = "crowdflower")
 j <- job_create(title = "Job Title", 
-               instructions = readChar(f1, nchars = 1e8L),
-               cml = readChar(f2, nchars = 1e8L))
+                instructions = readChar(f1, nchars = 1e8L),
+                cml = readChar(f2, nchars = 1e8L))
+
+# add data
+d <- data.frame(variable = 1:3)
+job_add_data(id = j, data = d)
 
 # launch the job
 job_launch(j)
@@ -55,6 +59,9 @@ job_resume(j)
 
 # cancel the job
 job_cancel(j)
+
+# delete job
+job_delete(j)
 }
 }
 \seealso{

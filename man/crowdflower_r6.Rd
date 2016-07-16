@@ -28,9 +28,10 @@ This is an experimental R6 interface for working with Crowdflower jobs. The adva
   \item \code{cancel()} Cancel the job using \code{\link{job_cancel}}
   \item \code{get_unit(unit)} Get data on a given unit (row) from the job using \code{\link{results_get}}
   \item \code{get_results(n = Inf)} Return a specified number of results from the job using \code{\link{results_get}}. Default is all results.
-  \item \code{get_report()} Return a report document using \code{\link{report_get}}. Default is the \dQuote{full} report.
-  \item \code{report_regenerate()} Regenerate a report using \code{\link{report_regenerate}}.
+  \item \code{get_report()} Return a report document using \code{\link{report_get}}. Default is the \dQuote{full} report. \code{\link{report_regenerate}} is called automatically.
   \item \code{contributor} Initialize a new R6 \dQuote{Contributor} object in order to \code{flag()}, \code{unflag()}, \code{reject()}, \code{bonus()}, or \code{notify()} a contributor (worker).
+  \item \code{update(...)} Update features of a job using \code{\link{job_update}}
+  \item \code{sync()} Synchronize local information in the R6 object with Crowdflower. This is performed automatically during various method calls but may be useful to call directly to make sure all job details are up to date.
 }
 }
 
@@ -42,9 +43,10 @@ Active fields are like list elements, but are \dQuote{active} meaning that they 
   \item \code{channels} A list of Crowdflower channels on which the job is available.
   \item \code{cml} A character string contianing the Crowdflower Markup Language (CML) describing the job.
   \item \code{instructions} A character string containing instructions shown to the worker.
-  \item \code{legend} A character string containing the legend text being displayed to workers for the job.
+  \item \code{legend} A list specifying the generated keys that will be submitted with your form. This cannot be modified.
   \item \code{payment_cents} A numeric value specifying the payment per unit.
   \item \code{tags} A character vector of tags for the job.
+  \item \code{time_per_assignments} An integer specifying the length of time available per assignment, in seconds. Default is 1800 (i.e., 30 minutes).
   \item \code{title} A character string specifying the job's title.
   \item \code{units_per_assignment} A numeric value specifying the number of units per assignment.
 }

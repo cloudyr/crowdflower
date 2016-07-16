@@ -1,3 +1,11 @@
+# crowdflower 0.2.3
+
+* Added examples to README and documentation pages. (#5)
+
+# crowdflower 0.2.2
+
+* Updated various aspects of the Job R6 class
+
 # crowdflower 0.2.1
 
 * Fixed various issues in `report_get()` to return a more useful response structure, typically a data.frame. (#3)

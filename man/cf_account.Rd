@@ -13,16 +13,20 @@ cf_account(...)
 A list containing account details for the authenticated user.
 }
 \description{
-\code{getAccount} retrieves the CrowdFlower account information
+Retrieves CrowdFlower account information for the registered user.
 related to the API key for the authenticated user
 }
 \examples{
 \dontrun{
-getAccount()
+Sys.setenv("CROWDFLOWER_KEY" = "examplekey")
+cf_account()
 }
 }
 \references{
 \href{https://success.crowdflower.com/hc/en-us/articles/202703425-CrowdFlower-API-Requests-Guide#account_information}{Crowdflower API documentation}
+}
+\seealso{
+\code{\link{cf_jobs_list}}
 }
 \keyword{account}
 

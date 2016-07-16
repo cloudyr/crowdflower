@@ -41,8 +41,8 @@
 #' f1 <- system.file("templates/instructions1.html", package = "crowdflower")
 #' f2 <- system.file("templates/cml1.xml", package = "crowdflower")
 #' j <- job_create(title = "Job Title", 
-#'                instructions = readChar(f1, nchars = 1e8L),
-#'                cml = readChar(f2, nchars = 1e8L))
+#'                 instructions = readChar(f1, nchars = 1e8L),
+#'                 cml = readChar(f2, nchars = 1e8L))
 #'
 #' # add one or more channels
 #' job_channel_add(j, "neobux")
@@ -57,8 +57,14 @@
 #' # monitor the job
 #' job_status(j)
 #'
-#' # get results once completed
+#' # get aggregated results once completed
 #' report_get(j)
+#' 
+#' # get results
+#' results_get(j)
+#' 
+#' # delete job
+#' job_delete(j)
 #' }
 #' @seealso \code{\link{job_create}}, \code{\link{job_channel_list}}, \code{\link{job_add_data}}, \code{\link{job_status}}, \code{\link{report_get}}
 "_PACKAGE"

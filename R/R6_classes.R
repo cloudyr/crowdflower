@@ -12,9 +12,10 @@
 #'   \item \code{cancel()} Cancel the job using \code{\link{job_cancel}}
 #'   \item \code{get_unit(unit)} Get data on a given unit (row) from the job using \code{\link{results_get}}
 #'   \item \code{get_results(n = Inf)} Return a specified number of results from the job using \code{\link{results_get}}. Default is all results.
-#'   \item \code{get_report()} Return a report document using \code{\link{report_get}}. Default is the \dQuote{full} report.
-#'   \item \code{report_regenerate()} Regenerate a report using \code{\link{report_regenerate}}.
+#'   \item \code{get_report()} Return a report document using \code{\link{report_get}}. Default is the \dQuote{full} report. \code{\link{report_regenerate}} is called automatically.
 #'   \item \code{contributor} Initialize a new R6 \dQuote{Contributor} object in order to \code{flag()}, \code{unflag()}, \code{reject()}, \code{bonus()}, or \code{notify()} a contributor (worker).
+#'   \item \code{update(...)} Update features of a job using \code{\link{job_update}}
+#'   \item \code{sync()} Synchronize local information in the R6 object with Crowdflower. This is performed automatically during various method calls but may be useful to call directly to make sure all job details are up to date.
 #' }
 #' @section Active Fields:
 #' Active fields are like list elements, but are \dQuote{active} meaning that they are updated against the Crowdflower API each time they accessed. This means that they are always current. They can also be set using the standard \code{<-} operator.
@@ -23,9 +24,10 @@
 #'   \item \code{channels} A list of Crowdflower channels on which the job is available.
 #'   \item \code{cml} A character string contianing the Crowdflower Markup Language (CML) describing the job.
 #'   \item \code{instructions} A character string containing instructions shown to the worker.
-#'   \item \code{legend} A character string containing the legend text being displayed to workers for the job.
+#'   \item \code{legend} A list specifying the generated keys that will be submitted with your form. This cannot be modified.
 #'   \item \code{payment_cents} A numeric value specifying the payment per unit.
 #'   \item \code{tags} A character vector of tags for the job.
+#'   \item \code{time_per_assignments} An integer specifying the length of time available per assignment, in seconds. Default is 1800 (i.e., 30 minutes).
 #'   \item \code{title} A character string specifying the job's title.
 #'   \item \code{units_per_assignment} A numeric value specifying the number of units per assignment.
 #' }
@@ -91,10 +93,9 @@ Job <- R6::R6Class("crowdflower_job",
             results
         },
         get_report = function(report_type = "full", ...) {
-            report_get(private$id, ...)
-        },
-        report_regenerate = function(report_type = "full", ...) {
             report_regenerate(private$id, ...)
+            Sys.sleep(0.5)
+            report_get(private$id, ...)
         },
         
         # contributor functions
@@ -104,7 +105,7 @@ Job <- R6::R6Class("crowdflower_job",
         
         # pretty print method
         print = function() {
-            self$sync(verbose = FALSE)
+            #self$sync(verbose = FALSE)
             cat("Job:", private$id, "\n")
             cat("Title:", private$local_details$title, "\n")
             cat("Units Per Assignment:", private$local_details$units_per_assignment, "\n")
@@ -115,6 +116,7 @@ Job <- R6::R6Class("crowdflower_job",
         # sync local copy with crowdflower
         sync = function(verbose = FALSE, ...) {
             private$local_details <- job_get(private$id, verbose = verbose, ...)
+            private$local_details <- job_legend_get(private$id, verbose = verbose, ...)
             private$local_status <- job_status(private$id, verbose = verbose, ...)
         },
         
@@ -168,13 +170,9 @@ Job <- R6::R6Class("crowdflower_job",
                 self$update(instructions = x)
             }
         },
-        legend = function(x) {
-            if (missing(x)) {
-                self$sync()
-                private$local_details$legend
-            } else {
-                # set the legend
-            }
+        legend = function() {
+            self$sync()
+            private$local_legend
         },
         payment_cents = function(x) {
             if (missing(x)) {
@@ -189,6 +187,14 @@ Job <- R6::R6Class("crowdflower_job",
                 job_tags_get(id = private$id)
             } else {
                 job_tags_replace(id = private$id, tags = x)
+            }
+        },
+        time_per_assignment = function(x) {
+            if (missing(x)) {
+                self$sync()
+                private$local_details$time_per_assignment
+            } else {
+                self$update(time_per_assignment = x)
             }
         },
         title = function(x) {
@@ -211,6 +217,7 @@ Job <- R6::R6Class("crowdflower_job",
     private = list(
         id = NULL,
         local_status = list(),
+        local_legend = list(),
         local_details = list()
     )
 )

@@ -6,12 +6,15 @@
 #' @examples
 #' \dontrun{
 #' j <- job_create(title = 'Job Title', 
-#'                instructions = 'Some instructions')
+#'                 instructions = 'Some instructions')
 #' 
 #' # get status
 #' job_status(j)
+#' 
+#' # delete job
+#' job_delete(j)
 #' }
-#' @seealso \code{\link{results_get}}, \code{\link{report_get}}
+#' @seealso \code{\link{job_get}}, \code{\link{results_get}}, \code{\link{report_get}}
 #' @keywords jobs
 #' @export
 job_status <- function(id, ...){
@@ -24,7 +27,6 @@ job_status <- function(id, ...){
 }
 
 print.crowdflower_job_status <- function(x, ...) {
-    cat("Job ID:             ", x$id, "\n", sep = "")
     cat("Gold units:         ", x$golden_units, "\n", sep = "")
     cat("All units:          ", x$all_units, "\n", sep = "")
     cat("Ordered units:      ", x$ordered_units, "\n", sep = "")

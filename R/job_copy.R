@@ -9,22 +9,26 @@
 #' @examples
 #' \dontrun{
 #' # create new job
-#' f1 <- system.file("templates/instructions1.html", 
-#'                   package = "crowdflower")
-#' f2 <- system.file("templates/cml1.xml", 
-#'                   package = "crowdflower")
+#' f1 <- system.file("templates/instructions1.html", package = "crowdflower")
+#' f2 <- system.file("templates/cml1.xml", package = "crowdflower")
 #' j1 <- job_create(title = "Job Title", 
-#'                instructions = readChar(f1, nchars = 1e8L),
-#'                cml = readChar(f2, nchars = 1e8L))
+#'                  instructions = readChar(f1, nchars = 1e8L),
+#'                  cml = readChar(f2, nchars = 1e8L))
 #'
 #' # copy job w/rows
 #' j2 <- job_copy(id = j1)
 #' 
 #' # copy job w/only gold questions
-#' j2 <- job_copy(id = j1, rows = FALSE, gold = TRUE)
+#' j3 <- job_copy(id = j1, rows = FALSE, gold = TRUE)
 #' 
 #' # copy job w/o any rows
-#' j2 <- job_copy(id = j1, rows = FALSE)
+#' j4 <- job_copy(id = j1, rows = FALSE)
+#' 
+#' # cleanup
+#' job_delete(j1)
+#' job_delete(j2)
+#' job_delete(j3)
+#' job_delete(j4)
 #' }
 #' @seealso \code{\link{job_create}}, \code{\link{job_update}}
 #' @keywords jobs

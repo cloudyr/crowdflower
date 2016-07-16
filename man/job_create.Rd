@@ -30,15 +30,28 @@ An integer specify the job ID.
 f1 <- system.file("templates/instructions1.html", package = "crowdflower")
 f2 <- system.file("templates/cml1.xml", package = "crowdflower")
 j <- job_create(title = "Job Title", 
-               instructions = readChar(f1, nchars = 1e8L),
-               cml = readChar(f2, nchars = 1e8L))
+                instructions = readChar(f1, nchars = 1e8L),
+                cml = readChar(f2, nchars = 1e8L))
+
+# add data
+d <- data.frame(variable = 1:3)
+job_add_data(id = j, data = d)
+
+# launch job
+job_launch(id = j)
+
+# get results
+results_get(id = j)
+
+# delete job
+job_delete(j)
 }
 }
 \references{
 \href{https://success.crowdflower.com/hc/en-us/articles/202703425-CrowdFlower-API-Requests-Guide}{Crowdflower API documentation}
 }
 \seealso{
-\code{\link{job_update}}, \code{\link{job_add_data}}, \code{\link{job_launch}}, \code{\link{job_status}}, \code{\link{report_get}}
+\code{\link{job_update}}, \code{\link{job_add_data}}, \code{\link{job_launch}}, \code{\link{job_status}}, \code{\link{job_delete}}, \code{\link{report_get}}
 }
 \keyword{jobs}
 

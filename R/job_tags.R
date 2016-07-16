@@ -20,8 +20,11 @@
 #' job_tags_add(j, "textanalysis")
 #' 
 #' # replace tags
-#' job_tags_add(j, c("foo", "bar"))
+#' job_tags_replace(j, c("foo", "bar"))
 #' job_tags_get(j)
+#' 
+#' # delete job
+#' job_delete(j)
 #' }
 #' @seealso \code{\link{job_create}}
 #' @keywords tags

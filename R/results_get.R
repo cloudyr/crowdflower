@@ -10,7 +10,28 @@
 #' @return A data.frame containing judgment information
 #' @examples
 #' \dontrun{
-#' results_get('jobid')
+#' # create new job
+#' f1 <- system.file("templates/instructions1.html", package = "crowdflower")
+#' f2 <- system.file("templates/cml1.xml", package = "crowdflower")
+#' j <- job_create(title = "Job Title", 
+#'                 instructions = readChar(f1, nchars = 1e8L),
+#'                 cml = readChar(f2, nchars = 1e8L))
+#'
+#' # add data
+#' d <- data.frame(variable = 1:3)
+#' job_add_data(id = j, data = d)
+#'
+#' # launch job
+#' job_launch(id = j)
+#' 
+#' # get first result
+#' results_get(id = j, n = 1)
+#' 
+#' # get all results
+#' results_get(id = j)
+#' 
+#' # delete job
+#' job_delete(j)
 #' }
 #' @seealso \code{\link{job_status}}, \code{\link{report_get}}
 #' @keywords jobs data

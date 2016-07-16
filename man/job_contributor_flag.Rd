@@ -29,19 +29,41 @@ Flag/unflag or reject a contributor
 }
 \examples{
 \dontrun{
+# create new job
+f1 <- system.file("templates/instructions1.html", package = "crowdflower")
+f2 <- system.file("templates/cml1.xml", package = "crowdflower")
+j <- job_create(title = "Job Title", 
+                instructions = readChar(f1, nchars = 1e8L),
+                cml = readChar(f2, nchars = 1e8L))
+
+# add data
+d <- data.frame(variable = 1:3)
+job_add_data(id = j, data = d)
+
+# launch job
+job_launch(id = j)
+
+# get results
+# get results for job
+report_regenerate(id = j, report_type = "full")
+r <- report_get(id = j, report_type = "full")
+
 # Flag contributor
-job_contributor_flag(j, contributor, "Looks problematic")
+job_contributor_flag(j, r[1, "_worker_id"], "Looks problematic")
 
 # Unflag contributor
-job_contributor_unflag(j, contributor, "Actually, all is well")
+job_contributor_unflag(j, r[1, "_worker_id"], "Actually, all is well")
 
 # Reject contributor
-job_contributor_reject(j, contributor, "This is unacceptable.")
+job_contributor_reject(j, r[1, "_worker_id"], "This is unacceptable.")
+
+# delete job
+job_delete(j)
 }
 
 }
 \seealso{
-\code{\link{job_create}}
+\code{\link{job_create}}, \code{\link{results_get}}, \code{\link{job_contributor_bonus}}
 }
 \keyword{contributors}
 

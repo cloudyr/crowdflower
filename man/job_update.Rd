@@ -6,7 +6,7 @@
 \usage{
 job_update(id, title = NULL, instructions = NULL, cml = NULL,
   payment_cents = NULL, units_per_assignment = NULL, auto_launch = NULL,
-  verbose = TRUE, ...)
+  time_per_assignment = NULL, verbose = TRUE, ...)
 }
 \arguments{
 \item{id}{A character string containing an ID for job to be updated.}
@@ -23,6 +23,8 @@ job_update(id, title = NULL, instructions = NULL, cml = NULL,
 
 \item{auto_launch}{A logical indicating whether to automatically launch rows as they are added.}
 
+\item{time_per_assignment}{An integer specifying the length of time available per assignment, in seconds. Default is 1800 (i.e., 30 minutes).}
+
 \item{verbose}{A logical indicating whether to print additional information about the request.}
 
 \item{...}{Additional arguments passed to \code{\link{cf_query}}.}
@@ -35,6 +37,13 @@ Updates settings for a given job.
 }
 \examples{
 \dontrun{
+# create a job
+f1 <- system.file("templates/instructions1.html", package = "crowdflower")
+f2 <- system.file("templates/cml1.xml", package = "crowdflower")
+j <- job_create(title = "Job Title", 
+               instructions = readChar(f1, nchars = 1e8L),
+               cml = readChar(f2, nchars = 1e8L))
+
 # update job's title
 job_update(id, title = "New Title")
 
@@ -43,6 +52,9 @@ job_update(id, payment_cents = "0.1")
 
 # update job's instructions and units
 job_update(id, instructions = "blank", units_per_assignment = 3)
+
+# delete job
+job_delete(j)
 }
 }
 \seealso{

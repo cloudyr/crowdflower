@@ -19,5 +19,21 @@ A logical.
 \description{
 Delete a single Crowdflower job
 }
+\examples{
+\dontrun{
+# create new job
+f1 <- system.file("templates/instructions1.html", package = "crowdflower")
+f2 <- system.file("templates/cml1.xml", package = "crowdflower")
+j <- job_create(title = "Job Title", 
+               instructions = readChar(f1, nchars = 1e8L),
+               cml = readChar(f2, nchars = 1e8L))
+
+# delete job
+job_delete(j)
+}
+}
+\seealso{
+\code{\link{job_create}}, \code{\link{job_update}}
+}
 \keyword{jobs}
 

@@ -6,8 +6,8 @@
 \title{Generate and retrieve job results}
 \usage{
 report_get(id, report_type = c("full", "aggregated", "json", "gold_report",
-  "workset", "source"), csv_args = list(stringsAsFactors = FALSE),
-  verbose = TRUE, ...)
+  "workset", "source"), csv_args = list(stringsAsFactors = FALSE, check.names
+  = FALSE), verbose = TRUE, ...)
 
 report_regenerate(id, report_type = c("full", "aggregated", "json",
   "gold_report", "workset", "source"), verbose = TRUE, ...)
@@ -48,11 +48,22 @@ Where possible, the package tries to return a data.frame of the results.
 f1 <- system.file("templates/instructions1.html", package = "crowdflower")
 f2 <- system.file("templates/cml1.xml", package = "crowdflower")
 j <- job_create(title = "Job Title", 
-               instructions = readChar(f1, nchars = 1e8L),
-               cml = readChar(f2, nchars = 1e8L))
+                instructions = readChar(f1, nchars = 1e8L),
+                cml = readChar(f2, nchars = 1e8L))
+
+# add data
+d <- data.frame(variable = 1:3)
+job_add_data(id = j, data = d)
+
+# launch job
+job_launch(id = j)
 
 # get results for job
+report_regenerate(id = j, report_type = "full")
 report_get(id = j, report_type = "full")
+
+# delete job
+job_delete(j)
 }
 }
 \references{

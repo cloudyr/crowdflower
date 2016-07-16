@@ -28,15 +28,37 @@ Contact a contributor via email or pay a contributor a bonus in U.S. cents
 }
 \examples{
 \dontrun{
+# create new job
+f1 <- system.file("templates/instructions1.html", package = "crowdflower")
+f2 <- system.file("templates/cml1.xml", package = "crowdflower")
+j <- job_create(title = "Job Title", 
+                instructions = readChar(f1, nchars = 1e8L),
+                cml = readChar(f2, nchars = 1e8L))
+
+# add data
+d <- data.frame(variable = 1:3)
+job_add_data(id = j, data = d)
+
+# launch job
+job_launch(id = j)
+
+# get results
+# get results for job
+report_regenerate(id = j, report_type = "full")
+r <- report_get(id = j, report_type = "full")
+
 # Send message
-job_contributor_notify(j, w, "Great work!")
+job_contributor_notify(j, r[1, "_worker_id"], "Great work!")
 
 # Pay bonus
-job_contributor_bonus(j, w, "0.01")
+job_contributor_bonus(j, r[1, "_worker_id"], "0.01")
+
+# delete job
+job_delete(j)
 }
 }
 \seealso{
-\code{\link{job_create}}
+\code{\link{job_create}}, \code{\link{results_get}}, \code{\link{job_contributor_flag}}
 }
 \keyword{contributors}
 

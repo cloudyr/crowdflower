@@ -3,14 +3,15 @@
 #' @param id A character string containing an ID for job.
 #' @param ... Additional arguments passed to \code{\link{cf_query}}.
 #' @return A list.
+#' @details This functionality will be deprecated by Crowdflower eventually and will be removed from the package when that happens.
 #' @examples 
 #' \dontrun{
 #' # create new job
 #' f1 <- system.file("templates/instructions1.html", package = "crowdflower")
 #' f2 <- system.file("templates/cml1.xml", package = "crowdflower")
 #' j <- job_create(title = "Job Title", 
-#'                instructions = readChar(f1, nchars = 1e8L),
-#'                cml = readChar(f2, nchars = 1e8L))
+#'                 instructions = readChar(f1, nchars = 1e8L),
+#'                 cml = readChar(f2, nchars = 1e8L))
 #'
 #' # list available channels
 #' ch <- job_channel_list(j)
