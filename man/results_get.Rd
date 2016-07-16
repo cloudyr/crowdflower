@@ -26,6 +26,9 @@ A data.frame containing judgment information
 \description{
 \code{results_get} retrieves rows with judgment information for the job ID indicated in the request. Specifying \code{unit} retrieves only judgments for a specific row (unit).
 }
+\details{
+Note that multiple choice responses get aggregated by collapsing all responses into a single value.
+}
 \examples{
 \dontrun{
 results_get('jobid')
