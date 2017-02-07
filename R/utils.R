@@ -147,10 +147,13 @@ rowDataToDF <- function(rows, type = c("aggregated", "full")){
 
             # step 4: adding individual responses
             for (var in response.vars) {
-                 responses <- unlist(rows[[i]][[var]]$res)
+                responses <- unlist(rows[[i]][[var]]$res)
                 # if no responses, add missing values
                 if (length(responses) == 1 && is.na(responses)) {
                     df[[i]][,var] <- responses
+                }
+                if (is.null(responses)) {
+                  df[[i]][,var] <- NA
                 }
                 # if single response for each unit, then we can just add
                 if (length(responses) == codings) {
