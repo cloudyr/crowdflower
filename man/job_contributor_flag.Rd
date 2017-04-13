@@ -2,8 +2,8 @@
 % Please edit documentation in R/contributor.R
 \name{job_contributor_flag}
 \alias{job_contributor_flag}
-\alias{job_contributor_reject}
 \alias{job_contributor_unflag}
+\alias{job_contributor_reject}
 \title{Flag/unflag/reject Contributors}
 \usage{
 job_contributor_flag(id, contributor, reason, ...)
@@ -66,4 +66,3 @@ job_delete(j)
 \code{\link{job_create}}, \code{\link{results_get}}, \code{\link{job_contributor_bonus}}
 }
 \keyword{contributors}
-

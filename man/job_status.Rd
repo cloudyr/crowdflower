@@ -33,4 +33,3 @@ job_delete(j)
 \code{\link{job_get}}, \code{\link{results_get}}, \code{\link{report_get}}
 }
 \keyword{jobs}
-

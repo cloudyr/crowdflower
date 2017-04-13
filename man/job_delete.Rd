@@ -36,4 +36,3 @@ job_delete(j)
 \code{\link{job_create}}, \code{\link{job_update}}
 }
 \keyword{jobs}
-

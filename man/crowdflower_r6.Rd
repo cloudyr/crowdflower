@@ -2,8 +2,8 @@
 % Please edit documentation in R/R6_classes.R
 \docType{data}
 \name{Job}
-\alias{Contributor}
 \alias{Job}
+\alias{Contributor}
 \title{Crowdflower Job R6 Class}
 \format{An object of class \code{R6ClassGenerator} of length 24.}
 \usage{
@@ -51,6 +51,7 @@ Active fields are like list elements, but are \dQuote{active} meaning that they 
   \item \code{units_per_assignment} A numeric value specifying the number of units per assignment.
 }
 }
+
 \examples{
 \dontrun{
 # initialize a 'job' object for an existing job
@@ -82,4 +83,3 @@ worker$notify("Hello, worker!")
 \code{\link{job_create}}
 }
 \keyword{datasets}
-

@@ -4,12 +4,14 @@
 \alias{job_add_data}
 \title{Uploads data to a CrowdFlower Job}
 \usage{
-job_add_data(id, data, verbose = TRUE, ...)
+job_add_data(id, data, force = FALSE, verbose = TRUE, ...)
 }
 \arguments{
 \item{id}{ID for job to be updated.}
 
 \item{data}{A filename or data.frame with data to be uploaded.}
+
+\item{force}{A logical indicating whether to \emph{force} the upload even when column names do not match existing headers.}
 
 \item{verbose}{A logical indicating whether to print additional information about the request.}
 
@@ -53,4 +55,3 @@ job_delete(j)
 }
 \keyword{data}
 \keyword{jobs}
-

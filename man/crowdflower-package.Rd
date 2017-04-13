@@ -4,7 +4,7 @@
 \name{crowdflower-package}
 \alias{crowdflower}
 \alias{crowdflower-package}
-\title{R Client for the CrowdFlower API}
+\title{crowdflower: R Client for the CrowdFlower API}
 \description{
 R Crowdflower API Client
 }
@@ -79,4 +79,13 @@ job_delete(j)
 \seealso{
 \code{\link{job_create}}, \code{\link{job_channel_list}}, \code{\link{job_add_data}}, \code{\link{job_status}}, \code{\link{report_get}}
 }
+\author{
+\strong{Maintainer}: Kenneth Benoit \email{kbenoit@lse.ac.uk}
 
+Authors:
+\itemize{
+  \item Pablo Barberá \email{pablo.barbera@nyu.edu}
+  \item Thomas J. Leeper \email{thosjleeper@gmail.com}
+}
+
+}

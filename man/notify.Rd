@@ -61,4 +61,3 @@ job_delete(j)
 \code{\link{job_create}}, \code{\link{results_get}}, \code{\link{job_contributor_flag}}
 }
 \keyword{contributors}
-

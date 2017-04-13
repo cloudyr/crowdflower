@@ -60,4 +60,3 @@ job_delete(j)
 }
 \keyword{data}
 \keyword{jobs}
-

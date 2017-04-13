@@ -52,4 +52,3 @@ job_delete(j4)
 \code{\link{job_create}}, \code{\link{job_update}}
 }
 \keyword{jobs}
-

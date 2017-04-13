@@ -48,4 +48,3 @@ job_delete(id = j)
 }
 }
 \keyword{jobs}
-

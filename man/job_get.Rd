@@ -39,4 +39,3 @@ job_delete(j)
 \code{\link{cf_account}}
 }
 \keyword{jobs}
-

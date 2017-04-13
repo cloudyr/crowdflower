@@ -44,4 +44,3 @@ job_channel_remove(j, ch[1])
 \code{\link{job_channel_add}}, \code{\link{job_channel_remove}}
 }
 \keyword{channels}
-

@@ -54,4 +54,3 @@ job_delete(j)
 \code{\link{job_update}}, \code{\link{job_add_data}}, \code{\link{job_launch}}, \code{\link{job_status}}, \code{\link{job_delete}}, \code{\link{report_get}}
 }
 \keyword{jobs}
-

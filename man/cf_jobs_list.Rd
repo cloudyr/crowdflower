@@ -37,4 +37,3 @@ cf_jobs_list()
 }
 \keyword{account}
 \keyword{jobs}
-

@@ -31,4 +31,3 @@ A character string containing the content of the HTTP request.
 \description{
 Connects to the CrowdFlower API and executes an API request, returning the content of the HTTP response.
 }
-
