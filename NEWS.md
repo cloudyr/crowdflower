@@ -1,3 +1,7 @@
+# crowdflower 0.2.4
+
+* Fixed a bug in `job_add_data()` that prevented upload of data from a data frame. (#14, h/t Jack Blumenau)
+
 # crowdflower 0.2.3
 
 * Added examples to README and documentation pages. (#5)

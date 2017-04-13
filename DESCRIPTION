@@ -4,9 +4,8 @@ Title: R Client for the CrowdFlower API
 Authors@R: c(person("Kenneth", "Benoit", email = "kbenoit@lse.ac.uk", role = c("aut", "cre")), 
              person("Pablo", "Barberá", email = "pablo.barbera@nyu.edu", role = "aut"), 
              person("Thomas J.", "Leeper", email = "thosjleeper@gmail.com", role = "aut"))
-Maintainer: Kenneth Benoit <kbenoit@lse.ac.uk>
-Version: 0.2.3
-Date: 2016-07-16
+Version: 0.2.4
+Date: 2017-04-13
 Description: Provides programmatic access to the CrowdFlower crowdsourcing API
     <http://www.crowdflower.com/>.
 License: GPL-3
@@ -20,4 +19,4 @@ Suggests:
 URL: http://github.com/cloudyr/crowdflower
 Encoding: UTF-8
 BugReports: https://github.com/cloudyr/crowdflower/issues
-RoxygenNote: 5.0.1
+RoxygenNote: 6.0.1
