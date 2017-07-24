@@ -24,7 +24,7 @@
 #' job_update(id, title = "New Title")
 #'
 #' # update job's payment
-#' job_update(id, payment_cents = "0.1")
+#' job_update(id, payment_cents = "2")
 #'
 #' # update job's instructions and units
 #' job_update(id, instructions = "blank", units_per_assignment = 3)
