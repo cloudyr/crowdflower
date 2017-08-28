@@ -12,14 +12,22 @@ The package provides two basic interfaces to Crowdflower, one that uses a famili
 
 ### Functional Approach
 
-The standard, functional approach provided by the package uses R functions to call Crowdflower API operations to create, modify, and launch Crowdflower jobs, and retrieve the results. To initialize a job, create a set of instructions and [a "CML" file](https://success.crowdflower.com/hc/en-us/articles/202817989-CML-CrowdFlower-Markup-Language-Overview), and create the job using `job_create()`:
+The standard, functional approach provided by the package uses R functions to call Crowdflower API operations to create, modify, and launch Crowdflower jobs, and retrieve the results. To initialize a job, create a set of instructions and [a "CML" file](https://success.crowdflower.com/hc/en-us/articles/202817989-CML-CrowdFlower-Markup-Language-Overview), and create the job using `job_create()`. Note that you do not need to import the actual HTML or XML files. Instead, simply copy the path to the files:
 
 
 ```R
 # load "instructions" file
 f1 <- system.file("templates", "instructions1.html", package = "crowdflower")
+
+# with custom file
+# f1_custom <- "path/to/htmlfile.html"
+
 # load "cml" file
 f2 <- system.file("templates", "cml1.xml", package = "crowdflower")
+
+# with custom file
+# f1_custom <- "path/to/xmlfile.xml"
+
 j1 <- job_create(title = "Job Title", 
                  instructions = readChar(f1, nchars = 1e8L),
                  cml = readChar(f2, nchars = 1e8L))
